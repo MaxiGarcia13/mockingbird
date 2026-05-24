@@ -13,6 +13,9 @@
   "bugs": {
     "url": "https://github.com/MaxiGarcia13/mockingbird/issues"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "keywords": [
     "http-interceptor",
     "request-modification",
@@ -28,19 +31,20 @@
     "local-development"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "node --env-file-if-exists .env dist/server.js",
-    "dev": "tsx watch src/server.ts",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
-  "dependencies": {
-    "fastify": "^5.8.5"
+    "lint:fix": "eslint . --fix",
+    "build": "nx run-many -t build",
+    "start": "nx run-many -t start",
+    "dev": "nx run mockingbird:dev",
+    "dev:api": "nx run mockingbird:dev",
+    "start:api": "nx run mockingbird:start",
+    "build:api": "nx run mockingbird:build"
   },
   "devDependencies": {
     "@maxigarcia/eslint-config": "^1.8.0",
+    "@nx/js": "^22.7.3",
     "@types/node": "^25.9.1",
-    "tsx": "^4.22.3",
+    "nx": "^22.7.3",
     "typescript": "^6.0.3"
   }
 }
