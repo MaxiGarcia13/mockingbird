@@ -1,6 +1,6 @@
 {
   "name": "mockingbird",
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.0",
   "description": "A lightweight HTTP request interceptor and mocking tool for seamless API debugging and network manipulation.",
   "author": "Maximiliano Garcia Mortigliengo",
@@ -27,11 +27,12 @@
     "developer-tools",
     "local-development"
   ],
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@maxigarcia/eslint-config": "^1.8.0"
+  "devDependencies": {
+    "@maxigarcia/eslint-config": "^1.8.0",
+    "@types/node": "^25.9.1",
+    "typescript": "^6.0.3"
   }
 }
