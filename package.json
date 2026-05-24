@@ -37,7 +37,8 @@
     "dev": "nx run mockingbird-api:dev",
     "dev:app": "nx run mockingbird-app:dev",
     "prestart": "npm run build",
-    "start": "nx run mockingbird-api:start"
+    "start": "nx run mockingbird-api:start",
+    "phoenix": "nx reset && nx run-many -t clean && rm -rf node_modules package-lock.json && npm install"
   },
   "devDependencies": {
     "@maxigarcia/eslint-config": "^1.8.0",
