@@ -36,6 +36,7 @@
     "build": "nx run-many -t build",
     "start": "nx run-many -t start",
     "dev": "nx run api:dev",
+    "dev:app": "nx run app:dev",
     "start:api": "nx run api:start"
   },
   "devDependencies": {
