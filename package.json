@@ -34,10 +34,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "nx run-many -t build",
-    "start": "nx run-many -t start",
-    "dev": "nx run api:dev",
-    "dev:app": "nx run app:dev",
-    "start:api": "nx run api:start"
+    "dev": "nx run mockingbird-api:dev",
+    "dev:app": "nx run mockingbird-app:dev",
+    "prestart": "npm run build",
+    "start": "nx run mockingbird-api:start"
   },
   "devDependencies": {
     "@maxigarcia/eslint-config": "^1.8.0",
