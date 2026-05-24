@@ -1,7 +1,18 @@
 {
   "name": "mockingbird",
+  "type": "commonjs",
   "version": "0.0.0",
   "description": "A lightweight HTTP request interceptor and mocking tool for seamless API debugging and network manipulation.",
+  "author": "Maximiliano Garcia Mortigliengo",
+  "license": "ISC",
+  "homepage": "https://github.com/MaxiGarcia13/mockingbird#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxiGarcia13/mockingbird.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaxiGarcia13/mockingbird/issues"
+  },
   "keywords": [
     "http-interceptor",
     "request-modification",
@@ -16,19 +27,11 @@
     "developer-tools",
     "local-development"
   ],
-  "homepage": "https://github.com/MaxiGarcia13/mockingbird#readme",
-  "bugs": {
-    "url": "https://github.com/MaxiGarcia13/mockingbird/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MaxiGarcia13/mockingbird.git"
-  },
-  "license": "ISC",
-  "author": "Maximiliano Garcia Mortigliengo",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@maxigarcia/eslint-config": "^1.8.0"
   }
 }
