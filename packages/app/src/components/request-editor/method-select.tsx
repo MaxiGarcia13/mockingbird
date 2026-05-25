@@ -1,7 +1,9 @@
-import type { HttpMethod } from '../../types';
-import type { SelectProps } from '../shared';
-import { HTTP_METHODS } from '../../types';
+import type { HttpMethod } from '@root/types';
+import type { ComponentProps } from 'react';
+import { HTTP_METHODS } from '@root/types';
 import { Select } from '../shared';
+
+type SelectProps = ComponentProps<typeof Select>;
 
 export interface MethodSelectProps extends Omit<SelectProps, 'value' | 'onChange'> {
   value: HttpMethod;

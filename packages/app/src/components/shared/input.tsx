@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 
-export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
   onChange?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
 };
 

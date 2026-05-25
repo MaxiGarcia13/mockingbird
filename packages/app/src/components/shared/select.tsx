@@ -1,7 +1,7 @@
 import type { SelectHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 
-export type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
+type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
   onChange?: (value: SelectHTMLAttributes<HTMLSelectElement>['value']) => void;
 };
 
