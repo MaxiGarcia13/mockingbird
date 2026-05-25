@@ -12,7 +12,8 @@
     "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
-    "@maxigarcia/js-utils": "^1.10.0",
+    "@maxigarcia/js-utils": "^1.11.0",
+    "monaco-editor": "^0.55.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "zustand": "^5.0.13"
