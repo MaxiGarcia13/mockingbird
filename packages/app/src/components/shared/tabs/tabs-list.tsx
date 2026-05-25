@@ -1,0 +1,15 @@
+import type { HTMLAttributes } from 'react';
+import { cn } from '@maxigarcia/js-utils';
+
+export function TabsList({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      role="tablist"
+      className={cn(
+        'inline-flex items-center gap-1 rounded-md border border-surface-border p-1',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
