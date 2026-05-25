@@ -1,7 +1,7 @@
 import type { RequestData } from '@root/types';
 import type { ComponentProps } from 'react';
 import { tryParseJson } from '@maxigarcia/js-utils';
-import { useState } from 'react';
+import { useRequestStore } from '@/store';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface HeadersEditorProps
@@ -9,7 +9,8 @@ interface HeadersEditorProps
 }
 
 export function HeadersEditor({ ...props }: HeadersEditorProps) {
-  const [headers, setHeaders] = useState<RequestData['headers']>({});
+  const headers = useRequestStore(state => state.headers);
+  const setHeaders = useRequestStore(state => state.setHeaders);
 
   return (
     <LazyEditor

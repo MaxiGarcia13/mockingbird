@@ -1,7 +1,7 @@
 import type { RequestData } from '@root/types';
 import type { ComponentProps } from 'react';
 import { tryParseJson } from '@maxigarcia/js-utils';
-import { useState } from 'react';
+import { useRequestStore } from '@/store';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface ResponseEditorProps
@@ -9,7 +9,8 @@ interface ResponseEditorProps
 }
 
 export function ResponseEditor({ ...props }: ResponseEditorProps) {
-  const [body, setBody] = useState<RequestData['body']>({});
+  const body = useRequestStore(state => state.body);
+  const setBody = useRequestStore(state => state.setBody);
 
   return (
     <LazyEditor
