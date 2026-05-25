@@ -57,8 +57,6 @@ export function Editor({
         debouncedOnChange?.(value);
       });
 
-      focusEditor();
-
       return () => {
         editorInstanceRef.current?.dispose();
         modelRef.current?.dispose();

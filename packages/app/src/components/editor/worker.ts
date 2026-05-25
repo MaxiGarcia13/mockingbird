@@ -1,3 +1,4 @@
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 
 type MonacoWorkerFactory = (workerId: string, label: string) => Worker;
@@ -7,15 +8,16 @@ interface MonacoEnvironment {
 }
 
 declare global {
-  interface WorkerGlobalScope {
+  interface Window {
     MonacoEnvironment?: MonacoEnvironment;
   }
 }
 
-const workerGlobalScope = globalThis as WorkerGlobalScope;
-
-workerGlobalScope.MonacoEnvironment = {
-  getWorker() {
-    return new JsonWorker();
+window.MonacoEnvironment = {
+  getWorker(_workerId, label) {
+    if (label === 'json') {
+      return new JsonWorker();
+    }
+    return new EditorWorker();
   },
 };

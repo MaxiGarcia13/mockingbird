@@ -53,6 +53,7 @@ export function RequestEditor({
         onChange={handleUrlChange}
         placeholder="https://api.example.com/endpoint"
         aria-label="Request URL"
+        autoFocus
       />
       <StatusCodeSelect
         value={statusCode}
