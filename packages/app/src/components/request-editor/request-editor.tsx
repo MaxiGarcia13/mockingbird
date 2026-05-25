@@ -1,4 +1,4 @@
-import type { HttpMethod, RequestData } from './types';
+import type { HttpMethod, RequestData } from '../../types';
 import { useState } from 'react';
 import { Input } from '../shared';
 import { MethodSelect } from './method-select';
