@@ -1,1 +1,56 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Segoe UI', Roboto, sans-serif;
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--palette-background);
+  --color-foreground: var(--palette-foreground);
+  --color-muted: var(--palette-muted);
+  --color-muted-foreground: var(--palette-muted-foreground);
+  --color-surface: var(--palette-surface);
+  --color-surface-border: var(--palette-surface-border);
+  --color-accent: var(--palette-accent);
+  --color-accent-foreground: var(--palette-accent-foreground);
+  --color-glow: var(--palette-glow);
+}
+
+:root {
+  color-scheme: light;
+
+  --palette-background: #f8f6ff;
+  --palette-foreground: #1a1625;
+  --palette-muted: #e8e4f5;
+  --palette-muted-foreground: #5c5670;
+  --palette-surface: rgb(255 255 255 / 0.72);
+  --palette-surface-border: rgb(124 92 255 / 0.18);
+  --palette-accent: #7c5cff;
+  --palette-accent-foreground: #ffffff;
+  --palette-glow: rgb(124 92 255 / 0.35);
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --palette-background: #0c0a14;
+  --palette-foreground: #f0ecff;
+  --palette-muted: #1e1a2e;
+  --palette-muted-foreground: #9d94b8;
+  --palette-surface: rgb(22 18 36 / 0.65);
+  --palette-surface-border: rgb(167 139 250 / 0.22);
+  --palette-accent: #a78bfa;
+  --palette-accent-foreground: #0c0a14;
+  --palette-glow: rgb(167 139 250 / 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--palette-background);
+  color: var(--palette-foreground);
+  font-family: var(--font-sans);
+}
