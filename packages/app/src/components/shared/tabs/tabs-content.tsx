@@ -17,7 +17,7 @@ export function TabsContent({ value, className, hidden, ...props }: TabsContentP
       aria-labelledby={`${baseId}-trigger-${value}`}
       hidden={hidden ?? !isActive}
       tabIndex={0}
-      className={cn('outline-none focus-visible:ring-2 focus-visible:ring-accent', className)}
+      className={cn('outline-none focus-visible:ring-2 focus-visible:ring-accent flex-1', className)}
       {...props}
     />
   );
