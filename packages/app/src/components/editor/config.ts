@@ -1,13 +1,38 @@
-import { editor } from 'monaco-editor';
+import { editor, json } from 'monaco-editor';
+import { requestHeadersSchema } from './schemas/request-headers';
 import { mockingbirdTheme } from './themes/mockingbird';
-
-import './worker?worker';
+import './worker';
 
 const THEME_NAME = 'mockingbird';
 
 editor.defineTheme(THEME_NAME, mockingbirdTheme);
 
 editor.setTheme(THEME_NAME);
+
+// Stable file names used as the last segment of each editor model URI so that
+// `fileMatch` patterns below can target a specific kind of editor.
+export const EDITOR_PATHS = {
+  headers: 'headers.json',
+  body: 'body.json',
+} as const;
+
+json.jsonDefaults.setDiagnosticsOptions({
+  validate: true,
+  schemas: [
+    {
+      uri: 'mockingbird://schema/request-headers.json',
+      fileMatch: [`**/${EDITOR_PATHS.headers}`],
+      schema: requestHeadersSchema,
+    },
+    // Empty schema mapped to the body editor so monaco-json stops suggesting
+    // `$schema` at the root of the document.
+    {
+      uri: 'mockingbird://schema/body.json',
+      fileMatch: [`**/${EDITOR_PATHS.body}`],
+      schema: {},
+    },
+  ],
+});
 
 export const EDITOR_CONSTRUCTION_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
   theme: THEME_NAME,
