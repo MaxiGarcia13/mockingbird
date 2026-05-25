@@ -12,6 +12,7 @@
     "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
+    "@maxigarcia/js-utils": "^1.10.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
