@@ -9,8 +9,8 @@ interface ResponseEditorProps
 }
 
 export function ResponseEditor({ ...props }: ResponseEditorProps) {
-  const body = useRequestStore(state => state.body);
-  const setBody = useRequestStore(state => state.setBody);
+  const body = useRequestStore((state) => state.body);
+  const setBody = useRequestStore((state) => state.setBody);
 
   return (
     <LazyEditor

@@ -20,7 +20,9 @@ export function StatusCodeSelect({ value, onChange, ...props }: StatusCodeSelect
     >
       {HTTP_STATUS_CODES.map(({ code, label }) => (
         <option key={code} value={code}>
-          {code} {label}
+          {code}
+          {' '}
+          {label}
         </option>
       ))}
     </Select>

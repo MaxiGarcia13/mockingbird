@@ -11,15 +11,15 @@ interface RequestStore extends RequiredRequestData {
   setBody: (body: RequiredRequestData['body']) => void;
 }
 
-export const useRequestStore = create<RequestStore>(set => ({
+export const useRequestStore = create<RequestStore>((set) => ({
   method: 'GET',
   url: '',
   statusCode: 200,
   headers: {},
   body: {},
-  setMethod: method => set({ method }),
-  setUrl: url => set({ url }),
-  setStatusCode: statusCode => set({ statusCode }),
-  setHeaders: headers => set({ headers }),
-  setBody: body => set({ body }),
+  setMethod: (method) => set({ method }),
+  setUrl: (url) => set({ url }),
+  setStatusCode: (statusCode) => set({ statusCode }),
+  setHeaders: (headers) => set({ headers }),
+  setBody: (body) => set({ body }),
 }));
