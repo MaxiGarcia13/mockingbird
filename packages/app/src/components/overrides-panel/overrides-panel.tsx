@@ -15,11 +15,14 @@ export interface OverridesPanelProps {
 
 const DEFAULT_OVERRIDES: OverridesData = { headers: '', response: '' };
 
+const RESPONSE_TAB = 'response';
+const HEADERS_TAB = 'headers';
+
 export function OverridesPanel({
   initialOverrides = DEFAULT_OVERRIDES,
   onChange,
 }: OverridesPanelProps) {
-  const [tab, setTab] = useState<OverrideTab>('headers');
+  const [tab, setTab] = useState<OverrideTab>(RESPONSE_TAB);
   const [overrides, setOverrides] = useState<OverridesData>(initialOverrides);
 
   const update = (patch: Partial<OverridesData>) => {
@@ -32,11 +35,11 @@ export function OverridesPanel({
     <section className="flex flex-col gap-2">
       <Tabs value={tab} onChange={(value) => setTab(value)}>
         <TabsList>
-          <TabsTrigger value="headers">Headers</TabsTrigger>
-          <TabsTrigger value="response">Response</TabsTrigger>
+          <TabsTrigger value={RESPONSE_TAB}>Response</TabsTrigger>
+          <TabsTrigger value={HEADERS_TAB}>Headers</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="headers">
+        <TabsContent value={HEADERS_TAB}>
           <textarea
             value={overrides.headers}
             onChange={(event) => update({ headers: event.target.value })}
@@ -46,7 +49,7 @@ export function OverridesPanel({
           />
         </TabsContent>
 
-        <TabsContent value="response">
+        <TabsContent value={RESPONSE_TAB}>
           <textarea
             value={overrides.response}
             onChange={(event) => update({ response: event.target.value })}

@@ -33,6 +33,7 @@ export function TabsTrigger({
         'outline-none transition-colors',
         'focus-visible:ring-2 focus-visible:ring-accent',
         'disabled:cursor-not-allowed disabled:opacity-50',
+        !disabled && 'cursor-pointer',
         isActive
           ? 'bg-accent text-accent-foreground'
           : 'text-muted-foreground hover:text-foreground',

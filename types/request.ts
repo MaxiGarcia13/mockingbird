@@ -5,4 +5,6 @@ export type HttpMethod = (typeof HTTP_METHODS)[number];
 export interface RequestData {
   method: HttpMethod;
   url: string;
+  headers?: Record<string, string>;
+  body?: Record<string, unknown>;
 }
