@@ -9,8 +9,8 @@ interface HeadersEditorProps
 }
 
 export function HeadersEditor({ ...props }: HeadersEditorProps) {
-  const headers = useRequestStore(state => state.headers);
-  const setHeaders = useRequestStore(state => state.setHeaders);
+  const headers = useRequestStore((state) => state.headers);
+  const setHeaders = useRequestStore((state) => state.setHeaders);
 
   return (
     <LazyEditor
