@@ -38,7 +38,8 @@
     "dev:app": "nx run mockingbird-app:dev",
     "prestart": "npm run build",
     "start": "nx run mockingbird-api:start",
-    "phoenix": "nx reset && nx run-many -t clean && rm -rf node_modules package-lock.json && npm install && npm run build"
+    "clean": "nx reset && nx run-many -t clean && rm -rf node_modules package-lock.json",
+    "phoenix": "npm run clean && npm install && npm run build"
   },
   "devDependencies": {
     "@eslint-react/eslint-plugin": "^3.0.0",
