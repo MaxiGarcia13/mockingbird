@@ -1,9 +1,11 @@
 import type { SelectHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement>;
+export type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
+  onChange?: (value: SelectHTMLAttributes<HTMLSelectElement>['value']) => void;
+};
 
-export function Select({ className, children, ...props }: SelectProps) {
+export function Select({ className, children, onChange, ...props }: SelectProps) {
   return (
     <select
       className={cn(
@@ -12,6 +14,7 @@ export function Select({ className, children, ...props }: SelectProps) {
         'disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
+      onChange={(event) => onChange?.(event.target.value)}
       {...props}
     >
       {children}

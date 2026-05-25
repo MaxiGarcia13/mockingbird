@@ -1,9 +1,11 @@
 import type { InputHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement>;
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+  onChange?: (value: InputHTMLAttributes<HTMLInputElement>['value']) => void;
+};
 
-export function Input({ className, type = 'text', ...props }: InputProps) {
+export function Input({ className, type = 'text', onChange, ...props }: InputProps) {
   return (
     <input
       type={type}
@@ -14,6 +16,7 @@ export function Input({ className, type = 'text', ...props }: InputProps) {
         'disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
+      onChange={(event) => onChange?.(event.target.value)}
       {...props}
     />
   );
