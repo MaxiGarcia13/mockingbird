@@ -1,3 +1,12 @@
+import { Aside } from './aside';
+
 export function App() {
-  return <div>Hola</div>;
+  return (
+    <>
+      <Aside />
+      <div>
+        <h1>Hello World</h1>
+      </div>
+    </>
+  );
 }
