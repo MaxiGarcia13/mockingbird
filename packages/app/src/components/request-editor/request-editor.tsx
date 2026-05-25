@@ -1,6 +1,6 @@
 import type { HttpMethod, RequestData } from '@root/types';
 import { useState } from 'react';
-import { Input } from '../shared';
+import { Input } from '../shared/input';
 import { MethodSelect } from './method-select';
 
 export interface RequestEditorProps {
