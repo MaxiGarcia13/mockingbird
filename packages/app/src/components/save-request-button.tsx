@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes } from 'react';
 import { useFetch } from '@/hooks/use-fetch';
 import { saveRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
+import { useSavedRequestsStore } from '@/store/saved-requests';
 import { Button } from './shared/button';
 
 type SaveRequestButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
@@ -16,6 +17,7 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
   const headers = useRequestFormStore((state) => state.headers);
   const body = useRequestFormStore((state) => state.body);
   const reset = useRequestFormStore((state) => state.reset);
+  const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
 
   const isDisabled = disabled || !url.trim() || !isValidUrl;
 
@@ -30,6 +32,7 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
     )
       .then(() => {
         reset();
+        fetchRequests();
       });
   };
 
