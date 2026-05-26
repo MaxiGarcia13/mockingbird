@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { useFetch } from '@/hooks/use-fetch';
-import { saveRequest } from '@/services/request';
+import { saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { Button } from './shared/button';
@@ -16,6 +16,8 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
   const isValidUrl = useRequestFormStore((state) => state.isValidUrl);
   const headers = useRequestFormStore((state) => state.headers);
   const body = useRequestFormStore((state) => state.body);
+  const id = useRequestFormStore((state) => state.id);
+
   const reset = useRequestFormStore((state) => state.reset);
   const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
 
@@ -28,7 +30,12 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
       return;
 
     dispatch(
-      () => saveRequest({ method, url, statusCode, headers, body }),
+      () => {
+        if (typeof id === 'string') {
+          return updateRequest(id, { method, url, statusCode, headers, body });
+        }
+        return saveRequest({ method, url, statusCode, headers, body });
+      },
     )
       .then(() => {
         reset();
@@ -44,7 +51,7 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
       variant="primary"
       {...props}
     >
-      Save
+      {id ? 'Update' : 'Save'}
     </Button>
   );
 }
