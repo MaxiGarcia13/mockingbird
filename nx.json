@@ -23,6 +23,22 @@
     "releaseTag": {
       "pattern": "{projectName}@{version}"
     },
+    "conventionalCommits": {
+      "types": {
+        "feat": { "semverBump": "minor", "changelog": { "title": "Features" } },
+        "fix": { "semverBump": "patch", "changelog": { "title": "Fixes" } },
+        "refactor": { "semverBump": "patch", "changelog": { "title": "Refactors" } },
+        "perf": { "semverBump": "patch", "changelog": { "title": "Performance" } },
+        "chore": { "semverBump": "patch", "changelog": { "title": "Chores" } },
+        "docs": { "semverBump": "patch", "changelog": { "title": "Documentation" } },
+        "test": { "semverBump": "patch", "changelog": { "title": "Tests" } },
+        "ci": { "semverBump": "patch", "changelog": { "title": "CI/CD" } },
+        "style": { "semverBump": "patch", "changelog": { "title": "Styles" } },
+        "build": { "semverBump": "patch", "changelog": { "title": "Build" } },
+        "deps": { "semverBump": "patch", "changelog": { "title": "Dependencies" } },
+        "breaking": { "semverBump": "major", "changelog": { "title": "Breaking Changes" } }
+      }
+    },
     "version": {
       "conventionalCommits": true,
       "preVersionCommand": "npx nx run-many -t build -p packages/api,packages/app"
