@@ -1,11 +1,16 @@
-import type { SelectHTMLAttributes } from 'react';
+import type { ChangeEvent, SelectHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 
-type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> & {
-  onChange?: (value: SelectHTMLAttributes<HTMLSelectElement>['value']) => void;
-};
+type NativeSelect = SelectHTMLAttributes<HTMLSelectElement>;
+type SelectValue = ChangeEvent<NativeSelect>['target']['value'];
 
-export function Select({ className, children, onChange, ...props }: SelectProps) {
+type SelectProps<T extends SelectValue>
+  = Omit<NativeSelect, 'onChange'>
+    & {
+      onChange?: (value: T) => void;
+    };
+
+export function Select<T extends SelectValue = SelectValue>({ className, children, onChange, ...props }: SelectProps<T>) {
   return (
     <select
       className={cn(
@@ -14,7 +19,7 @@ export function Select({ className, children, onChange, ...props }: SelectProps)
         'disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
-      onChange={(event) => onChange?.(event.target.value)}
+      onChange={(event) => onChange?.(event.target.value as T)}
       {...props}
     >
       {children}
