@@ -1,5 +1,5 @@
 import { Brand } from './brand';
-import { SavedRequestsList } from './saved-requests-list';
+import { SavedRequestsList } from './saved-requests';
 
 export function Aside() {
   return (

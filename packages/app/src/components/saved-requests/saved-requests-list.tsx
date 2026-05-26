@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { SavedRequestItem } from './saved-request-item';
+import { SavedRequestItemSkeleton } from './saved-request-item-skeleton';
+
+const SKELETON_COUNT = 3;
 
 export function SavedRequestsList() {
   const requests = useSavedRequestsStore((state) => state.requests);
@@ -13,7 +16,13 @@ export function SavedRequestsList() {
   }, [fetchRequests]);
 
   if (isLoading && !requests.length) {
-    return <p className="px-4 text-sm text-muted-foreground">Loading…</p>;
+    return (
+      <ul aria-busy className="space-y-2 px-4">
+        {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
+          <SavedRequestItemSkeleton key={index} />
+        ))}
+      </ul>
+    );
   }
 
   if (error) {

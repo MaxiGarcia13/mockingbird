@@ -1,7 +1,7 @@
 import type { StoredRequestData } from '@root/types';
 import type { LiHTMLAttributes } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
-import { RequestMethodBadge } from './request-method-badge';
+import { RequestMethodBadge } from '../request-method-badge';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
   request: StoredRequestData;
