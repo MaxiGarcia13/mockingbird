@@ -23,7 +23,10 @@ export function Button({ className, type = 'button', disabled, loading, children
       )}
       {...props}
     >
-      {loading ? <LoadingIcon className="size-4 animate-spin" /> : children}
+      <span className={cn('contents', loading && 'invisible')}>{children}</span>
+      {loading && (
+        <LoadingIcon className="absolute size-4 animate-spin" aria-hidden />
+      )}
     </button>
   );
 }
