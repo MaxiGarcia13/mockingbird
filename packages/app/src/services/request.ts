@@ -24,5 +24,6 @@ export async function getRequests(params: GetRequestsOptions): Promise<Array<Sto
   return fetch(`${API_URL}${ENDPOINT}${queryString ? `?${queryString}` : ''}`, {
     method: 'GET',
   })
-    .then((response) => response.json());
+    .then((response) => response.json())
+    .then((payload: { data: Array<StoredRequestData> }) => payload.data);
 }
