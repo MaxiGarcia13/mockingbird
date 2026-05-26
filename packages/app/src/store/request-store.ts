@@ -1,9 +1,11 @@
 import type { HttpMethod, HttpStatusCode, RequestData } from '@root/types';
+import { isValidHttpUrl } from '@maxigarcia/js-utils';
 import { create } from 'zustand';
 
 type RequiredRequestData = Required<RequestData>;
 
 interface RequestStore extends RequiredRequestData {
+  isValidUrl: boolean;
   setMethod: (method: HttpMethod) => void;
   setUrl: (url: string) => void;
   setStatusCode: (statusCode: HttpStatusCode) => void;
@@ -17,8 +19,9 @@ export const useRequestStore = create<RequestStore>((set) => ({
   statusCode: 200,
   headers: {},
   body: {},
+  isValidUrl: true,
   setMethod: (method) => set({ method }),
-  setUrl: (url) => set({ url }),
+  setUrl: (url) => set({ url, isValidUrl: isValidHttpUrl(url) }),
   setStatusCode: (statusCode) => set({ statusCode }),
   setHeaders: (headers) => set({ headers }),
   setBody: (body) => set({ body }),
