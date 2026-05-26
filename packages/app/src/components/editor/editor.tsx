@@ -8,10 +8,6 @@ interface EditorProps {
   value: string;
   onChange?: (value: string) => void;
   readOnly?: boolean;
-  /**
-   * Last segment of the model URI (e.g. `headers.json`). Drives JSON-schema
-   * suggestions registered in `config.ts` via `fileMatch`.
-   */
   path?: string;
 }
 
@@ -53,8 +49,10 @@ export function Editor({
       const debouncedOnChange = onChange ? debounce(onChange, 100) : undefined;
 
       editorInstanceRef.current.onDidChangeModelContent(() => {
-        const value = editorInstanceRef.current.getValue();
-        debouncedOnChange?.(value);
+        const value = editorInstanceRef.current?.getValue?.();
+        if (value) {
+          debouncedOnChange?.(value);
+        }
       });
 
       return () => {
@@ -65,7 +63,7 @@ export function Editor({
   }, []);
 
   useEffect(() => {
-    if (editorInstanceRef.current && value !== editorInstanceRef.current.getValue()) {
+    if (editorInstanceRef.current && value !== editorInstanceRef.current?.getValue?.()) {
       editorInstanceRef.current.setValue(value);
       focusEditor();
     }
