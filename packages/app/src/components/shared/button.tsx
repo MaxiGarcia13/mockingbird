@@ -4,9 +4,15 @@ import { LoadingIcon } from './icons/loading';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
+  variant?: 'primary' | 'default';
 };
 
-export function Button({ className, type = 'button', disabled, loading, children, ...props }: ButtonProps) {
+export function Button({ className, type = 'button', disabled, loading, variant = 'default', children, ...props }: ButtonProps) {
+  const variantClasses = {
+    primary: 'bg-accent text-accent-foreground',
+    default: 'bg-surface text-foreground border border-surface-border',
+  };
+
   return (
     <button
       type={type}
@@ -14,7 +20,7 @@ export function Button({ className, type = 'button', disabled, loading, children
       aria-disabled={disabled}
       className={cn(
         'inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium',
-        'bg-accent text-accent-foreground',
+        variantClasses[variant],
         'outline-none transition-colors',
         'focus-visible:ring-2 focus-visible:ring-accent',
         'disabled:cursor-not-allowed disabled:opacity-50 relative',
