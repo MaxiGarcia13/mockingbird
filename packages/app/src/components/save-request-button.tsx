@@ -41,6 +41,7 @@ export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps
       disabled={isDisabled}
       onClick={handleSave}
       loading={isLoading}
+      variant="primary"
       {...props}
     >
       Save
