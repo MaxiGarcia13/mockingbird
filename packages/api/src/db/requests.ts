@@ -1,8 +1,7 @@
-import type { RequestData, StoredRequestData } from '@root/types/request.js';
+import type { GetRequestsOptions, RequestData, StoredRequestData } from '@root/types/request.js';
 import fs from 'node:fs';
 import path from 'node:path';
-
-type Storage = Array<StoredRequestData>;
+import { tryParseJson } from '@maxigarcia/js-utils';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const requestsPath = path.join(__dirname, '..', '..', '.mockingbird', 'requests.json');
@@ -21,18 +20,23 @@ export function saveRequest(request: RequestData) {
   writeRequests(requests);
 }
 
-export function getRequests(): Storage {
+export function getRequests(options?: GetRequestsOptions): Array<StoredRequestData> {
   if (!fs.existsSync(requestsPath)) {
     return [];
   }
-
   const file = fs.readFileSync(requestsPath, { encoding: 'utf8' });
-  const storage = JSON.parse(file);
+  const storedRequests = tryParseJson<Array<StoredRequestData>>(file);
 
-  return Array.isArray(storage) ? storage : [];
+  let requests = Array.isArray(storedRequests) ? storedRequests : [];
+
+  if (typeof options?.enabled === 'boolean') {
+    requests = requests.filter((req) => req.enabled === options.enabled);
+  }
+
+  return requests;
 }
 
-export function writeRequests(data: Storage) {
+export function writeRequests(data: Array<StoredRequestData>) {
   if (!fs.existsSync(requestsPath)) {
     fs.mkdirSync(path.dirname(requestsPath), { recursive: true });
   }

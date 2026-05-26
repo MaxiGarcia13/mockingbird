@@ -1,4 +1,4 @@
-import type { RequestData } from '@root/types/request.js';
+import type { GetRequestsOptions, RequestData } from '@root/types/request.js';
 import type { FastifyInstance } from 'fastify';
 import { tryParseJson } from '@maxigarcia/js-utils';
 import { deleteRequest, getRequests, saveRequest, updateRequest } from '@/db/requests.js';
@@ -6,16 +6,11 @@ import { deleteRequest, getRequests, saveRequest, updateRequest } from '@/db/req
 const endpoint = '/requests';
 
 export function initRequestsRoutes(fastify: FastifyInstance) {
-  fastify.get<{ Querystring: { enabled?: boolean } }>(endpoint, (request, reply) => {
+  fastify.get<{ Querystring: GetRequestsOptions }>(endpoint, (request, reply) => {
     try {
-      const requests = getRequests();
+      const requests = getRequests(request.query);
 
-      if (typeof request.query.enabled === 'boolean') {
-        const filteredRequests = requests.filter((req) => req.enabled === request.query.enabled);
-        reply.status(200).send({ data: filteredRequests });
-      } else {
-        reply.status(200).send({ data: requests });
-      }
+      reply.status(200).send({ data: requests });
     } catch (error) {
       console.error(error);
       reply.status(500).send({ message: 'Failed to get requests' });

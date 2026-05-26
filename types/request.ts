@@ -38,3 +38,7 @@ export interface StoredRequestData extends RequestData {
   updatedAt: Date;
   enabled: boolean;
 }
+
+export interface GetRequestsOptions {
+  enabled?: boolean;
+}
