@@ -1,4 +1,4 @@
-import type { RequestData } from '@root/types';
+import type { GetRequestsOptions, RequestData, StoredRequestData } from '@root/types';
 
 const API_URL = 'http://127.0.0.1:3000';
 const ENDPOINT = '/requests';
@@ -13,6 +13,16 @@ export async function saveRequest({ method, url, statusCode, headers, body }: Re
       headers,
       body,
     }),
+  })
+    .then((response) => response.json());
+}
+
+export async function getRequests(params: GetRequestsOptions): Promise<Array<StoredRequestData>> {
+  const queryParams = new URLSearchParams(Object.entries(params).map(([key, value]) => [key, value.toString()]));
+  const queryString = queryParams.toString();
+
+  return fetch(`${API_URL}${ENDPOINT}${queryString ? `?${queryString}` : ''}`, {
+    method: 'GET',
   })
     .then((response) => response.json());
 }
