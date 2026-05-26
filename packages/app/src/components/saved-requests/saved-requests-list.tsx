@@ -34,7 +34,7 @@ export function SavedRequestsList() {
   }
 
   return (
-    <ul className="space-y-2 overflow-y-auto px-4">
+    <ul className="space-y-2 overflow-y-auto px-4 py-2">
       {requests.map((request) => (
         <SavedRequestItem key={request.id} request={request} />
       ))}

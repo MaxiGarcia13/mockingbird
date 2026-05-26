@@ -3,6 +3,7 @@ import type { LiHTMLAttributes, MouseEvent } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { useFetch } from '@/hooks/use-fetch';
 import { deleteRequest } from '@/services/request';
+import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { RequestMethodBadge } from '../request-method-badge';
 import { Button } from '../shared/button';
@@ -24,9 +25,11 @@ function formatUpdatedAt(updatedAt: Date | string): string {
 }
 
 export function SavedRequestItem({ request, className, ...props }: SavedRequestItemProps) {
-  const { id, method, url, updatedAt, enabled } = request;
+  const { id, method, url, updatedAt, enabled, statusCode, headers, body } = request;
   const domain = getUrlDomain(url) ?? url;
+
   const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
+  const setRequest = useRequestFormStore((state) => state.setRequest);
   const { isLoading, dispatch } = useFetch();
 
   const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
@@ -36,13 +39,33 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
       .then(() => fetchRequests());
   };
 
+  const handleClick = () => {
+    setRequest({
+      method,
+      url,
+      statusCode,
+      headers,
+      body,
+      id,
+    });
+  };
+
   return (
     <li
       className={cn(
-        'flex items-center gap-2 rounded-md border border-surface-border bg-surface px-3 py-2',
+        'flex items-center gap-2 rounded-md border border-surface-border bg-surface px-3 py-2 cursor-pointer',
         !enabled && 'text-muted-foreground opacity-60',
         className,
+        'outline-none focus-visible:ring-2 focus-visible:ring-accent',
       )}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          handleClick();
+        }
+      }}
+      onClick={handleClick}
       {...props}
     >
       <RequestMethodBadge method={method} />
