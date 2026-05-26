@@ -10,12 +10,11 @@ interface ResponseEditorProps
 export function ResponseEditor({ ...props }: ResponseEditorProps) {
   const body = useRequestFormStore((state) => state.body);
   const setBody = useRequestFormStore((state) => state.setBody);
-  const debouncedSetBody = debounce(setBody, 800);
 
   return (
     <LazyEditor
       value={body}
-      onChange={debouncedSetBody}
+      onChange={setBody}
       path={EDITOR_PATHS.body}
       aria-label="Override response body"
       {...props}
