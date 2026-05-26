@@ -11,18 +11,26 @@ interface RequestStore extends RequiredRequestData {
   setStatusCode: (statusCode: HttpStatusCode) => void;
   setHeaders: (headers: RequiredRequestData['headers']) => void;
   setBody: (body: RequiredRequestData['body']) => void;
+  reset: () => void;
 }
 
-export const useRequestStore = create<RequestStore>((set) => ({
+const initialState: Pick<RequestStore, 'method' | 'url' | 'statusCode' | 'headers' | 'body' | 'isValidUrl'> = {
   method: 'GET',
   url: '',
   statusCode: 200,
-  headers: {},
-  body: {},
+  headers: '{\n \n}',
+  body: '{\n \n}',
   isValidUrl: true,
+};
+
+export const useRequestFormStore = create<RequestStore>((set) => ({
+  ...initialState,
   setMethod: (method) => set({ method }),
   setUrl: (url) => set({ url, isValidUrl: isValidHttpUrl(url) }),
   setStatusCode: (statusCode) => set({ statusCode }),
   setHeaders: (headers) => set({ headers }),
   setBody: (body) => set({ body }),
+  reset: () => set({
+    ...initialState,
+  }),
 }));

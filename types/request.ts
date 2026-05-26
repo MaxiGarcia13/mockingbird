@@ -28,8 +28,8 @@ export interface RequestData {
   method: HttpMethod;
   url: string;
   statusCode?: HttpStatusCode;
-  headers?: Record<string, string>;
-  body?: Record<string, unknown>;
+  headers?: string;
+  body?: string;
 }
 
 export interface StoredRequestData extends RequestData {
