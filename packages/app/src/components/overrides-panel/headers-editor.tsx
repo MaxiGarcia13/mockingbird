@@ -1,7 +1,6 @@
-import type { RequestData } from '@root/types';
 import type { ComponentProps } from 'react';
-import { tryParseJson } from '@maxigarcia/js-utils';
-import { useRequestStore } from '@/store';
+import { debounce } from '@maxigarcia/js-utils';
+import { useRequestFormStore } from '@/store/request-form';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface HeadersEditorProps
@@ -9,17 +8,14 @@ interface HeadersEditorProps
 }
 
 export function HeadersEditor({ ...props }: HeadersEditorProps) {
-  const headers = useRequestStore((state) => state.headers);
-  const setHeaders = useRequestStore((state) => state.setHeaders);
+  const headers = useRequestFormStore((state) => state.headers);
+  const setHeaders = useRequestFormStore((state) => state.setHeaders);
+  const debouncedSetHeaders = debounce(setHeaders, 800);
 
   return (
     <LazyEditor
-      value={JSON.stringify(headers, null, 2)}
-      onChange={(value) => {
-        const parsed = tryParseJson<RequestData['headers']>(value);
-
-        setHeaders(parsed ?? {});
-      }}
+      value={headers}
+      onChange={debouncedSetHeaders}
       path={EDITOR_PATHS.headers}
       aria-label="Override headers"
       {...props}

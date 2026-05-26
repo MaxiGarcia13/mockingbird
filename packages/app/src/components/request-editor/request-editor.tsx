@@ -1,17 +1,17 @@
 import { cn } from '@maxigarcia/js-utils';
-import { useRequestStore } from '@/store';
+import { useRequestFormStore } from '@/store/request-form';
 import { Input } from '../shared/input';
 import { MethodSelect } from './method-select';
 import { StatusCodeSelect } from './status-code-select';
 
 export function RequestEditor() {
-  const method = useRequestStore((state) => state.method);
-  const url = useRequestStore((state) => state.url);
-  const statusCode = useRequestStore((state) => state.statusCode);
-  const isValidUrl = useRequestStore((state) => state.isValidUrl);
-  const setMethod = useRequestStore((state) => state.setMethod);
-  const setUrl = useRequestStore((state) => state.setUrl);
-  const setStatusCode = useRequestStore((state) => state.setStatusCode);
+  const method = useRequestFormStore((state) => state.method);
+  const url = useRequestFormStore((state) => state.url);
+  const statusCode = useRequestFormStore((state) => state.statusCode);
+  const isValidUrl = useRequestFormStore((state) => state.isValidUrl);
+  const setMethod = useRequestFormStore((state) => state.setMethod);
+  const setUrl = useRequestFormStore((state) => state.setUrl);
+  const setStatusCode = useRequestFormStore((state) => state.setStatusCode);
 
   return (
     <section className="flex items-center gap-2">

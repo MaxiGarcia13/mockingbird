@@ -1,7 +1,6 @@
-import type { RequestData } from '@root/types';
 import type { ComponentProps } from 'react';
-import { tryParseJson } from '@maxigarcia/js-utils';
-import { useRequestStore } from '@/store';
+import { debounce } from '@maxigarcia/js-utils';
+import { useRequestFormStore } from '@/store/request-form';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface ResponseEditorProps
@@ -9,17 +8,14 @@ interface ResponseEditorProps
 }
 
 export function ResponseEditor({ ...props }: ResponseEditorProps) {
-  const body = useRequestStore((state) => state.body);
-  const setBody = useRequestStore((state) => state.setBody);
+  const body = useRequestFormStore((state) => state.body);
+  const setBody = useRequestFormStore((state) => state.setBody);
+  const debouncedSetBody = debounce(setBody, 800);
 
   return (
     <LazyEditor
-      value={JSON.stringify(body, null, 2)}
-      onChange={(value) => {
-        const parsed = tryParseJson<RequestData['body']>(value);
-
-        setBody(parsed ?? {});
-      }}
+      value={body}
+      onChange={debouncedSetBody}
       path={EDITOR_PATHS.body}
       aria-label="Override response body"
       {...props}
