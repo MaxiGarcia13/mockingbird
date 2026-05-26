@@ -1,9 +1,12 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
+import { LoadingIcon } from './icons/loading';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  loading?: boolean;
+};
 
-export function Button({ className, type = 'button', disabled, ...props }: ButtonProps) {
+export function Button({ className, type = 'button', disabled, loading, children, ...props }: ButtonProps) {
   return (
     <button
       type={type}
@@ -14,11 +17,13 @@ export function Button({ className, type = 'button', disabled, ...props }: Butto
         'bg-accent text-accent-foreground',
         'outline-none transition-colors',
         'focus-visible:ring-2 focus-visible:ring-accent',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        !disabled && 'cursor-pointer hover:opacity-90',
+        'disabled:cursor-not-allowed disabled:opacity-50 relative',
+        (!disabled || loading) && 'cursor-pointer hover:opacity-90',
         className,
       )}
       {...props}
-    />
+    >
+      {loading ? <LoadingIcon className="size-4 animate-spin" /> : children}
+    </button>
   );
 }
