@@ -4,7 +4,10 @@ import { create } from 'zustand';
 
 type RequiredRequestData = Required<RequestData>;
 
+type RequestFormState = Pick<RequestStore, 'method' | 'url' | 'statusCode' | 'headers' | 'body' | 'id'>;
+
 interface RequestStore extends RequiredRequestData {
+  id?: string;
   isValidUrl: boolean;
   setMethod: (method: HttpMethod) => void;
   setUrl: (url: string) => void;
@@ -13,15 +16,17 @@ interface RequestStore extends RequiredRequestData {
   setBody: (body: RequiredRequestData['body']) => void;
   reset: () => void;
   isEmpty: (state: RequestStore) => boolean;
+  setRequest: (request: RequestFormState) => void;
 }
 
-const initialState: Pick<RequestStore, 'method' | 'url' | 'statusCode' | 'headers' | 'body' | 'isValidUrl'> = {
+const initialState: RequestFormState & Pick<RequestStore, 'isValidUrl'> = {
   method: 'GET',
   url: '',
   statusCode: 200,
   headers: '{\n \n}',
   body: '{\n \n}',
   isValidUrl: true,
+  id: undefined,
 };
 
 export const useRequestFormStore = create<RequestStore>((set) => ({
@@ -34,14 +39,21 @@ export const useRequestFormStore = create<RequestStore>((set) => ({
   reset: () => set({
     ...initialState,
   }),
-  isEmpty,
+  isEmpty(state: RequestStore) {
+    if (!state)
+      return true;
+
+    const { method, url, statusCode, headers, body } = state;
+
+    return method === 'GET' && url === '' && statusCode === 200 && headers === '{\n \n}' && body === '{\n \n}';
+  },
+  setRequest: (request) => set({
+    url: request.url,
+    isValidUrl: isValidHttpUrl(request.url),
+    method: request.method,
+    statusCode: request.statusCode,
+    headers: request.headers,
+    body: request.body,
+    id: request.id,
+  }),
 }));
-
-function isEmpty(state: RequestStore) {
-  if (!state)
-    return true;
-
-  const { method, url, statusCode, headers, body } = state;
-
-  return method === 'GET' && url === '' && statusCode === 200 && headers === '{\n \n}' && body === '{\n \n}';
-}
