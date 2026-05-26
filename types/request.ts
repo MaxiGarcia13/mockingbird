@@ -31,3 +31,10 @@ export interface RequestData {
   headers?: Record<string, string>;
   body?: Record<string, unknown>;
 }
+
+export interface StoredRequestData extends RequestData {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  enabled: boolean;
+}
