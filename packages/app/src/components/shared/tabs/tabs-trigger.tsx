@@ -29,13 +29,13 @@ export function TabsTrigger({
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
       className={cn(
-        'inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium',
+        'inline-flex items-center justify-center px-3 pt-2 pb-3 text-sm font-medium',
         'outline-none transition-colors',
         'focus-visible:ring-2 focus-visible:ring-accent',
         'disabled:cursor-not-allowed disabled:opacity-50',
         !disabled && 'cursor-pointer',
         isActive
-          ? 'bg-accent text-accent-foreground'
+          ? 'border-b-2 border-accent text-accent'
           : 'text-muted-foreground hover:text-foreground',
         className,
       )}

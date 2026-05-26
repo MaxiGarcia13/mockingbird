@@ -11,10 +11,11 @@ export function SaveRequestButton({ onSave, disabled, ...props }: SaveRequestBut
   const method = useRequestStore((state) => state.method);
   const url = useRequestStore((state) => state.url);
   const statusCode = useRequestStore((state) => state.statusCode);
+  const isValidUrl = useRequestStore((state) => state.isValidUrl);
   const headers = useRequestStore((state) => state.headers);
   const body = useRequestStore((state) => state.body);
 
-  const isDisabled = disabled || !url.trim();
+  const isDisabled = disabled || !url.trim() || !isValidUrl;
 
   return (
     <Button
