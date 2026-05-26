@@ -16,7 +16,7 @@ export function NewRequestButton({ className, ...props }: NewRequestButtonProps)
   return (
     <Button
       className={cn('gap-1', className)}
-      variant="primary"
+      variant="default"
       onClick={handleClick}
       disabled={state.isEmpty(state)}
       {...props}

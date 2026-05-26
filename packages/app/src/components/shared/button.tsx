@@ -9,8 +9,13 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export function Button({ className, type = 'button', disabled, loading, variant = 'default', children, ...props }: ButtonProps) {
   const variantClasses = {
-    primary: 'bg-accent text-accent-foreground',
-    default: 'bg-surface text-foreground border border-surface-border',
+    primary: 'bg-accent text-accent-foreground hover:bg-accent-hover',
+    default: 'bg-surface text-foreground border border-surface-border hover:bg-accent/80',
+  };
+
+  const disabledClasses = {
+    primary: 'bg-accent/50 text-accent-foreground/50 hover:bg-accent/50',
+    default: 'bg-surface/50 text-foreground/50 border border-surface-border/50 hover:bg-background/50',
   };
 
   return (
@@ -19,12 +24,13 @@ export function Button({ className, type = 'button', disabled, loading, variant 
       disabled={disabled}
       aria-disabled={disabled}
       className={cn(
-        'inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium',
+        'relative inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium',
         variantClasses[variant],
+        disabled && disabledClasses[variant],
         'outline-none transition-colors',
         'focus-visible:ring-2 focus-visible:ring-accent',
-        'disabled:cursor-not-allowed disabled:opacity-50 relative',
-        (!disabled || loading) && 'cursor-pointer hover:opacity-90',
+        'disabled:cursor-not-allowed disabled:opacity-50',
+        (!disabled || loading) && 'cursor-pointer',
         className,
       )}
       {...props}

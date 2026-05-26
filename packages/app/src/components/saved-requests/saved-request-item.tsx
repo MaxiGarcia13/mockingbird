@@ -1,7 +1,12 @@
 import type { StoredRequestData } from '@root/types';
-import type { LiHTMLAttributes } from 'react';
+import type { LiHTMLAttributes, MouseEvent } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
+import { useFetch } from '@/hooks/use-fetch';
+import { deleteRequest } from '@/services/request';
+import { useSavedRequestsStore } from '@/store/saved-requests';
 import { RequestMethodBadge } from '../request-method-badge';
+import { Button } from '../shared/button';
+import { BinIcon } from '../shared/icons/bin';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
   request: StoredRequestData;
@@ -19,8 +24,17 @@ function formatUpdatedAt(updatedAt: Date | string): string {
 }
 
 export function SavedRequestItem({ request, className, ...props }: SavedRequestItemProps) {
-  const { method, url, updatedAt, enabled } = request;
+  const { id, method, url, updatedAt, enabled } = request;
   const domain = getUrlDomain(url) ?? url;
+  const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
+  const { isLoading, dispatch } = useFetch();
+
+  const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    dispatch(() => deleteRequest(id))
+      .then(() => fetchRequests());
+  };
 
   return (
     <li
@@ -36,6 +50,14 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         <p className="truncate text-sm font-medium">{domain}</p>
         <p className="text-xs text-muted-foreground">{formatUpdatedAt(updatedAt)}</p>
       </div>
+      <Button
+        aria-label="Remove request"
+        onClick={handleRemove}
+        loading={isLoading}
+        className="border-0"
+      >
+        <BinIcon className="size-4" />
+      </Button>
     </li>
   );
 }

@@ -27,3 +27,10 @@ export async function getRequests(params: GetRequestsOptions): Promise<Array<Sto
     .then((response) => response.json())
     .then((payload: { data: Array<StoredRequestData> }) => payload.data);
 }
+
+export async function deleteRequest(id: StoredRequestData['id']) {
+  return fetch(`${API_URL}${ENDPOINT}/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.json());
+}
