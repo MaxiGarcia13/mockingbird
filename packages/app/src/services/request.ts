@@ -17,6 +17,14 @@ export async function saveRequest({ method, url, statusCode, headers, body }: Re
     .then((response) => response.json());
 }
 
+export async function updateRequest(id: StoredRequestData['id'], { method, url, statusCode, headers, body }: RequestData) {
+  return fetch(`${API_URL}${ENDPOINT}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ method, url, statusCode, headers, body }),
+  })
+    .then((response) => response.json());
+}
+
 export async function getRequests(params: GetRequestsOptions): Promise<Array<StoredRequestData>> {
   const queryParams = new URLSearchParams(Object.entries(params).map(([key, value]) => [key, value.toString()]));
   const queryString = queryParams.toString();
