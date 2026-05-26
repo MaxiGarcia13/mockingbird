@@ -9,6 +9,7 @@
     "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
+    "@fastify/cors": "^11.2.0",
     "@fastify/static": "^9.1.3",
     "@maxigarcia/mockingbird-app": "*",
     "fastify": "^5.8.5"
