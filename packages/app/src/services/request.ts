@@ -17,10 +17,12 @@ export async function saveRequest({ method, url, statusCode, headers, body }: Re
     .then((response) => response.json());
 }
 
-export async function updateRequest(id: StoredRequestData['id'], { method, url, statusCode, headers, body }: RequestData) {
+type UpdateRequestPayload = Partial<RequestData> & Partial<Pick<StoredRequestData, 'enabled'>>;
+
+export async function updateRequest(id: StoredRequestData['id'], data: UpdateRequestPayload) {
   return fetch(`${API_URL}${ENDPOINT}/${id}`, {
     method: 'PUT',
-    body: JSON.stringify({ method, url, statusCode, headers, body }),
+    body: JSON.stringify(data),
   })
     .then((response) => response.json());
 }

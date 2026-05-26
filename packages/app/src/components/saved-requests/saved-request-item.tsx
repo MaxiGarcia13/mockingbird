@@ -2,12 +2,13 @@ import type { StoredRequestData } from '@root/types';
 import type { LiHTMLAttributes, MouseEvent } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { useFetch } from '@/hooks/use-fetch';
-import { deleteRequest } from '@/services/request';
+import { deleteRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { RequestMethodBadge } from '../request-method-badge';
 import { Button } from '../shared/button';
 import { BinIcon } from '../shared/icons/bin';
+import { Switch } from '../shared/switch';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
   request: StoredRequestData;
@@ -36,6 +37,11 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
     event.stopPropagation();
 
     dispatch(() => deleteRequest(id))
+      .then(() => fetchRequests());
+  };
+
+  const handleToggleEnabled = (nextEnabled: boolean) => {
+    dispatch(() => updateRequest(id, { enabled: nextEnabled }))
       .then(() => fetchRequests());
   };
 
@@ -73,6 +79,13 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         <p className="truncate text-sm font-medium">{domain}</p>
         <p className="text-xs text-muted-foreground">{formatUpdatedAt(updatedAt)}</p>
       </div>
+      <Switch
+        aria-label={enabled ? 'Disable request' : 'Enable request'}
+        checked={enabled}
+        disabled={isLoading}
+        onChange={handleToggleEnabled}
+        onClick={(event) => event.stopPropagation()}
+      />
       <Button
         aria-label="Remove request"
         onClick={handleRemove}
