@@ -1,3 +1,4 @@
+import { cn } from '@maxigarcia/js-utils';
 import { useRequestStore } from '@/store';
 import { Input } from '../shared/input';
 import { MethodSelect } from './method-select';
@@ -7,6 +8,7 @@ export function RequestEditor() {
   const method = useRequestStore((state) => state.method);
   const url = useRequestStore((state) => state.url);
   const statusCode = useRequestStore((state) => state.statusCode);
+  const isValidUrl = useRequestStore((state) => state.isValidUrl);
   const setMethod = useRequestStore((state) => state.setMethod);
   const setUrl = useRequestStore((state) => state.setUrl);
   const setStatusCode = useRequestStore((state) => state.setStatusCode);
@@ -24,7 +26,9 @@ export function RequestEditor() {
         onChange={setUrl}
         placeholder="https://api.example.com/endpoint"
         aria-label="Request URL"
+        aria-invalid={!isValidUrl}
         autoFocus
+        className={cn(!isValidUrl && 'border-red-500!')}
       />
       <StatusCodeSelect
         value={statusCode}
