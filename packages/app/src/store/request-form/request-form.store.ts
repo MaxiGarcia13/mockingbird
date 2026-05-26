@@ -12,6 +12,7 @@ interface RequestStore extends RequiredRequestData {
   setHeaders: (headers: RequiredRequestData['headers']) => void;
   setBody: (body: RequiredRequestData['body']) => void;
   reset: () => void;
+  isEmpty: (state: RequestStore) => boolean;
 }
 
 const initialState: Pick<RequestStore, 'method' | 'url' | 'statusCode' | 'headers' | 'body' | 'isValidUrl'> = {
@@ -33,4 +34,14 @@ export const useRequestFormStore = create<RequestStore>((set) => ({
   reset: () => set({
     ...initialState,
   }),
+  isEmpty,
 }));
+
+function isEmpty(state: RequestStore) {
+  if (!state)
+    return true;
+
+  const { method, url, statusCode, headers, body } = state;
+
+  return method === 'GET' && url === '' && statusCode === 200 && headers === '{\n \n}' && body === '{\n \n}';
+}
