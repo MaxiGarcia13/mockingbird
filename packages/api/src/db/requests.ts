@@ -33,7 +33,7 @@ export function getRequests(options?: GetRequestsOptions): Array<StoredRequestDa
     requests = requests.filter((req) => req.enabled === options.enabled);
   }
 
-  return requests;
+  return requests.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 }
 
 export function writeRequests(data: Array<StoredRequestData>) {
