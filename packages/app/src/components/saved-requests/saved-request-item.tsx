@@ -34,6 +34,8 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
 
   const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
   const setRequest = useRequestFormStore((state) => state.setRequest);
+  const selectedRequestId = useRequestFormStore((state) => state.id);
+
   const { isLoading, dispatch } = useFetch();
 
   const handleClone = (event: MouseEvent<HTMLButtonElement>) => {
@@ -73,6 +75,7 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         !enabled && 'text-muted-foreground opacity-60',
         className,
         'outline-none focus-visible:ring-2 focus-visible:ring-accent',
+        selectedRequestId === id && 'ring-2 ring-accent',
       )}
       role="button"
       tabIndex={0}
