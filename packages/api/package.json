@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
+    "@fastify/http-proxy": "^11.4.4",
     "@fastify/static": "^9.1.3",
     "@maxigarcia/js-utils": "^1.12.0",
     "@maxigarcia/mockingbird-app": "*",
