@@ -1,4 +1,4 @@
-import type { GetRequestsOptions, RequestData, StoredRequestData } from '@root/types/request.js';
+import type { GetRequestsOptions, RequestData, StoredRequestData } from '@maxigarcia/mockingbird-types';
 import fs from 'node:fs';
 import path from 'node:path';
 import { tryParseJson } from '@maxigarcia/js-utils';
