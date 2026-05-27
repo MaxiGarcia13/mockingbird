@@ -1,4 +1,4 @@
-import type { GetRequestsOptions, RequestData } from '@root/types/request.js';
+import type { GetRequestsOptions, RequestData } from '@maxigarcia/mockingbird-types';
 import type { FastifyInstance } from 'fastify';
 import { tryParseJson } from '@maxigarcia/js-utils';
 import { deleteRequest, getRequests, saveRequest, updateRequest } from '@/db/requests.js';
