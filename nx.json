@@ -16,8 +16,9 @@
   },
   "release": {
     "projects": [
-      "packages/api",
-      "packages/app"
+      "packages/types",
+      "packages/app",
+      "packages/api"
     ],
     "projectsRelationship": "independent",
     "releaseTag": {
@@ -42,7 +43,7 @@
     },
     "version": {
       "conventionalCommits": true,
-      "preVersionCommand": "npx nx run-many -t build -p packages/api,packages/app"
+      "preVersionCommand": "npx nx run-many -t build -p packages/app,packages/types,packages/api"
     },
     "changelog": {
       "workspaceChangelog": false,
