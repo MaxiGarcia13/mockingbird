@@ -1,4 +1,4 @@
-import type { HttpMethod, HttpStatusCode, RequestData } from '@root/types';
+import type { HttpMethod, HttpStatusCode, RequestData } from '@maxigarcia/mockingbird-types';
 import { isValidHttpUrl } from '@maxigarcia/js-utils';
 import { create } from 'zustand';
 

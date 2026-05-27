@@ -1,4 +1,4 @@
-import type { StoredRequestData } from '@root/types';
+import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import type { LiHTMLAttributes } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { useFetch } from '@/hooks/use-fetch';

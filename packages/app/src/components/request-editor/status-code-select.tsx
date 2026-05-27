@@ -1,6 +1,6 @@
-import type { HttpStatusCode } from '@root/types';
+import type { HttpStatusCode } from '@maxigarcia/mockingbird-types';
 import type { ComponentProps } from 'react';
-import { HTTP_STATUS_CODES } from '@root/types';
+import { HTTP_STATUS_CODES } from '@maxigarcia/mockingbird-types';
 import { Select } from '../shared/select';
 
 type SelectProps = ComponentProps<typeof Select>;

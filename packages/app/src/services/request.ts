@@ -1,4 +1,4 @@
-import type { GetRequestsOptions, RequestData, StoredRequestData } from '@root/types';
+import type { GetRequestsOptions, RequestData, StoredRequestData } from '@maxigarcia/mockingbird-types';
 
 const API_URL = 'http://127.0.0.1:3000';
 const ENDPOINT = '/requests';

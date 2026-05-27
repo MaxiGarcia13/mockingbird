@@ -1,4 +1,4 @@
-import type { StoredRequestData } from '@root/types';
+import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import { create } from 'zustand';
 import { getRequests } from '@/services/request';
 

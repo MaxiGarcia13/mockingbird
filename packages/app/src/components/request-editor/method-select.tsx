@@ -1,6 +1,6 @@
-import type { HttpMethod } from '@root/types';
+import type { HttpMethod } from '@maxigarcia/mockingbird-types';
 import type { ComponentProps } from 'react';
-import { HTTP_METHODS } from '@root/types';
+import { HTTP_METHODS } from '@maxigarcia/mockingbird-types';
 import { Select } from '../shared/select';
 
 type SelectProps = ComponentProps<typeof Select>;

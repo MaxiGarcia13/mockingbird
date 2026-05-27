@@ -1,4 +1,4 @@
-import type { HttpMethod } from '@root/types';
+import type { HttpMethod } from '@maxigarcia/mockingbird-types';
 import { cn } from '@maxigarcia/js-utils';
 
 export interface RequestMethodBadgeProps {
