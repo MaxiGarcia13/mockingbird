@@ -25,18 +25,19 @@
     },
     "conventionalCommits": {
       "types": {
-        "feat": { "semverBump": "minor", "changelog": { "title": "Features" } },
-        "fix": { "semverBump": "patch", "changelog": { "title": "Fixes" } },
-        "refactor": { "semverBump": "patch", "changelog": { "title": "Refactors" } },
-        "perf": { "semverBump": "patch", "changelog": { "title": "Performance" } },
-        "chore": { "semverBump": "patch", "changelog": { "title": "Chores" } },
-        "docs": { "semverBump": "patch", "changelog": { "title": "Documentation" } },
-        "test": { "semverBump": "patch", "changelog": { "title": "Tests" } },
-        "ci": { "semverBump": "patch", "changelog": { "title": "CI/CD" } },
-        "style": { "semverBump": "patch", "changelog": { "title": "Styles" } },
-        "build": { "semverBump": "patch", "changelog": { "title": "Build" } },
-        "deps": { "semverBump": "patch", "changelog": { "title": "Dependencies" } },
-        "breaking": { "semverBump": "major", "changelog": { "title": "Breaking Changes" } }
+        "feat": { "semverBump": "minor", "changelog": { "title": "🚀 Features" } },
+        "fix": { "semverBump": "patch", "changelog": { "title": "🐞 Fixes" } },
+        "refactor": { "semverBump": "patch", "changelog": { "title": "🔄 Refactors" } },
+        "perf": { "semverBump": "patch", "changelog": { "title": "🚀 Performance" } },
+        "chore": { "semverBump": "patch", "changelog": { "title": "🧹 Chores" } },
+        "style": { "semverBump": "patch", "changelog": { "title": "🎨 Styles" } },
+        "build": { "semverBump": "patch", "changelog": { "title": "👷 Build" } },
+        "deps": { "semverBump": "patch", "changelog": { "title": "🔧 Dependencies" } },
+        "breaking": { "semverBump": "major", "changelog": { "title": "💥 Breaking Changes" } },
+        "docs": { "semverBump": "none", "changelog": { "title": "📚 Documentation" } },
+        "test": { "semverBump": "none", "changelog": { "title": "🧪 Tests" } },
+        "ci": { "semverBump": "none", "changelog": { "title": "🤖 CI/CD" } },
+        "config": { "semverBump": "none", "changelog": { "title": "🔧 Configuration" } }
       }
     },
     "version": {
