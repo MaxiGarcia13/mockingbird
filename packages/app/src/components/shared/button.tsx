@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
+import { onPressEnter } from '@/utils/event';
 import { LoadingIcon } from './icons/loading';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -7,7 +8,16 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'default';
 };
 
-export function Button({ className, type = 'button', disabled, loading, variant = 'default', children, ...props }: ButtonProps) {
+export function Button({
+  className,
+  onClick,
+  type = 'button',
+  disabled,
+  loading,
+  variant = 'default',
+  children,
+  ...props
+}: ButtonProps) {
   const variantClasses = {
     primary: 'bg-accent text-accent-foreground hover:bg-accent-hover',
     default: 'bg-surface text-foreground border border-surface-border hover:bg-accent/80',
@@ -33,6 +43,14 @@ export function Button({ className, type = 'button', disabled, loading, variant 
         (!disabled || loading) && 'cursor-pointer',
         className,
       )}
+      onClick={(event) => {
+        event.preventDefault();
+        onClick?.(event);
+        event.stopPropagation();
+      }}
+      onKeyDown={onPressEnter((event) => {
+        onClick?.(event);
+      })}
       {...props}
     >
       <span className={cn('contents', loading && 'invisible')}>{children}</span>
