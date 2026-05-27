@@ -2,12 +2,13 @@ import type { StoredRequestData } from '@root/types';
 import type { LiHTMLAttributes, MouseEvent } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { useFetch } from '@/hooks/use-fetch';
-import { deleteRequest, updateRequest } from '@/services/request';
+import { deleteRequest, saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { RequestMethodBadge } from '../request-method-badge';
 import { Button } from '../shared/button';
 import { BinIcon } from '../shared/icons/bin';
+import { CloneIcon } from '../shared/icons/clone';
 import { Switch } from '../shared/switch';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
@@ -18,6 +19,8 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
   day: '2-digit',
   month: 'short',
   year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
 });
 
 function formatUpdatedAt(updatedAt: Date | string): string {
@@ -32,6 +35,13 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
   const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
   const setRequest = useRequestFormStore((state) => state.setRequest);
   const { isLoading, dispatch } = useFetch();
+
+  const handleClone = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    dispatch(() => saveRequest({ method, url, statusCode, headers, body }))
+      .then(() => fetchRequests());
+  };
 
   const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -79,13 +89,15 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         <p className="truncate text-sm font-medium">{domain}</p>
         <p className="text-xs text-muted-foreground">{formatUpdatedAt(updatedAt)}</p>
       </div>
-      <Switch
-        aria-label={enabled ? 'Disable request' : 'Enable request'}
-        checked={enabled}
-        disabled={isLoading}
-        onChange={handleToggleEnabled}
-        onClick={(event) => event.stopPropagation()}
-      />
+
+      <Button
+        aria-label="Clone request"
+        onClick={handleClone}
+        loading={isLoading}
+        className="border-0"
+      >
+        <CloneIcon className="size-4" />
+      </Button>
       <Button
         aria-label="Remove request"
         onClick={handleRemove}
@@ -94,6 +106,13 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
       >
         <BinIcon className="size-4" />
       </Button>
+      <Switch
+        aria-label={enabled ? 'Disable request' : 'Enable request'}
+        checked={enabled}
+        disabled={isLoading}
+        onChange={handleToggleEnabled}
+        onClick={(event) => event.stopPropagation()}
+      />
     </li>
   );
 }
