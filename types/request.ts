@@ -27,7 +27,7 @@ export type HttpStatusCode = (typeof HTTP_STATUS_CODES)[number]['code'];
 export interface RequestData {
   method: HttpMethod;
   url: string;
-  statusCode?: HttpStatusCode;
+  statusCode: HttpStatusCode;
   headers?: string;
   body?: string;
 }

@@ -1,5 +1,5 @@
 import type { StoredRequestData } from '@root/types';
-import type { LiHTMLAttributes, MouseEvent } from 'react';
+import type { LiHTMLAttributes } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { useFetch } from '@/hooks/use-fetch';
 import { deleteRequest, saveRequest, updateRequest } from '@/services/request';

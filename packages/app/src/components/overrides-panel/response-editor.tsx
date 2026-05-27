@@ -1,5 +1,4 @@
 import type { ComponentProps } from 'react';
-import { debounce } from '@maxigarcia/js-utils';
 import { useRequestFormStore } from '@/store/request-form';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
@@ -13,7 +12,7 @@ export function ResponseEditor({ ...props }: ResponseEditorProps) {
 
   return (
     <LazyEditor
-      value={body}
+      value={body ?? '{}'}
       onChange={setBody}
       path={EDITOR_PATHS.body}
       aria-label="Override response body"

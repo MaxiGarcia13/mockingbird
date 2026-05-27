@@ -2,18 +2,16 @@ import type { HttpMethod, HttpStatusCode, RequestData } from '@root/types';
 import { isValidHttpUrl } from '@maxigarcia/js-utils';
 import { create } from 'zustand';
 
-type RequiredRequestData = Required<RequestData>;
-
 type RequestFormState = Pick<RequestStore, 'method' | 'url' | 'statusCode' | 'headers' | 'body' | 'id'>;
 
-interface RequestStore extends RequiredRequestData {
+interface RequestStore extends RequestData {
   id?: string;
   isValidUrl: boolean;
   setMethod: (method: HttpMethod) => void;
   setUrl: (url: string) => void;
   setStatusCode: (statusCode: HttpStatusCode) => void;
-  setHeaders: (headers: RequiredRequestData['headers']) => void;
-  setBody: (body: RequiredRequestData['body']) => void;
+  setHeaders: (headers: RequestData['headers']) => void;
+  setBody: (body: RequestData['body']) => void;
   reset: () => void;
   isEmpty: (state: RequestStore) => boolean;
   setRequest: (request: RequestFormState) => void;

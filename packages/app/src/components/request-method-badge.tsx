@@ -6,8 +6,8 @@ export interface RequestMethodBadgeProps {
   className?: string;
 }
 
-function methodTextClass(method: HttpMethod): string {
-  switch (method.toUpperCase()) {
+function methodTextClass(method: HttpMethod | null): string {
+  switch (method?.toUpperCase()) {
     case 'GET':
       return 'text-sky-300';
     case 'POST':

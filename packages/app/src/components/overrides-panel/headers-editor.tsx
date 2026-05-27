@@ -12,7 +12,7 @@ export function HeadersEditor({ ...props }: HeadersEditorProps) {
 
   return (
     <LazyEditor
-      value={headers}
+      value={headers ?? '{}'}
       onChange={setHeaders}
       path={EDITOR_PATHS.headers}
       aria-label="Override headers"
