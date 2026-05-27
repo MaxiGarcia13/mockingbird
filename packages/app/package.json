@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@maxigarcia/js-utils": "^1.12.0",
+    "@maxigarcia/mockingbird-types": "*",
     "monaco-editor": "^0.55.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
