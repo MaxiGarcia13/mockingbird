@@ -38,16 +38,12 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
 
   const { isLoading, dispatch } = useFetch();
 
-  const handleClone = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-
+  const handleClone = () => {
     dispatch(() => saveRequest({ method, url, statusCode, headers, body }))
       .then(() => fetchRequests());
   };
 
-  const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-
+  const handleRemove = () => {
     dispatch(() => deleteRequest(id))
       .then(() => fetchRequests());
   };
@@ -114,7 +110,6 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         checked={enabled}
         disabled={isLoading}
         onChange={handleToggleEnabled}
-        onClick={(event) => event.stopPropagation()}
       />
     </li>
   );
