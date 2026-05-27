@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 import { onPressEnter } from '@/utils/event';
 import { LoadingIcon } from './icons/loading';
@@ -49,7 +49,7 @@ export function Button({
         event.stopPropagation();
       }}
       onKeyDown={onPressEnter((event) => {
-        onClick?.(event);
+        onClick?.(event as unknown as MouseEvent<HTMLButtonElement>);
       })}
       {...props}
     >
