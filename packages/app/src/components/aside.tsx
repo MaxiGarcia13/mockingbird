@@ -1,6 +1,9 @@
+import { homepage } from '../../../../package.json';
+import { version } from '../../package.json';
 import { Brand } from './brand';
 import { NewRequestButton } from './new-request-button';
 import { SavedRequestsList } from './saved-requests';
+import { GithubIcon } from './shared/icons/github';
 
 export function Aside() {
   return (
@@ -11,6 +14,20 @@ export function Aside() {
         <NewRequestButton />
       </div>
       <SavedRequestsList />
+      <div className="mx-auto mt-auto px-4 pb-2">
+        <a
+          href={homepage}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <GithubIcon className="size-4" />
+          <span>
+            v
+            {version}
+          </span>
+        </a>
+      </div>
     </aside>
   );
 }
