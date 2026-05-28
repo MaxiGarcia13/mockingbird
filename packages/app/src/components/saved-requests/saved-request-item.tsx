@@ -5,6 +5,7 @@ import { useFetch } from '@/hooks/use-fetch';
 import { deleteRequest, saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
+import { FetcherButton } from '../fetcher-button';
 import { RequestMethodBadge } from '../request-method-badge';
 import { Button } from '../shared/button';
 import { BinIcon } from '../shared/icons/bin';
@@ -89,28 +90,31 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
         <p className="text-xs text-muted-foreground">{formatUpdatedAt(updatedAt)}</p>
       </div>
 
-      <Button
-        aria-label="Clone request"
-        onClick={handleClone}
-        loading={isLoading}
-        className="border-0"
-      >
-        <CloneIcon className="size-4" />
-      </Button>
-      <Button
-        aria-label="Remove request"
-        onClick={handleRemove}
-        loading={isLoading}
-        className="border-0"
-      >
-        <BinIcon className="size-4" />
-      </Button>
-      <Switch
-        aria-label={enabled ? 'Disable request' : 'Enable request'}
-        checked={enabled}
-        disabled={isLoading}
-        onChange={handleToggleEnabled}
-      />
+      <div className="flex items-center gap-2">
+        <FetcherButton className="border-0" request={request} />
+        <Button
+          aria-label="Clone request"
+          onClick={handleClone}
+          loading={isLoading}
+          className="border-0"
+        >
+          <CloneIcon className="size-4" />
+        </Button>
+        <Button
+          aria-label="Remove request"
+          onClick={handleRemove}
+          loading={isLoading}
+          className="border-0"
+        >
+          <BinIcon className="size-4" />
+        </Button>
+        <Switch
+          aria-label={enabled ? 'Disable request' : 'Enable request'}
+          checked={enabled}
+          disabled={isLoading}
+          onChange={handleToggleEnabled}
+        />
+      </div>
     </li>
   );
 }
