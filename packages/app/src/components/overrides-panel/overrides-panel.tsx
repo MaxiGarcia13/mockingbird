@@ -1,4 +1,3 @@
-import { cn } from '@maxigarcia/js-utils';
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../shared/tabs';
 import { HeadersEditor } from './headers-editor';
@@ -19,7 +18,7 @@ export function OverridesPanel({ className }: { className?: string }) {
     <Tabs
       value={tab}
       onChange={(value: string) => setTab(value)}
-      className={cn('flex-1', className)}
+      className={className}
     >
       <TabsList>
         <TabsTrigger value={RESPONSE_TAB}>Response</TabsTrigger>
