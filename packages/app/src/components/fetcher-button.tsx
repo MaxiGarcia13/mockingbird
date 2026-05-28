@@ -1,6 +1,6 @@
 import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import type { ComponentProps } from 'react';
-import { cn, decodeText, encodeText, tryParseJson } from '@maxigarcia/js-utils';
+import { cn, encodeText, tryParseJson } from '@maxigarcia/js-utils';
 import FetcherWhiteImage from '@/assets/fetcher-white.png';
 import FetcherImage from '@/assets/fetcher.png';
 import { Button } from './shared/button';
