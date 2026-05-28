@@ -1,5 +1,6 @@
 import process from 'node:process';
 import Fastify from 'fastify';
+import { initInterceptor } from '@/interceptor.js';
 import { initRoutes } from '@/routes/index.js';
 
 const fastify = Fastify({
@@ -7,6 +8,7 @@ const fastify = Fastify({
 });
 
 initRoutes(fastify);
+initInterceptor(fastify);
 
 fastify
   .listen({ port: typeof process.env.PORT === 'string' ? Number.parseInt(process.env.PORT) : 3000 })
