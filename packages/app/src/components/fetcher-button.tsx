@@ -22,8 +22,8 @@ export function FetcherButton({ request, ...props }: FetcherButtonProps) {
   const parsedBody = tryParseJson(body ?? '{}');
   const parsedHeaders = tryParseJson(headers ?? '{}');
 
-  const hasBody = Object.keys(parsedBody).length > 0;
-  const hasHeaders = Object.keys(parsedHeaders).length > 0;
+  const hasBody = parsedBody && Object.keys(parsedBody).length > 0;
+  const hasHeaders = parsedHeaders && Object.keys(parsedHeaders).length > 0;
 
   const encodedBody = !hasBody
     ? undefined

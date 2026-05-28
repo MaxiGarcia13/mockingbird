@@ -3,7 +3,7 @@ import type { Coords } from '@/utils/clamp-to-viewport';
 import { cn } from '@maxigarcia/js-utils';
 
 interface TooltipContentProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'content'> {
-  ref: RefObject<HTMLSpanElement>;
+  ref: RefObject<HTMLSpanElement | null>;
   coords: Coords | null;
   className?: string;
 }
