@@ -1,7 +1,7 @@
 {
   "name": "@maxigarcia/mockingbird-api",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "build": "tsc",
     "start": "nodemon --env-file-if-exists .env --watch src --watch .mockingbird -e ts,json --exec 'tsx src/server.ts'",

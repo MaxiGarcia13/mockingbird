@@ -1,3 +1,9 @@
+## 0.1.1 (2026-05-28)
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.1.1
+
 ## 0.1.0 (2026-05-28)
 
 ### 🚀 Features
