@@ -4,13 +4,12 @@
   "version": "0.0.0",
   "scripts": {
     "build": "tsc",
-    "start": "node --env-file-if-exists .env dist/server.js",
-    "dev": "tsx watch src/server.ts",
+    "start": "nodemon --env-file-if-exists .env --watch src --watch .mockingbird -e ts,json --exec 'tsx src/server.ts'",
+    "dev": "npm run start",
     "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
-    "@fastify/http-proxy": "^11.4.4",
     "@fastify/static": "^9.1.3",
     "@maxigarcia/js-utils": "^1.12.0",
     "@maxigarcia/mockingbird-app": "*",
@@ -18,6 +17,7 @@
     "fastify": "^5.8.5"
   },
   "devDependencies": {
+    "nodemon": "^3.1.14",
     "tsx": "^4.22.3"
   }
 }
