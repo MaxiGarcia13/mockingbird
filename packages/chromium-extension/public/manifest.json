@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Mockingbird",
+  "version": "1.0",
+  "description": "A chromium extension for Mockingbird. It intercepts requests and serves mock responses.",
+  "action": {
+    "default_popup": "./index.html",
+    "default_icon": {
+      "16": "./favicon.png",
+      "48": "./favicon.png",
+      "128": "./favicon.png"
+    }
+  },
+  "permissions": []
+}
