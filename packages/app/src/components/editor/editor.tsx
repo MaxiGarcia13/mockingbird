@@ -70,6 +70,9 @@ export function Editor({
   }, [value]);
 
   return (
-    <div ref={editorContainerRef} className={cn('h-full w-full', className)} />
+    <div
+      ref={editorContainerRef}
+      className={cn('h-full w-full', className)}
+    />
   );
 }
