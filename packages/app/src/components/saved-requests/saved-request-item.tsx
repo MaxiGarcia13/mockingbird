@@ -91,12 +91,19 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
       </div>
 
       <div className="flex items-center gap-2">
-        <FetcherButton className="border-0" request={request} />
+        <FetcherButton
+          className="border-0"
+          request={request}
+          tooltip="Open in Fetcher"
+          tooltipPlacement="bottom"
+        />
         <Button
           aria-label="Clone request"
           onClick={handleClone}
           loading={isLoading}
           className="border-0"
+          tooltip="Clone request"
+          tooltipPlacement="bottom"
         >
           <CloneIcon className="size-4" />
         </Button>
@@ -105,6 +112,8 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
           onClick={handleRemove}
           loading={isLoading}
           className="border-0"
+          tooltip="Remove request"
+          tooltipPlacement="bottom"
         >
           <BinIcon className="size-4" />
         </Button>
@@ -113,6 +122,8 @@ export function SavedRequestItem({ request, className, ...props }: SavedRequestI
           checked={enabled}
           disabled={isLoading}
           onChange={handleToggleEnabled}
+          tooltip={enabled ? 'Disable request' : 'Enable request'}
+          tooltipPlacement="bottom"
         />
       </div>
     </li>

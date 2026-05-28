@@ -1,14 +1,30 @@
 import type { ButtonHTMLAttributes, MouseEvent } from 'react';
+import type { TooltipPlacement } from './tooltip';
 import { cn } from '@maxigarcia/js-utils';
 import { onPressEnter } from '@/utils/event';
 import { LoadingIcon } from './icons/loading';
+import { Tooltip } from './tooltip';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   variant?: 'primary' | 'default';
+  tooltip?: string;
+  tooltipPlacement?: TooltipPlacement;
 };
 
-export function Button({
+export function Button({ tooltip, tooltipPlacement, ...props }: ButtonProps) {
+  if (tooltip) {
+    return (
+      <Tooltip content={tooltip} placement={tooltipPlacement}>
+        <BaseButton {...props} />
+      </Tooltip>
+    );
+  }
+
+  return <BaseButton {...props} />;
+}
+
+function BaseButton({
   className,
   onClick,
   type = 'button',
