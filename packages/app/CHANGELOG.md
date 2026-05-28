@@ -1,3 +1,18 @@
+## 0.1.2 (2026-05-28)
+
+### 🧹 Chores
+
+- Add @maxigarcia/mockingbird-styles package and integrate styles into app and chromium extension ([27e4d07](https://github.com/MaxiGarcia13/mockingbird/commit/27e4d07))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.1.2
+- Updated @maxigarcia/mockingbird-styles to 0.1.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.1 (2026-05-28)
 
 ### 🧱 Updated Dependencies
