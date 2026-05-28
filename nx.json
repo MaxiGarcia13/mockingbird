@@ -17,6 +17,7 @@
   "release": {
     "projects": [
       "packages/types",
+      "packages/styles",
       "packages/app",
       "!packages/chromium-extension",
       "packages/api"

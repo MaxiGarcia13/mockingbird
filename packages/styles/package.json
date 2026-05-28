@@ -1,0 +1,16 @@
+{
+  "name": "@maxigarcia/mockingbird-styles",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./index.css"
+  },
+  "scripts": {
+    "build": "echo 'nothing to build'",
+    "clean": "echo 'nothing to clean'"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}
