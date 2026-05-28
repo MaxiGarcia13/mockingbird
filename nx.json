@@ -18,6 +18,7 @@
     "projects": [
       "packages/types",
       "packages/app",
+      "!packages/chromium-extension",
       "packages/api"
     ],
     "projectsRelationship": "independent",
