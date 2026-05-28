@@ -18,9 +18,10 @@ export function SavedRequestsList() {
   if (isLoading && !requests.length) {
     return (
       <ul aria-busy className="space-y-2 px-4">
-        {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
-          <SavedRequestItemSkeleton key={index} />
-        ))}
+        {Array.from({ length: SKELETON_COUNT }).map((_, index) => {
+          const key = `skeleton-${index}`;
+          return <SavedRequestItemSkeleton key={key} />;
+        })}
       </ul>
     );
   }
