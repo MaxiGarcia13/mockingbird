@@ -34,6 +34,10 @@
       "types": "./dist/types/components/icons/index.d.ts",
       "default": "./src/components/icons/index.ts"
     },
+    "./components/overrides-panel": {
+      "types": "./dist/types/components/overrides-panel/index.d.ts",
+      "default": "./src/components/overrides-panel/index.ts"
+    },
     "./hooks": {
       "types": "./dist/types/hooks/index.d.ts",
       "default": "./src/hooks/index.ts"
