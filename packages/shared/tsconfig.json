@@ -7,7 +7,8 @@
     "useDefineForClassFields": true,
     "rootDir": "src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@root/*": ["../../*"]
     },
     "resolveJsonModule": true,
     "declaration": true,
