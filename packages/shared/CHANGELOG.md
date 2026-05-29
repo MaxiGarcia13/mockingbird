@@ -1,3 +1,21 @@
+## 0.2.0 (2026-05-29)
+
+### 🚀 Features
+
+- Introduce request form and saved requests stores in shared package ([d5ae974](https://github.com/MaxiGarcia13/mockingbird/commit/d5ae974))
+
+### 🧹 Chores
+
+- Remove package-lock.json and update shared package.json to include zustand dependency ([9db1bf3](https://github.com/MaxiGarcia13/mockingbird/commit/9db1bf3))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.2.1
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.0 (2026-05-29)
 
 ### 🚀 Features

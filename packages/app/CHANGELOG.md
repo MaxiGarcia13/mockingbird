@@ -1,3 +1,18 @@
+## 0.3.0 (2026-05-29)
+
+### 🚀 Features
+
+- Introduce request form and saved requests stores in shared package ([d5ae974](https://github.com/MaxiGarcia13/mockingbird/commit/d5ae974))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.2.1
+- Updated @maxigarcia/mockingbird-shared to 0.2.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.2.0 (2026-05-29)
 
 ### 🐞 Fixes
