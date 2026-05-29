@@ -6,6 +6,9 @@
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "useDefineForClassFields": true,
     "rootDir": "src",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
