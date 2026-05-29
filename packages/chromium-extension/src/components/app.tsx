@@ -1,9 +1,8 @@
 import { AppDescription } from '@maxigarcia/mockingbird-shared/components/app-description';
 import { Brand } from '@maxigarcia/mockingbird-shared/components/brand';
 import { GithubLink } from '@maxigarcia/mockingbird-shared/components/github-link';
-import { RequestEditor } from '@maxigarcia/mockingbird-shared/components/request-editor/request-editor';
-import { useRequestFormStore } from '@/store/request-form';
 import { version } from '../../package.json';
+import { RequestForm } from './request-form';
 
 export function App() {
   return (
@@ -15,8 +14,8 @@ export function App() {
         </div>
         <AppDescription />
       </header>
-      <section className="p-4">
-        <RequestEditor storeFn={useRequestFormStore} />
+      <section className="flex h-full flex-col gap-4 overflow-hidden p-4">
+        <RequestForm />
       </section>
     </>
   );
