@@ -1,7 +1,7 @@
 import type { HttpMethod } from '@maxigarcia/mockingbird-types';
 import type { ComponentProps } from 'react';
+import { Select } from '@maxigarcia/mockingbird-shared/components/select';
 import { HTTP_METHODS } from '@maxigarcia/mockingbird-types';
-import { Select } from '../shared/select';
 
 type SelectProps = ComponentProps<typeof Select>;
 

@@ -1,9 +1,9 @@
 import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import type { ComponentProps } from 'react';
 import { cn, encodeText, tryParseJson } from '@maxigarcia/js-utils';
+import { Button } from '@maxigarcia/mockingbird-shared/components/button';
 import FetcherWhiteImage from '@/assets/fetcher-white.png';
 import FetcherImage from '@/assets/fetcher.png';
-import { Button } from './shared/button';
 
 interface FetcherButtonProps extends Omit<ComponentProps<typeof Button>, 'children' | 'onClick'> {
   request: StoredRequestData;

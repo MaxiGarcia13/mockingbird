@@ -1,8 +1,8 @@
 import type { ComponentProps } from 'react';
 import { cn } from '@maxigarcia/js-utils';
+import { Button } from '@maxigarcia/mockingbird-shared/components/button';
+import { PlusIcon } from '@maxigarcia/mockingbird-shared/components/icons/plus';
 import { useRequestFormStore } from '@/store/request-form';
-import { Button } from './shared/button';
-import { PlusIcon } from './shared/icons/plus';
 
 type NewRequestButtonProps = Omit<ComponentProps<typeof Button>, 'variant' | 'onClick'>;
 

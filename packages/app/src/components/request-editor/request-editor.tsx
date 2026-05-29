@@ -1,6 +1,6 @@
 import { cn } from '@maxigarcia/js-utils';
+import { Input } from '@maxigarcia/mockingbird-shared/components/input';
 import { useRequestFormStore } from '@/store/request-form';
-import { Input } from '../shared/input';
 import { MethodSelect } from './method-select';
 import { StatusCodeSelect } from './status-code-select';
 

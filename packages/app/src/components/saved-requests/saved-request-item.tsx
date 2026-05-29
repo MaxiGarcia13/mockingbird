@@ -1,16 +1,16 @@
 import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import type { LiHTMLAttributes } from 'react';
 import { cn, getUrlDomain } from '@maxigarcia/js-utils';
+import { Button } from '@maxigarcia/mockingbird-shared/components/button';
+import { BinIcon } from '@maxigarcia/mockingbird-shared/components/icons/bin';
+import { CloneIcon } from '@maxigarcia/mockingbird-shared/components/icons/clone';
+import { Switch } from '@maxigarcia/mockingbird-shared/components/switch';
 import { useFetch } from '@/hooks/use-fetch';
 import { deleteRequest, saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { FetcherButton } from '../fetcher-button';
 import { RequestMethodBadge } from '../request-method-badge';
-import { Button } from '../shared/button';
-import { BinIcon } from '../shared/icons/bin';
-import { CloneIcon } from '../shared/icons/clone';
-import { Switch } from '../shared/switch';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
   request: StoredRequestData;

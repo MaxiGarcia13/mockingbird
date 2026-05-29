@@ -1,9 +1,9 @@
+import { Brand } from '@maxigarcia/mockingbird-shared/components/brand';
+import { GithubIcon } from '@maxigarcia/mockingbird-shared/components/icons/github';
 import { homepage } from '../../../../package.json';
 import { version } from '../../package.json';
-import { Brand } from './brand';
 import { NewRequestButton } from './new-request-button';
 import { SavedRequestsList } from './saved-requests';
-import { GithubIcon } from './shared/icons/github';
 
 export function Aside() {
   return (

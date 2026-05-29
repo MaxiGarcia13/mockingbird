@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
+import { EDITOR_PATHS, LazyEditor } from '@maxigarcia/mockingbird-shared/components/editor';
 import { useRequestFormStore } from '@/store/request-form';
-import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface ResponseEditorProps
   extends Omit<ComponentProps<typeof LazyEditor>, 'value' | 'onChange' | 'path'> {

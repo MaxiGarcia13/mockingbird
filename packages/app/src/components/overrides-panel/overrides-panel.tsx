@@ -1,5 +1,5 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@maxigarcia/mockingbird-shared/components/tabs';
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../shared/tabs';
 import { HeadersEditor } from './headers-editor';
 import { ResponseEditor } from './response-editor';
 

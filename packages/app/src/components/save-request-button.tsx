@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react';
-import { useFetch } from '@/hooks/use-fetch';
+import { Button } from '@maxigarcia/mockingbird-shared/components/button';
+import { useFetch } from '@maxigarcia/mockingbird-shared/hooks/use-fetch';
 import { saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
-import { Button } from './shared/button';
 
 type SaveRequestButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
 

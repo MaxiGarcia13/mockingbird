@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/shared/skeleton';
+import { Skeleton } from '@maxigarcia/mockingbird-shared/components/skeleton';
 
 export function SavedRequestItemSkeleton() {
   return (
