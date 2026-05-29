@@ -12,7 +12,8 @@
 
     /* Path aliases */
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@root/*": ["../../*"]
     },
     "types": ["vite/client"],
     "allowImportingTsExtensions": true,
