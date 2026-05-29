@@ -6,7 +6,7 @@
   "author": "Maximiliano Garcia Mortigliengo",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
     "build": "tsc && vite build",
     "clean": "rm -rf dist node_modules"
   },
