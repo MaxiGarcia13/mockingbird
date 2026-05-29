@@ -50,6 +50,10 @@
       "types": "./dist/types/utils/*.d.ts",
       "default": "./src/utils/*.ts"
     },
+    "./store/*": {
+      "types": "./dist/types/store/*.d.ts",
+      "default": "./src/store/*.ts"
+    },
     "./mockingbird.css": "./src/index.css"
   },
   "types": "./dist/types/index.d.ts",
@@ -64,7 +68,8 @@
   "peerDependencies": {
     "monaco-editor": "^0.55.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "zustand": "^5.0.13"
   },
   "dependencies": {
     "@maxigarcia/js-utils": "^1.12.0",
