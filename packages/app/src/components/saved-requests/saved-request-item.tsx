@@ -4,13 +4,13 @@ import { cn, getUrlDomain } from '@maxigarcia/js-utils';
 import { Button } from '@maxigarcia/mockingbird-shared/components/button';
 import { BinIcon } from '@maxigarcia/mockingbird-shared/components/icons/bin';
 import { CloneIcon } from '@maxigarcia/mockingbird-shared/components/icons/clone';
+import { RequestMethodBadge } from '@maxigarcia/mockingbird-shared/components/request-method-badge';
 import { Switch } from '@maxigarcia/mockingbird-shared/components/switch';
 import { useFetch } from '@maxigarcia/mockingbird-shared/hooks/use-fetch';
 import { deleteRequest, saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 import { FetcherButton } from '../fetcher-button';
-import { RequestMethodBadge } from '../request-method-badge';
 
 type SavedRequestItemProps = LiHTMLAttributes<HTMLLIElement> & {
   request: StoredRequestData;
