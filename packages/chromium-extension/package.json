@@ -1,5 +1,5 @@
 {
-  "name": "@maxigarcia/mockingbird-chromium-ext",
+  "name": "@maxigarcia/mockingbird-chromium-extension",
   "type": "module",
   "version": "0.0.0",
   "description": "A Chrome extension for Mockingbird. It intercepts requests and serves mock responses.",
