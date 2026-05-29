@@ -1,3 +1,27 @@
+## 0.2.0 (2026-05-29)
+
+### 🐞 Fixes
+
+- Add missing newline at end of file in index.css and global.d.ts ([5af732d](https://github.com/MaxiGarcia13/mockingbird/commit/5af732d))
+
+### 🔄 Refactors
+
+- Replace local component imports with shared components from @maxigarcia/mockingbird-shared ([9109f67](https://github.com/MaxiGarcia13/mockingbird/commit/9109f67))
+
+### 🧹 Chores
+
+- Update package-lock.json and package.json files to reflect changes in shared dependencies ([dd58acc](https://github.com/MaxiGarcia13/mockingbird/commit/dd58acc))
+- Add deduplication configuration for dependencies in Vite config for app and Chromium extension ([d94602e](https://github.com/MaxiGarcia13/mockingbird/commit/d94602e))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.2.0
+- Updated @maxigarcia/mockingbird-shared to 0.1.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.2 (2026-05-28)
 
 ### 🧹 Chores
