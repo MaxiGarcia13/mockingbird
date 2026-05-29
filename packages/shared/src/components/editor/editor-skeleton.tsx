@@ -1,5 +1,5 @@
 import { cn } from '@maxigarcia/js-utils';
-import { Skeleton } from '@/components/shared/skeleton';
+import { Skeleton } from '../skeleton';
 
 export function EditorSkeleton({ className }: { className?: string }) {
   return (

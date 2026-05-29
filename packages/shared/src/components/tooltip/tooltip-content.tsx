@@ -1,5 +1,5 @@
 import type { HTMLAttributes, RefObject } from 'react';
-import type { Coords } from '@/utils/clamp-to-viewport';
+import type { Coords } from '../../utils/clamp-to-viewport';
 import { cn } from '@maxigarcia/js-utils';
 
 interface TooltipContentProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'content'> {

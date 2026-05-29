@@ -1,5 +1,5 @@
+import type { ComputeFloatingPosition } from '../../hooks/use-floating-position';
 import type { TooltipPlacement } from './types';
-import type { ComputeFloatingPosition } from '@/hooks/use-floating-position';
 
 export const TOOLTIP_GAP = 8;
 

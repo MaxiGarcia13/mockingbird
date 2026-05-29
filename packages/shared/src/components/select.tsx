@@ -1,7 +1,7 @@
 import type { ChangeEvent, RefObject, SelectHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
 import { useRef } from 'react';
-import { onPressEnter } from '@/utils/event';
+import { onPressEnter } from '../utils/event';
 
 type NativeSelect = SelectHTMLAttributes<HTMLSelectElement>;
 type SelectValue = ChangeEvent<NativeSelect>['target']['value'];

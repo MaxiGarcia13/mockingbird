@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, MouseEvent } from 'react';
 import type { TooltipPlacement } from './tooltip';
 import { cn } from '@maxigarcia/js-utils';
-import { onPressEnter } from '@/utils/event';
+import { onPressEnter } from '../utils/event';
 import { LoadingIcon } from './icons/loading';
 import { Tooltip } from './tooltip';
 

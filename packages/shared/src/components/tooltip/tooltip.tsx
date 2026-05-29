@@ -3,8 +3,8 @@ import type { TooltipPlacement } from './types';
 import { cn } from '@maxigarcia/js-utils';
 import { useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useDismiss } from '@/hooks/use-dismiss';
-import { useFloatingPosition } from '@/hooks/use-floating-position';
+import { useDismiss } from '../../hooks/use-dismiss';
+import { useFloatingPosition } from '../../hooks/use-floating-position';
 import { TooltipContent } from './tooltip-content';
 import { getTooltipComputePlacement } from './tooltip-position';
 

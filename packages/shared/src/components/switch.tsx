@@ -2,7 +2,7 @@ import type { ChangeEvent, InputHTMLAttributes } from 'react';
 import type { TooltipPlacement } from './tooltip';
 import { cn } from '@maxigarcia/js-utils';
 import { useId } from 'react';
-import { onPressEnter } from '@/utils/event';
+import { onPressEnter } from '../utils/event';
 import { Tooltip } from './tooltip';
 
 type SwitchProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> & {
