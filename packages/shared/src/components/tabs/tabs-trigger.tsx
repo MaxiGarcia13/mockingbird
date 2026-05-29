@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react';
 import { cn } from '@maxigarcia/js-utils';
+import { onPressEnter } from '../../utils/event';
 import { useTabsContext } from './context';
 
-export type TabsTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type TabsTriggerProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'onKeyDown'> & {
   value: string;
   disabled?: boolean;
 };
@@ -11,8 +12,6 @@ export function TabsTrigger({
   value,
   className,
   disabled,
-  onClick,
-  onKeyDown,
   ...props
 }: TabsTriggerProps) {
   const { value: activeValue, onChange, baseId } = useTabsContext('TabsTrigger');
@@ -39,11 +38,12 @@ export function TabsTrigger({
           : 'text-muted-foreground hover:text-foreground',
         className,
       )}
-      onClick={(event) => {
-        onClick?.(event);
-        if (!event.defaultPrevented)
-          onChange(value);
+      onClick={() => {
+        onChange(value);
       }}
+      onKeyDown={onPressEnter(() => {
+        onChange(value);
+      })}
       {...props}
     />
   );
