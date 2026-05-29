@@ -1,3 +1,27 @@
+## 0.4.0 (2026-05-29)
+
+### 🚀 Features
+
+- Refactor RequestEditor component and introduce shared components ([5ef2862](https://github.com/MaxiGarcia13/mockingbird/commit/5ef2862))
+- Add AppDescription component and enhance layout in Aside and App components ([d1c65ab](https://github.com/MaxiGarcia13/mockingbird/commit/d1c65ab))
+- Introduce GithubLink component for version display ([9de2cba](https://github.com/MaxiGarcia13/mockingbird/commit/9de2cba))
+
+### 🧹 Chores
+
+- Update .gitignore and replace favicon images ([3064943](https://github.com/MaxiGarcia13/mockingbird/commit/3064943))
+- Update TypeScript configuration and dependencies ([c534611](https://github.com/MaxiGarcia13/mockingbird/commit/c534611))
+- Update asset imports in FetcherButton component ([d1d07bc](https://github.com/MaxiGarcia13/mockingbird/commit/d1d07bc))
+- Replace fetcher assets with new versions ([2f51e2d](https://github.com/MaxiGarcia13/mockingbird/commit/2f51e2d))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.2.2
+- Updated @maxigarcia/mockingbird-shared to 0.3.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.3.0 (2026-05-29)
 
 ### 🚀 Features

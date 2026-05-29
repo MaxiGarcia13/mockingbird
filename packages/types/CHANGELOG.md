@@ -1,3 +1,13 @@
+## 0.2.2 (2026-05-29)
+
+### 🧹 Chores
+
+- Update TypeScript configuration and dependencies ([c534611](https://github.com/MaxiGarcia13/mockingbird/commit/c534611))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.2.1 (2026-05-29)
 
 This was a version bump only for @maxigarcia/mockingbird-types to align it with other projects, there were no code changes.

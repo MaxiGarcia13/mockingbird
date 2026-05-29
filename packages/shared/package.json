@@ -1,7 +1,7 @@
 {
   "name": "@maxigarcia/mockingbird-shared",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A collection of shared hooks and components for Mockingbird.",
   "author": "Maximiliano Garcia Mortigliengo",
   "license": "ISC",
