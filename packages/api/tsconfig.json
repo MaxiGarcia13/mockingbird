@@ -1,24 +1,12 @@
 {
+  "extends": "../../tsconfig.node-build.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext"],
     "rootDir": ".",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "paths": {
       "@/*": ["./src/*"],
       "@db/*": ["./.mockingbird/*"]
     },
-    "resolveJsonModule": true,
-    "strict": true,
-    "declaration": true,
-    "declarationMap": true,
-    "noEmitOnError": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

@@ -1,7 +1,12 @@
 {
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "files": []
+  "extends": "../../tsconfig.vite.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2023", "DOM"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src", "vite.config.ts"]
 }
