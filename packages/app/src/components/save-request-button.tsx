@@ -1,57 +1,24 @@
-import type { ButtonHTMLAttributes } from 'react';
-import { Button } from '@maxigarcia/mockingbird-shared/components/button';
-import { useFetch } from '@maxigarcia/mockingbird-shared/hooks/use-fetch';
+import type { ComponentProps } from 'react';
+import { SaveRequestFormButton } from '@maxigarcia/mockingbird-shared/components/save-request-form-button';
 import { saveRequest, updateRequest } from '@/services/request';
 import { useRequestFormStore } from '@/store/request-form';
 import { useSavedRequestsStore } from '@/store/saved-requests';
 
-type SaveRequestButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
+type SaveRequestButtonProps = Omit<
+  ComponentProps<typeof SaveRequestFormButton>,
+'storeFn' | 'fetchRequests' | 'onSave' | 'onUpdate'
+>;
 
-};
-
-export function SaveRequestButton({ disabled, ...props }: SaveRequestButtonProps) {
-  const method = useRequestFormStore((state) => state.method);
-  const url = useRequestFormStore((state) => state.url);
-  const statusCode = useRequestFormStore((state) => state.statusCode);
-  const isValidUrl = useRequestFormStore((state) => state.isValidUrl);
-  const headers = useRequestFormStore((state) => state.headers);
-  const body = useRequestFormStore((state) => state.body);
-  const id = useRequestFormStore((state) => state.id);
-
-  const reset = useRequestFormStore((state) => state.reset);
+export function SaveRequestButton(props: SaveRequestButtonProps) {
   const fetchRequests = useSavedRequestsStore((state) => state.fetchRequests);
 
-  const isDisabled = disabled || !url.trim() || !isValidUrl;
-
-  const { isLoading, dispatch } = useFetch();
-
-  const handleSave = () => {
-    if (isDisabled)
-      return;
-
-    dispatch(
-      () => {
-        if (typeof id === 'string') {
-          return updateRequest(id, { method, url, statusCode, headers, body });
-        }
-        return saveRequest({ method, url, statusCode, headers, body });
-      },
-    )
-      .then(() => {
-        reset();
-        fetchRequests();
-      });
-  };
-
   return (
-    <Button
-      disabled={isDisabled}
-      onClick={handleSave}
-      loading={isLoading}
-      variant="primary"
+    <SaveRequestFormButton
       {...props}
-    >
-      {id ? 'Update' : 'Save'}
-    </Button>
+      storeFn={useRequestFormStore}
+      fetchRequests={fetchRequests}
+      onSave={saveRequest}
+      onUpdate={updateRequest}
+    />
   );
 }

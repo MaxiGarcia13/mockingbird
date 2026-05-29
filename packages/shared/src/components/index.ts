@@ -3,6 +3,7 @@ export * from './button';
 export * from './editor';
 export * from './icons';
 export * from './input';
+export * from './save-request-form-button';
 export * from './select';
 export * from './skeleton';
 export * from './switch';
