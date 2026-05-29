@@ -45,7 +45,7 @@
     },
     "version": {
       "conventionalCommits": true,
-      "preVersionCommand": "npx nx run-many -t build -p packages/app,packages/types,packages/api,packages/chromium-extension,packages/shared"
+      "preVersionCommand": "npm run build"
     },
     "changelog": {
       "workspaceChangelog": false,
