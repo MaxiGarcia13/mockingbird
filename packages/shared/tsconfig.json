@@ -9,6 +9,11 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+
+    "paths": {
+      "@root/*": ["../../*"]
+    },
+
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
 
