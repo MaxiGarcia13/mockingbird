@@ -1,5 +1,6 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@maxigarcia/mockingbird-shared/components/tabs';
+import type { createRequestFormStore } from '@/store/request-form';
 import { useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../tabs';
 import { HeadersEditor } from './headers-editor';
 import { ResponseEditor } from './response-editor';
 
@@ -8,10 +9,15 @@ export interface OverridesData {
   response: string;
 }
 
+interface OverridesPanelProps {
+  className?: string;
+  storeFn: ReturnType<typeof createRequestFormStore>;
+}
+
 const RESPONSE_TAB = 'response';
 const HEADERS_TAB = 'headers';
 
-export function OverridesPanel({ className }: { className?: string }) {
+export function OverridesPanel({ className, storeFn }: OverridesPanelProps) {
   const [tab, setTab] = useState<string>(RESPONSE_TAB);
 
   return (
@@ -26,11 +32,11 @@ export function OverridesPanel({ className }: { className?: string }) {
       </TabsList>
 
       <TabsContent value={RESPONSE_TAB}>
-        <ResponseEditor />
+        <ResponseEditor storeFn={storeFn} />
       </TabsContent>
 
       <TabsContent value={HEADERS_TAB}>
-        <HeadersEditor />
+        <HeadersEditor storeFn={storeFn} />
       </TabsContent>
     </Tabs>
   );
