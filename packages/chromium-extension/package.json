@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@maxigarcia/js-utils": "^1.12.0",
+    "@maxigarcia/mockingbird-shared": "*",
     "@maxigarcia/mockingbird-types": "*",
     "monaco-editor": "^0.55.1",
     "react": "^19.2.6",
@@ -19,8 +20,8 @@
     "zustand": "^5.0.13"
   },
   "devDependencies": {
-    "@maxigarcia/mockingbird-shared": "*",
     "@tailwindcss/vite": "^4.3.0",
+    "@types/chrome": "^0.1.42",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
