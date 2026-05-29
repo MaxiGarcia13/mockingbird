@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { createRequestFormStore } from '@/store/request-form';
+import type { createRequestFormStore } from '../../store/request-form';
 import { EDITOR_PATHS, LazyEditor } from '../editor';
 
 interface HeadersEditorProps

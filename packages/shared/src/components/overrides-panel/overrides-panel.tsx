@@ -1,4 +1,4 @@
-import type { createRequestFormStore } from '@/store/request-form';
+import type { createRequestFormStore } from '../../store/request-form';
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../tabs';
 import { HeadersEditor } from './headers-editor';

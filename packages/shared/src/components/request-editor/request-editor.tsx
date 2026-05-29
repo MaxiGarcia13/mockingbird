@@ -1,4 +1,4 @@
-import type { createRequestFormStore } from '@/store/request-form';
+import type { createRequestFormStore } from '../../store/request-form';
 import { cn } from '@maxigarcia/js-utils';
 import { Input } from '@maxigarcia/mockingbird-shared/components/input';
 import { MethodSelect } from './method-select';
