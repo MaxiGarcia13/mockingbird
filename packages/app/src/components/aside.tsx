@@ -1,6 +1,5 @@
 import { Brand } from '@maxigarcia/mockingbird-shared/components/brand';
-import { GithubIcon } from '@maxigarcia/mockingbird-shared/components/icons/github';
-import { homepage } from '../../../../package.json';
+import { GithubLink } from '@maxigarcia/mockingbird-shared/components/github-link';
 import { version } from '../../package.json';
 import { NewRequestButton } from './new-request-button';
 import { SavedRequestsList } from './saved-requests';
@@ -15,18 +14,7 @@ export function Aside() {
       </div>
       <SavedRequestsList />
       <div className="mx-auto mt-auto px-4 pb-2">
-        <a
-          href={homepage}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <GithubIcon className="size-4" />
-          <span>
-            v
-            {version}
-          </span>
-        </a>
+        <GithubLink version={version} />
       </div>
     </aside>
   );
