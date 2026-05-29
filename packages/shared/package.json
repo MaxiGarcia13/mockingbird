@@ -61,12 +61,14 @@
     "build": "tsc",
     "clean": "rm -rf dist node_modules package-lock.json"
   },
-  "dependencies": {
-    "@maxigarcia/js-utils": "^1.12.0",
-    "@maxigarcia/mockingbird-types": "*",
+  "peerDependencies": {
     "monaco-editor": "^0.55.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
+  },
+  "dependencies": {
+    "@maxigarcia/js-utils": "^1.12.0",
+    "@maxigarcia/mockingbird-types": "*"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
