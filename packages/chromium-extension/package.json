@@ -1,7 +1,7 @@
 {
   "name": "@maxigarcia/mockingbird-chromium-extension",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A Chrome extension for Mockingbird. It intercepts requests and serves mock responses.",
   "author": "Maximiliano Garcia Mortigliengo",
   "license": "ISC",
