@@ -1,3 +1,13 @@
+## 0.2.1 (2026-05-31)
+
+### 🎨 Styles
+
+- Enhance code block and list item responsiveness ([4d5b068](https://github.com/MaxiGarcia13/mockingbird/commit/4d5b068))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.2.0 (2026-05-31)
 
 ### 🚀 Features
