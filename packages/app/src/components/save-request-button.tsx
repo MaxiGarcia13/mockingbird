@@ -16,9 +16,14 @@ export function SaveRequestButton(props: SaveRequestButtonProps) {
     <SaveRequestFormButton
       {...props}
       storeFn={useRequestFormStore}
-      fetchRequests={fetchRequests}
-      onSave={saveRequest}
-      onUpdate={updateRequest}
+      onSave={async (request) => {
+        await saveRequest(request);
+        fetchRequests();
+      }}
+      onUpdate={async (id, request) => {
+        await updateRequest(id, request);
+        fetchRequests();
+      }}
     />
   );
 }
