@@ -15,13 +15,13 @@ You can use it in two ways:
 
 ## Monorepo structure
 
-| Package | Description |
-| --- | --- |
-| [`packages/app`](packages/app/) | React UI to create and manage mocked requests (uses the local API). |
-| [`packages/api`](packages/api/) | Fastify server that stores mocks and serves intercepted responses. |
-| [`packages/chromium-extension`](packages/chromium-extension/) | Chrome/Chromium extension that mocks `fetch` in the page. |
-| [`packages/shared`](packages/shared/) | Shared React components and utilities. |
-| [`packages/types`](packages/types/) | Shared TypeScript types. |
+| Package                                                       | Description                                                         |
+| ------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [`packages/app`](packages/app/)                               | React UI to create and manage mocked requests (uses the local API). |
+| [`packages/api`](packages/api/)                               | Fastify server that stores mocks and serves intercepted responses.  |
+| [`packages/chromium-extension`](packages/chromium-extension/) | Chrome/Chromium extension that mocks `fetch` in the page.           |
+| [`packages/shared`](packages/shared/)                         | Shared React components and utilities.                              |
+| [`packages/types`](packages/types/)                           | Shared TypeScript types.                                            |
 
 ## Local setup
 
@@ -48,12 +48,12 @@ See [`packages/chromium-extension/README.md`](packages/chromium-extension/README
 
 ## Other scripts
 
-| Script | Description |
-| --- | --- |
-| `npm run build` | Build all packages |
-| `npm run start` | Build, then run the API in production mode |
-| `npm run test:unit` | Run unit tests across packages |
-| `npm run lint` | Lint the monorepo |
+| Script              | Description                                |
+| ------------------- | ------------------------------------------ |
+| `npm run build`     | Build all packages                         |
+| `npm run start`     | Build, then run the API in production mode |
+| `npm run test:unit` | Run unit tests across packages             |
+| `npm run lint`      | Lint the monorepo                          |
 
 ## Local-only note
 
