@@ -1,21 +1,28 @@
 import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ImgHTMLAttributes } from 'react';
 import { cn, encodeText, tryParseJson } from '@maxigarcia/js-utils';
-import { Button } from '@maxigarcia/mockingbird-shared/components/button';
 import FetcherWhiteImage from '@root/assets/fetcher-white.png' with { type: 'image/png' };
 import FetcherImage from '@root/assets/fetcher.png' with { type: 'image/png' };
+import { Button } from './button';
 
-interface FetcherButtonProps extends Omit<ComponentProps<typeof Button>, 'children' | 'onClick'> {
+interface FetcherButtonProps extends
+  Omit<ComponentProps<typeof Button>, 'children' | 'onClick'> {
   request: StoredRequestData;
+  fetcherBaseUrl?: string;
 }
 
-export function FetcherButton({ request, ...props }: FetcherButtonProps) {
-  const imgProps = {
+export function FetcherButton({
+  request,
+  fetcherBaseUrl = 'https://fetcher-steel.vercel.app',
+  ...props
+}: FetcherButtonProps) {
+  const imgProps: ImgHTMLAttributes<HTMLImageElement> = {
     alt: 'Fetcher',
     width: 12,
     height: 12,
     className: 'size-3',
-  };
+    loading: 'lazy',
+  } as const;
 
   const { body, headers, url, method } = request;
 
@@ -56,7 +63,6 @@ export function FetcherButton({ request, ...props }: FetcherButtonProps) {
     ...(encodedHeaders ? { headers: encodedHeaders } : {}),
   });
 
-  const fetcherBaseUrl = import.meta.env.VITE_FETCHER_URL ?? 'https://fetcher-steel.vercel.app';
   const fetcherUrl = `${fetcherBaseUrl}?${params.toString()}`;
 
   const handleClick = () => {
@@ -69,6 +75,7 @@ export function FetcherButton({ request, ...props }: FetcherButtonProps) {
         src={FetcherImage}
         {...imgProps}
         className={cn(imgProps.className, 'block dark:hidden')}
+
       />
       <img
         src={FetcherWhiteImage}
