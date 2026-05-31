@@ -1,3 +1,29 @@
+## 0.7.0 (2026-05-31)
+
+### 🚀 Features
+
+- Integrate ThemeToggleButton into Aside and App components ([4e14529](https://github.com/MaxiGarcia13/mockingbird/commit/4e14529))
+- Add ThemeToggleButton component and related icons for color scheme management ([34b0c18](https://github.com/MaxiGarcia13/mockingbird/commit/34b0c18))
+- Add @maxigarcia/view-transitions dependency ([35733de](https://github.com/MaxiGarcia13/mockingbird/commit/35733de))
+- Implement color scheme management and enhance UI components ([02495c3](https://github.com/MaxiGarcia13/mockingbird/commit/02495c3))
+- Add dark mode support in CSS ([0a60538](https://github.com/MaxiGarcia13/mockingbird/commit/0a60538))
+
+### 🔄 Refactors
+
+- Enhance color scheme utility functions for improved management ([24c22cd](https://github.com/MaxiGarcia13/mockingbird/commit/24c22cd))
+
+### 🎨 Styles
+
+- Update button component styles for improved visual consistency ([bd3993d](https://github.com/MaxiGarcia13/mockingbird/commit/bd3993d))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.5.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.6.0 (2026-05-31)
 
 ### 🐞 Fixes

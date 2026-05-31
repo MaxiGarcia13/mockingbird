@@ -1,3 +1,19 @@
+## 0.9.0 (2026-05-31)
+
+### 🚀 Features
+
+- Integrate ThemeToggleButton into Aside and App components ([4e14529](https://github.com/MaxiGarcia13/mockingbird/commit/4e14529))
+- Implement color scheme management and enhance UI components ([02495c3](https://github.com/MaxiGarcia13/mockingbird/commit/02495c3))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.5.0
+- Updated @maxigarcia/mockingbird-shared to 0.7.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.8.0 (2026-05-31)
 
 ### 🧹 Chores
