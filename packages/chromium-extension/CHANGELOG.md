@@ -1,3 +1,10 @@
+## 0.5.0 (2026-05-31)
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.7.0
+- Updated @maxigarcia/mockingbird-shared to 0.9.0
+
 ## 0.4.0 (2026-05-31)
 
 ### 🧱 Updated Dependencies

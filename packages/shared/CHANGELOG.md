@@ -1,3 +1,21 @@
+## 0.9.0 (2026-05-31)
+
+### 🚀 Features
+
+- Implement theme toggle functionality and add view transitions support ([f00ca08](https://github.com/MaxiGarcia13/mockingbird/commit/f00ca08))
+
+### 🔄 Refactors
+
+- Change ColorSchemeInitOptions from type to interface ([bef4b1d](https://github.com/MaxiGarcia13/mockingbird/commit/bef4b1d))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.7.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.8.0 (2026-05-31)
 
 ### 🧱 Updated Dependencies

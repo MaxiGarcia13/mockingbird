@@ -1,3 +1,21 @@
+## 0.2.0 (2026-05-31)
+
+### 🚀 Features
+
+- Implement theme toggle functionality and add view transitions support ([f00ca08](https://github.com/MaxiGarcia13/mockingbird/commit/f00ca08))
+
+### 🐞 Fixes
+
+- Update Twitter card meta tag in Layout.astro ([6176e07](https://github.com/MaxiGarcia13/mockingbird/commit/6176e07))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-shared to 0.9.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.1 (2026-05-31)
 
 ### 🐞 Fixes
