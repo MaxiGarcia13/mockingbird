@@ -1,13 +1,22 @@
 import { editor, json } from 'monaco-editor';
+import { getColorScheme } from '../../utils/color-scheme';
 import { requestHeadersSchema } from './schemas/request-headers';
-import { mockingbirdTheme } from './themes/mockingbird';
+import { mockingbirdDarkTheme, mockingbirdLightTheme } from './themes/mockingbird';
 import './worker';
 
-const THEME_NAME = 'mockingbird';
+export const EDITOR_THEME_NAMES = {
+  light: 'mockingbird-light',
+  dark: 'mockingbird-dark',
+} as const;
 
-editor.defineTheme(THEME_NAME, mockingbirdTheme);
+editor.defineTheme(EDITOR_THEME_NAMES.light, mockingbirdLightTheme);
+editor.defineTheme(EDITOR_THEME_NAMES.dark, mockingbirdDarkTheme);
 
-editor.setTheme(THEME_NAME);
+export function getEditorThemeName(scheme = getColorScheme()) {
+  return scheme === 'dark' ? EDITOR_THEME_NAMES.dark : EDITOR_THEME_NAMES.light;
+}
+
+editor.setTheme(getEditorThemeName());
 
 // Stable file names used as the last segment of each editor model URI so that
 // `fileMatch` patterns below can target a specific kind of editor.
@@ -35,7 +44,6 @@ json.jsonDefaults.setDiagnosticsOptions({
 });
 
 export const EDITOR_CONSTRUCTION_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
-  theme: THEME_NAME,
   language: 'json',
   fontFamily: 'Fira Code, monospace',
   fontLigatures: true,

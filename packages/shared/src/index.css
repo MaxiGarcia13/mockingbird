@@ -2,7 +2,17 @@
 
 @source "./**/*.{ts,tsx}";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:where(:not(.light, .light *)) {
+      @slot;
+    }
+  }
+}
 
 @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Segoe UI', Roboto, sans-serif;
@@ -16,35 +26,27 @@
   --color-surface-border: var(--palette-surface-border);
   --color-accent: var(--palette-accent);
   --color-accent-foreground: var(--palette-accent-foreground);
+  --color-accent-hover: var(--palette-accent-hover);
   --color-glow: var(--palette-glow);
 }
 
 :root {
   color-scheme: light;
 
-  --palette-background: #f8f6ff;
-  --palette-foreground: #1a1625;
-  --palette-muted: #e8e4f5;
-  --palette-muted-foreground: #5c5670;
-  --palette-surface: rgb(255 255 255 / 0.72);
-  --palette-surface-border: rgb(124 92 255 / 0.18);
-  --palette-accent: #7c5cff;
-  --palette-accent-foreground: #ffffff;
-  --palette-glow: rgb(124 92 255 / 0.35);
+  --palette-background: light-dark(#f3f0fa, #0c0a14);
+  --palette-foreground: light-dark(#100e18, #f5f1ff);
+  --palette-muted: light-dark(#e8e3f4, #1a1628);
+  --palette-muted-foreground: light-dark(#3f3655, #b8b0d0);
+  --palette-surface: light-dark(#ffffff, rgb(24 20 38 / 0.82));
+  --palette-surface-border: light-dark(#b8a8e0, rgb(183 159 255 / 0.32));
+  --palette-accent: #b794ff;
+  --palette-accent-foreground: #0c0a14;
+  --palette-accent-hover: #c9aeff;
+  --palette-glow: light-dark(rgb(183 159 255 / 0.35), rgb(183 159 255 / 0.42));
 }
 
 :root.dark {
   color-scheme: dark;
-
-  --palette-background: #0c0a14;
-  --palette-foreground: #f0ecff;
-  --palette-muted: #1e1a2e;
-  --palette-muted-foreground: #9d94b8;
-  --palette-surface: rgb(22 18 36 / 0.65);
-  --palette-surface-border: rgb(167 139 250 / 0.22);
-  --palette-accent: #a78bfa;
-  --palette-accent-foreground: #0c0a14;
-  --palette-glow: rgb(167 139 250 / 0.4);
 }
 
 @media (prefers-color-scheme: dark) {

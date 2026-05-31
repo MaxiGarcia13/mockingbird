@@ -62,7 +62,11 @@
       "types": "./dist/types/store/*.d.ts",
       "default": "./src/store/*.ts"
     },
-    "./mockingbird.css": "./src/index.css"
+    "./mockingbird.css": "./src/index.css",
+    "./theme": {
+      "types": "./dist/types/components/editor/themes/color-scheme.d.ts",
+      "default": "./src/components/editor/themes/color-scheme.ts"
+    }
   },
   "types": "./dist/types/index.d.ts",
   "files": [

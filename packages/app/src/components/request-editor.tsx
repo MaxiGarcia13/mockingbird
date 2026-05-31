@@ -3,6 +3,9 @@ import { useRequestFormStore } from '@/store/request-form';
 
 export function RequestEditor() {
   return (
-    <SharedRequestEditor storeFn={useRequestFormStore} />
+    <SharedRequestEditor
+      storeFn={useRequestFormStore}
+      className="mx-1 my-2"
+    />
   );
 }

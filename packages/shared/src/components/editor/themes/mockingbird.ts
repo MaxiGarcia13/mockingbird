@@ -1,332 +1,393 @@
 import type { editor } from 'monaco-editor';
+import type { ColorScheme } from '../../../utils/color-scheme';
 
-const THEME = {
-  background: '161224',
-  backgroundAlpha: 'a6',
-  currentLine: '241e3a',
-  selection: '332b4d',
-  foreground: 'f0ecff',
-  mutedForeground: '9d94b8',
-  comment: '6d6485',
-  invisibles: '2a2440',
+interface MockingbirdPalette {
+  background: string;
+  backgroundAlpha: string;
+  currentLine: string;
+  selection: string;
+  foreground: string;
+  mutedForeground: string;
+  comment: string;
+  invisibles: string;
+  accent: string;
+  delimiter: string;
+  lavender: string;
+  lilac: string;
+  rose: string;
+  blue: string;
+  teal: string;
+  green: string;
+  yellow: string;
+  orange: string;
+  red: string;
+}
 
-  accent: 'a78bfa',
-  lavender: 'c4b5fd',
+const LIGHT_PALETTE: MockingbirdPalette = {
+  background: 'ffffff',
+  backgroundAlpha: 'f0',
+  currentLine: 'e8e3f4',
+  selection: 'cfc6e6',
+  foreground: '100e18',
+  mutedForeground: '3f3655',
+  comment: '5c5470',
+  invisibles: '9d93b8',
+  accent: 'b794ff',
+  delimiter: '64748b',
+  lavender: '4a1d96',
+  lilac: '5b21b6',
+  rose: '7e22ce',
+  blue: '1d4ed8',
+  teal: '0f766e',
+  green: '166534',
+  yellow: '854d0e',
+  orange: '9a3412',
+  red: '991b1b',
+};
+
+const DARK_PALETTE: MockingbirdPalette = {
+  background: '181426',
+  backgroundAlpha: 'd1',
+  currentLine: '1a1628',
+  selection: '3d3260',
+  foreground: 'f5f1ff',
+  mutedForeground: 'b8b0d0',
+  comment: '8a82a8',
+  invisibles: '3d3558',
+  accent: 'b794ff',
+  delimiter: '9690a8',
+  lavender: 'cbbaff',
   lilac: 'd8b4fe',
   rose: 'f0abfc',
-
   blue: '93c5fd',
   teal: '5eead4',
   green: '86efac',
   yellow: 'fde68a',
   orange: 'fdba74',
-  red: 'fca5a5',
-} as const;
+  red: 'fb7185',
+};
 
-export const mockingbirdTheme: editor.IStandaloneThemeData = {
-  base: 'vs-dark',
-  inherit: true,
-  rules: [
+function createRules(palette: MockingbirdPalette): editor.ITokenThemeRule[] {
+  return [
     {
-      background: THEME.background,
+      background: palette.background,
       token: '',
     },
     {
-      foreground: THEME.comment,
+      foreground: palette.comment,
       fontStyle: 'italic',
       token: 'comment',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'number',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'string',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'constant.numeric',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'constant.language',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'constant.character',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'constant.other',
     },
     {
-      foreground: THEME.rose,
+      foreground: palette.rose,
       token: 'constant.character.escaped',
     },
     {
-      foreground: THEME.rose,
+      foreground: palette.rose,
       token: 'constant.character.escape',
     },
     {
-      foreground: THEME.rose,
+      foreground: palette.rose,
       token: 'string source',
     },
     {
-      foreground: THEME.rose,
+      foreground: palette.rose,
       token: 'string source.ruby',
     },
     {
-      foreground: THEME.accent,
+      foreground: palette.accent,
       token: 'keyword',
     },
     {
-      foreground: THEME.accent,
+      foreground: palette.accent,
       token: 'storage',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       fontStyle: 'italic',
       token: 'storage.type',
     },
     {
-      foreground: THEME.blue,
+      foreground: palette.blue,
       fontStyle: 'underline',
       token: 'entity.name.class',
     },
     {
-      foreground: THEME.blue,
+      foreground: palette.blue,
       fontStyle: 'italic underline',
       token: 'entity.other.inherited-class',
     },
     {
-      foreground: THEME.blue,
+      foreground: palette.blue,
       token: 'type.class',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.class.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.class.declaration.readonly',
     },
     {
-      foreground: THEME.teal,
+      foreground: palette.teal,
       token: 'type.interface',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.interface.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.interface.declaration.readonly',
     },
     {
-      foreground: THEME.teal,
+      foreground: palette.teal,
       token: 'type.namespace',
     },
     {
-      foreground: THEME.teal,
+      foreground: palette.teal,
       token: 'type',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.enum',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'entity.name.function',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'variable.function',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'variable.function.declaration',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'variable.function.defaultLibrary',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'member',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'member.declaration',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'member.defaultLibrary',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'support.function',
     },
     {
-      foreground: THEME.orange,
+      foreground: palette.orange,
       fontStyle: 'italic',
       token: 'variable.parameter',
     },
     {
-      foreground: THEME.orange,
+      foreground: palette.orange,
       token: 'type.parameters',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'variable.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'variable.declaration.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'variable.declaration.readonly.defaultLibrary',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'type.declaration.readonly',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'variable.enummember',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'property.readonly',
     },
     {
-      foreground: THEME.accent,
+      foreground: palette.accent,
       token: 'entity.name.tag',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'support.constant',
     },
     {
-      foreground: THEME.teal,
+      foreground: palette.teal,
       fontStyle: 'italic',
       token: 'support.type',
     },
     {
-      foreground: THEME.blue,
+      foreground: palette.blue,
       fontStyle: 'italic',
       token: 'support.class',
     },
     {
-      foreground: THEME.foreground,
-      background: THEME.red,
+      foreground: palette.foreground,
+      background: palette.red,
       token: 'invalid',
     },
     {
-      foreground: THEME.foreground,
-      background: THEME.accent,
+      foreground: palette.foreground,
+      background: palette.accent,
       token: 'invalid.deprecated',
     },
     {
-      foreground: THEME.comment,
+      foreground: palette.comment,
       token: 'meta.diff',
     },
     {
-      foreground: THEME.comment,
+      foreground: palette.comment,
       token: 'meta.diff.header',
     },
     {
-      foreground: THEME.red,
+      foreground: palette.red,
       token: 'markup.deleted',
     },
     {
-      foreground: THEME.green,
+      foreground: palette.green,
       token: 'markup.inserted',
     },
     {
-      foreground: THEME.yellow,
+      foreground: palette.yellow,
       token: 'markup.changed',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'constant.numeric.line-number.find-in-files - match',
     },
     {
-      foreground: THEME.yellow,
+      foreground: palette.yellow,
       token: 'entity.name.filename',
     },
     {
-      foreground: THEME.red,
+      foreground: palette.red,
       token: 'message.error',
     },
     {
-      foreground: THEME.rose,
+      foreground: palette.rose,
       token: 'string.key.json',
     },
     {
-      foreground: THEME.lavender,
+      foreground: palette.lavender,
       token: 'string.value.json',
     },
     {
-      foreground: THEME.lilac,
+      foreground: palette.lilac,
       token: 'number.json',
     },
     {
-      foreground: THEME.accent,
+      foreground: palette.accent,
       token: 'keyword.json',
     },
     {
-      foreground: THEME.mutedForeground,
+      foreground: palette.delimiter,
       token: 'delimiter.bracket.json',
     },
     {
-      foreground: THEME.mutedForeground,
+      foreground: palette.delimiter,
       token: 'delimiter.array.json',
     },
     {
-      foreground: THEME.mutedForeground,
+      foreground: palette.delimiter,
       token: 'delimiter.colon.json',
     },
     {
-      foreground: THEME.mutedForeground,
+      foreground: palette.delimiter,
       token: 'delimiter.comma.json',
     },
-  ],
-  colors: {
-    'editor.foreground': `#${THEME.foreground}`,
-    'editor.background': `#${THEME.background}${THEME.backgroundAlpha}`,
-    'editor.selectionBackground': `#${THEME.selection}`,
-    'editor.lineHighlightBackground': `#${THEME.currentLine}`,
+  ];
+}
+
+function createColors(palette: MockingbirdPalette): editor.IColors {
+  return {
+    'editor.foreground': `#${palette.foreground}`,
+    'editor.background': `#${palette.background}${palette.backgroundAlpha}`,
+    'editor.selectionBackground': `#${palette.selection}`,
+    'editor.inactiveSelectionBackground': `#${palette.selection}99`,
+    'editor.lineHighlightBackground': `#${palette.currentLine}`,
     'editor.lineHighlightBorder': '#00000000',
-    'editorCursor.foreground': `#${THEME.accent}`,
-    'editorWhitespace.foreground': `#${THEME.invisibles}`,
-    'editorIndentGuide.background': `#${THEME.invisibles}`,
-    'editorIndentGuide.activeBackground': `#${THEME.accent}55`,
-    'editor.selectionHighlightBackground': `#${THEME.accent}25`,
+    'editorCursor.foreground': `#${palette.accent}`,
+    'editorWhitespace.foreground': `#${palette.invisibles}`,
+    'editorIndentGuide.background': `#${palette.invisibles}`,
+    'editorIndentGuide.activeBackground': `#${palette.accent}66`,
+    'editor.selectionHighlightBackground': `#${palette.accent}30`,
     'editor.selectionHighlightBorder': '#00000000',
-    'editor.wordHighlightBackground': `#${THEME.accent}20`,
-    'editor.wordHighlightStrongBackground': `#${THEME.accent}30`,
-    'editor.findMatchBackground': `#${THEME.accent}40`,
-    'editor.findMatchHighlightBackground': `#${THEME.accent}25`,
-    'editorBracketMatch.background': `#${THEME.accent}30`,
-    'editorBracketMatch.border': `#${THEME.accent}80`,
-    'editorLineNumber.foreground': `#${THEME.comment}`,
-    'editorLineNumber.activeForeground': `#${THEME.accent}`,
-    'editorGutter.background': `#${THEME.background}${THEME.backgroundAlpha}`,
-    'scrollbarSlider.background': `#${THEME.currentLine}aa`,
-    'scrollbarSlider.hoverBackground': `#${THEME.selection}cc`,
-    'scrollbarSlider.activeBackground': `#${THEME.accent}80`,
-    'editorWidget.background': `#${THEME.currentLine}`,
-    'editorWidget.border': `#${THEME.selection}`,
-    'editorSuggestWidget.background': `#${THEME.currentLine}`,
-    'editorSuggestWidget.border': `#${THEME.selection}`,
-    'editorSuggestWidget.selectedBackground': `#${THEME.accent}30`,
-    'editorHoverWidget.background': `#${THEME.currentLine}`,
-    'editorHoverWidget.border': `#${THEME.selection}`,
-  },
-};
+    'editor.wordHighlightBackground': `#${palette.accent}28`,
+    'editor.wordHighlightStrongBackground': `#${palette.accent}38`,
+    'editor.findMatchBackground': `#${palette.accent}48`,
+    'editor.findMatchHighlightBackground': `#${palette.accent}30`,
+    'editorBracketMatch.background': `#${palette.accent}38`,
+    'editorBracketMatch.border': `#${palette.accent}99`,
+    'editorLineNumber.foreground': `#${palette.comment}`,
+    'editorLineNumber.activeForeground': `#${palette.accent}`,
+    'editorGutter.background': `#${palette.background}${palette.backgroundAlpha}`,
+    'scrollbarSlider.background': `#${palette.invisibles}cc`,
+    'scrollbarSlider.hoverBackground': `#${palette.selection}`,
+    'scrollbarSlider.activeBackground': `#${palette.accent}99`,
+    'editorWidget.background': `#${palette.currentLine}`,
+    'editorWidget.border': `#${palette.selection}`,
+    'editorSuggestWidget.background': `#${palette.currentLine}`,
+    'editorSuggestWidget.border': `#${palette.selection}`,
+    'editorSuggestWidget.selectedBackground': `#${palette.accent}38`,
+    'editorHoverWidget.background': `#${palette.currentLine}`,
+    'editorHoverWidget.border': `#${palette.selection}`,
+  };
+}
+
+function createMockingbirdTheme(
+  mode: ColorScheme,
+  palette: MockingbirdPalette,
+): editor.IStandaloneThemeData {
+  return {
+    base: mode === 'dark' ? 'vs-dark' : 'vs',
+    inherit: true,
+    rules: createRules(palette),
+    colors: createColors(palette),
+  };
+}
+
+export const mockingbirdLightTheme = createMockingbirdTheme('light', LIGHT_PALETTE);
+export const mockingbirdDarkTheme = createMockingbirdTheme('dark', DARK_PALETTE);

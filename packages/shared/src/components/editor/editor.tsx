@@ -1,7 +1,8 @@
 import { cn, debounce } from '@maxigarcia/js-utils';
-import { editor, Uri } from 'monaco-editor';
+import { editor as monacoEditor, Uri } from 'monaco-editor';
 import { useEffect, useRef } from 'react';
-import { EDITOR_CONSTRUCTION_OPTIONS } from './config';
+import { subscribeToColorScheme } from '../../utils/color-scheme';
+import { EDITOR_CONSTRUCTION_OPTIONS, getEditorThemeName } from './config';
 
 interface EditorProps {
   className?: string;
@@ -19,8 +20,8 @@ export function Editor({
   path,
 }: EditorProps) {
   const editorContainerRef = useRef<HTMLDivElement>(null);
-  const editorInstanceRef = useRef<editor.IStandaloneCodeEditor>(null);
-  const modelRef = useRef<editor.ITextModel>(null);
+  const editorInstanceRef = useRef<monacoEditor.IStandaloneCodeEditor>(null);
+  const modelRef = useRef<monacoEditor.ITextModel>(null);
 
   const focusEditor = () => {
     if (window === window.parent) {
@@ -34,12 +35,13 @@ export function Editor({
         ? Uri.parse(`mockingbird://editor/${crypto.randomUUID()}/${path}`)
         : undefined;
 
-      modelRef.current = editor.createModel(value, 'json', modelUri);
+      modelRef.current = monacoEditor.createModel(value, 'json', modelUri);
 
-      editorInstanceRef.current = editor.create(
+      editorInstanceRef.current = monacoEditor.create(
         editorContainerRef.current,
         {
           ...EDITOR_CONSTRUCTION_OPTIONS,
+          theme: getEditorThemeName(),
           contextmenu: false,
           readOnly,
           model: modelRef.current,
@@ -60,6 +62,12 @@ export function Editor({
         modelRef.current?.dispose();
       };
     }
+  }, []);
+
+  useEffect(() => {
+    return subscribeToColorScheme(() => {
+      monacoEditor.setTheme(getEditorThemeName());
+    });
   }, []);
 
   useEffect(() => {

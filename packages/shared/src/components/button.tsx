@@ -36,12 +36,12 @@ function BaseButton({
 }: ButtonProps) {
   const variantClasses = {
     primary: 'bg-accent text-accent-foreground hover:bg-accent-hover',
-    default: 'bg-surface text-foreground border border-surface-border hover:bg-accent/80',
+    default: 'bg-surface text-foreground border border-surface-border hover:bg-muted dark:hover:bg-accent/80 hover:border-accent',
   };
 
   const disabledClasses = {
-    primary: 'bg-accent/50 text-accent-foreground/50 hover:bg-accent/50',
-    default: 'bg-surface/50 text-foreground/50 border border-surface-border/50 hover:bg-background/50',
+    primary: 'bg-accent/60 text-accent-foreground hover:bg-accent/60',
+    default: 'bg-surface text-foreground/60 border border-surface-border hover:bg-transparent hover:border-surface-border',
   };
 
   return (

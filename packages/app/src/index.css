@@ -1,1 +1,4 @@
 @import '@maxigarcia/mockingbird-shared/mockingbird.css';
+
+@source "./**/*.{ts,tsx}";
+@source "../index.html";
