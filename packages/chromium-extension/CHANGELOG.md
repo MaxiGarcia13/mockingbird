@@ -1,3 +1,13 @@
+## 0.3.1 (2026-05-31)
+
+### 🧹 Chores
+
+- Update favicon images for app and Chromium extension ([c6289de](https://github.com/MaxiGarcia13/mockingbird/commit/c6289de))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.3.0 (2026-05-31)
 
 ### 🚀 Features

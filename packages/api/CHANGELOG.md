@@ -1,3 +1,9 @@
+## 0.9.1 (2026-05-31)
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-app to 0.9.1
+
 ## 0.9.0 (2026-05-31)
 
 ### 🧱 Updated Dependencies
