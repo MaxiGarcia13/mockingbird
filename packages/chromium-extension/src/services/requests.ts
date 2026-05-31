@@ -1,16 +1,15 @@
 import type { GetRequestsOptions, RequestData, StoredRequestData } from '@maxigarcia/mockingbird-types';
-
-const STORAGE_KEY = 'mockingbird:saved-requests';
+import { SAVED_REQUESTS_STORAGE_KEY } from '@/scripts/constants';
 
 async function readRequests(): Promise<Array<StoredRequestData>> {
-  const result = await chrome.storage.local.get(STORAGE_KEY);
-  const requests = result[STORAGE_KEY];
+  const result = await chrome.storage.local.get(SAVED_REQUESTS_STORAGE_KEY);
+  const requests = result[SAVED_REQUESTS_STORAGE_KEY];
 
   return Array.isArray(requests) ? requests : [];
 }
 
 async function writeRequests(requests: Array<StoredRequestData>): Promise<void> {
-  await chrome.storage.local.set({ [STORAGE_KEY]: requests });
+  await chrome.storage.local.set({ [SAVED_REQUESTS_STORAGE_KEY]: requests });
 }
 
 export async function getRequests(options?: GetRequestsOptions): Promise<Array<StoredRequestData>> {
