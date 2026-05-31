@@ -1,3 +1,18 @@
+## 0.8.0 (2026-05-31)
+
+### 🧹 Chores
+
+- Update favicon and mockingbird images for app and chromium extension ([613e897](https://github.com/MaxiGarcia13/mockingbird/commit/613e897))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.4.0
+- Updated @maxigarcia/mockingbird-shared to 0.6.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.7.0 (2026-05-31)
 
 ### 🚀 Features

@@ -1,3 +1,10 @@
+## 0.8.0 (2026-05-31)
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.4.0
+- Updated @maxigarcia/mockingbird-app to 0.8.0
+
 ## 0.7.0 (2026-05-31)
 
 ### 🔄 Refactors

@@ -1,3 +1,17 @@
+## 0.6.0 (2026-05-31)
+
+### 🐞 Fixes
+
+- Prevent default behavior in BaseSwitch component handlers ([fa8c83f](https://github.com/MaxiGarcia13/mockingbird/commit/fa8c83f))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.4.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.5.1 (2026-05-31)
 
 ### 🐞 Fixes
