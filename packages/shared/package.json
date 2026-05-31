@@ -38,6 +38,10 @@
       "types": "./dist/types/components/overrides-panel/index.d.ts",
       "default": "./src/components/overrides-panel/index.ts"
     },
+    "./components/saved-requests": {
+      "types": "./dist/types/components/saved-requests/index.d.ts",
+      "default": "./src/components/saved-requests/index.ts"
+    },
     "./hooks": {
       "types": "./dist/types/hooks/index.d.ts",
       "default": "./src/hooks/index.ts"
