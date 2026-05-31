@@ -6,12 +6,11 @@ import { useFetch } from '@maxigarcia/mockingbird-shared/hooks/use-fetch';
 
 type SaveRequestFormButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
   storeFn: ReturnType<typeof createRequestFormStore>;
-  fetchRequests: () => Promise<void>;
   onSave: (request: RequestData) => Promise<void>;
   onUpdate: (id: string, request: RequestData) => Promise<void>;
 };
 
-export function SaveRequestFormButton({ disabled, storeFn, fetchRequests, onSave, onUpdate, ...props }: SaveRequestFormButtonProps) {
+export function SaveRequestFormButton({ disabled, storeFn, onSave, onUpdate, ...props }: SaveRequestFormButtonProps) {
   const method = storeFn((state) => state.method);
   const url = storeFn((state) => state.url);
   const statusCode = storeFn((state) => state.statusCode);
@@ -39,7 +38,6 @@ export function SaveRequestFormButton({ disabled, storeFn, fetchRequests, onSave
     )
       .then(() => {
         reset();
-        fetchRequests();
       });
   };
 
