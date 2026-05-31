@@ -1,3 +1,26 @@
+## 0.5.1 (2026-05-31)
+
+### 🐞 Fixes
+
+- Prevent click event propagation in BaseSwitch component ([e34d756](https://github.com/MaxiGarcia13/mockingbird/commit/e34d756))
+
+### 🔄 Refactors
+
+- Remove unused fetchRequests prop from SaveRequestFormButton ([b33416b](https://github.com/MaxiGarcia13/mockingbird/commit/b33416b))
+- Update timestamp handling in request management ([99c307d](https://github.com/MaxiGarcia13/mockingbird/commit/99c307d))
+
+### 🎨 Styles
+
+- Add custom scrollbar styles to enhance UI appearance ([3a486b9](https://github.com/MaxiGarcia13/mockingbird/commit/3a486b9))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.3.1
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.5.0 (2026-05-31)
 
 ### 🚀 Features

@@ -1,3 +1,18 @@
+## 0.7.0 (2026-05-31)
+
+### 🚀 Features
+
+- Refactor SaveRequestButton and RequestForm to use async handlers ([d301845](https://github.com/MaxiGarcia13/mockingbird/commit/d301845))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.3.1
+- Updated @maxigarcia/mockingbird-shared to 0.5.1
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.6.0 (2026-05-31)
 
 ### 🔄 Refactors

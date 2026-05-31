@@ -1,3 +1,18 @@
+## 0.7.0 (2026-05-31)
+
+### 🔄 Refactors
+
+- Update timestamp handling in request management ([99c307d](https://github.com/MaxiGarcia13/mockingbird/commit/99c307d))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.3.1
+- Updated @maxigarcia/mockingbird-app to 0.7.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.6.0 (2026-05-31)
 
 ### 🧱 Updated Dependencies
