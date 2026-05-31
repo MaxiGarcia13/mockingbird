@@ -1,3 +1,13 @@
+## 0.1.1 (2026-05-31)
+
+### 🐞 Fixes
+
+- Update pageUrl in Layout.astro to use a static URL ([97fdee1](https://github.com/MaxiGarcia13/mockingbird/commit/97fdee1))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.0 (2026-05-31)
 
 ### 🚀 Features
