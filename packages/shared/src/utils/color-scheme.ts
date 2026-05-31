@@ -33,10 +33,10 @@ function systemScheme(): ColorScheme {
 let preference: ColorScheme | null = readStored();
 let configuredDefault: ColorScheme | null = null;
 
-export type ColorSchemeInitOptions = {
+export interface ColorSchemeInitOptions {
   /** Used when no value is stored in localStorage. Defaults to system preference. */
   defaultScheme?: ColorScheme;
-};
+}
 
 function fallbackScheme(): ColorScheme {
   return configuredDefault ?? systemScheme();
