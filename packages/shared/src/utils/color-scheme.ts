@@ -3,15 +3,13 @@ export type ColorScheme = 'light' | 'dark';
 const DARK_MODE_QUERY = '(prefers-color-scheme: dark)';
 const STORAGE_KEY = 'mockingbird-color-scheme';
 
-function resolveSystemColorScheme(): ColorScheme {
-  return window.matchMedia(DARK_MODE_QUERY).matches ? 'dark' : 'light';
-}
+const subscribers = new Set<(scheme: ColorScheme) => void>();
 
-function getStoredColorScheme(): ColorScheme | null {
+function readStored(): ColorScheme | null {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark') {
-      return stored;
+    const value = localStorage.getItem(STORAGE_KEY);
+    if (value === 'light' || value === 'dark') {
+      return value;
     }
   } catch {
     // localStorage may be unavailable (e.g. private browsing)
@@ -20,7 +18,7 @@ function getStoredColorScheme(): ColorScheme | null {
   return null;
 }
 
-function storeColorScheme(scheme: ColorScheme): void {
+function writeStored(scheme: ColorScheme): void {
   try {
     localStorage.setItem(STORAGE_KEY, scheme);
   } catch {
@@ -28,73 +26,66 @@ function storeColorScheme(scheme: ColorScheme): void {
   }
 }
 
-function applyColorSchemeClass(scheme: ColorScheme): void {
+function systemScheme(): ColorScheme {
+  return window.matchMedia(DARK_MODE_QUERY).matches ? 'dark' : 'light';
+}
+
+let preference: ColorScheme | null = readStored();
+
+function effectiveScheme(): ColorScheme {
+  return preference ?? systemScheme();
+}
+
+function applyToDom(scheme: ColorScheme): void {
   document.documentElement.classList.toggle('dark', scheme === 'dark');
   document.documentElement.classList.toggle('light', scheme === 'light');
 }
 
+function notifySubscribers(): void {
+  const scheme = effectiveScheme();
+  subscribers.forEach((notify) => notify(scheme));
+}
+
 export function getColorScheme(): ColorScheme {
-  if (document.documentElement.classList.contains('dark')) {
-    return 'dark';
-  }
-
-  if (document.documentElement.classList.contains('light')) {
-    return 'light';
-  }
-
-  return resolveSystemColorScheme();
+  return effectiveScheme();
 }
 
 export function setColorScheme(scheme: ColorScheme): void {
-  storeColorScheme(scheme);
-  applyColorSchemeClass(scheme);
+  preference = scheme;
+  writeStored(scheme);
+  applyToDom(scheme);
+  notifySubscribers();
 }
 
 export function toggleColorScheme(): void {
-  setColorScheme(getColorScheme() === 'dark' ? 'light' : 'dark');
+  setColorScheme(effectiveScheme() === 'dark' ? 'light' : 'dark');
+}
+
+function handleSystemSchemeChange(): void {
+  if (preference !== null) {
+    return;
+  }
+
+  applyToDom(systemScheme());
+  notifySubscribers();
 }
 
 export function initColorScheme(): () => void {
-  const stored = getStoredColorScheme();
-
-  if (stored) {
-    applyColorSchemeClass(stored);
-  } else {
-    applyColorSchemeClass(resolveSystemColorScheme());
-  }
+  preference = readStored();
+  applyToDom(effectiveScheme());
 
   const mediaQuery = window.matchMedia(DARK_MODE_QUERY);
-  const syncFromSystem = () => {
-    if (getStoredColorScheme()) {
-      return;
-    }
-
-    applyColorSchemeClass(resolveSystemColorScheme());
-  };
-
-  mediaQuery.addEventListener('change', syncFromSystem);
+  mediaQuery.addEventListener('change', handleSystemSchemeChange);
 
   return () => {
-    mediaQuery.removeEventListener('change', syncFromSystem);
+    mediaQuery.removeEventListener('change', handleSystemSchemeChange);
   };
 }
 
 export function subscribeToColorScheme(onChange: (scheme: ColorScheme) => void): () => void {
-  const handleChange = () => {
-    onChange(getColorScheme());
-  };
-
-  const mediaQuery = window.matchMedia(DARK_MODE_QUERY);
-  mediaQuery.addEventListener('change', handleChange);
-
-  const observer = new MutationObserver(handleChange);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class'],
-  });
+  subscribers.add(onChange);
 
   return () => {
-    mediaQuery.removeEventListener('change', handleChange);
-    observer.disconnect();
+    subscribers.delete(onChange);
   };
 }
