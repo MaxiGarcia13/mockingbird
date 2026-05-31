@@ -12,8 +12,8 @@ export function saveRequest(request: RequestData) {
   requests.push({
     ...request,
     id: crypto.randomUUID(),
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
     enabled: true,
   });
 
@@ -59,7 +59,7 @@ export function updateRequest(id: string, data: RequestData) {
     throw new Error('Request not found');
   }
 
-  requests[index] = { ...requests[index], ...data, updatedAt: new Date() };
+  requests[index] = { ...requests[index], ...data, updatedAt: Date.now() };
 
   writeRequests(requests);
 }

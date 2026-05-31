@@ -34,8 +34,8 @@ export interface RequestData {
 
 export interface StoredRequestData extends RequestData {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: number;
+  updatedAt: number;
   enabled: boolean;
 }
 

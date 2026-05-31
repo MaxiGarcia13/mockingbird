@@ -18,9 +18,14 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
   minute: '2-digit',
 });
 
-function formatUpdatedAt(updatedAt: Date | string): string {
-  const date = updatedAt instanceof Date ? updatedAt : new Date(updatedAt);
-  return dateFormatter.format(date);
+function formatUpdatedAt(updatedAt: number | Date | string): string {
+  try {
+    const date = updatedAt instanceof Date ? updatedAt : new Date(updatedAt);
+
+    return dateFormatter.format(date);
+  } catch {
+    return 'N/A';
+  }
 }
 
 export function SavedRequestItem({
@@ -66,8 +71,10 @@ export function SavedRequestItem({
       onClick={handleClick}
       {...props}
     >
-      <RequestMethodBadge method={method} />
-      <div className="min-w-0 flex-1">
+
+      <RequestMethodBadge method={method} className="mt-1 mb-auto" />
+
+      <div className="min-w-0 flex-1 space-y-1">
         <p className="truncate text-sm font-medium">{domain}</p>
         <p className="text-xs text-muted-foreground">{formatUpdatedAt(updatedAt)}</p>
       </div>
