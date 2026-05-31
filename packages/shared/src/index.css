@@ -47,6 +47,12 @@
   --palette-glow: rgb(167 139 250 / 0.4);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
