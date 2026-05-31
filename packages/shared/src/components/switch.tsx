@@ -33,6 +33,9 @@ function BaseSwitch({ className, id, disabled, onChange, onClick, ...props }: Sw
         disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
         className,
       )}
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
     >
       <input
         id={inputId}
