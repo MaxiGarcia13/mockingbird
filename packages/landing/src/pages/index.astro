@@ -1,0 +1,436 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CodeBlock from "../components/code-block.astro";
+
+const githubUrl = "https://github.com/MaxiGarcia13/mockingbird";
+
+const workflows = [
+  {
+    id: "extension",
+    badge: "Browser",
+    title: "Chromium extension",
+    summary:
+      "Install the extension and patch fetch on any http/https tab. No API server — mocks live in the browser and work on real sites you already have open.",
+    bestFor: [
+      "No backend setup",
+      "Wildcard URL patterns",
+      "Quick per-page testing",
+    ],
+    storage: "chrome.storage.local",
+  },
+  {
+    id: "local-app",
+    badge: "Local server",
+    title: "Web app + API",
+    summary:
+      "Run a Fastify API on localhost and manage mocks from a React app. Point your frontend at the API — matching routes return your configured responses.",
+    bestFor: [
+      "Team-shared mock files",
+      "Pathname-based matching",
+      "Persistent mocks on disk",
+    ],
+    storage: "packages/api/.mockingbird/requests.json",
+  },
+];
+
+const localSteps = [
+  {
+    title: "Install dependencies",
+    body: "Clone the repo and install once from the monorepo root.",
+    code: "git clone https://github.com/MaxiGarcia13/mockingbird.git\ncd mockingbird\nnpm install",
+  },
+  {
+    title: "Start the API",
+    body: "The Fastify server stores mocks and serves them on localhost (default port 3000).",
+    code: "npm run dev",
+  },
+  {
+    title: "Open the web app",
+    body: "In a second terminal, start the React UI to create and manage mocks.",
+    code: "npm run dev:app",
+  },
+  {
+    title: "Create a mock and enable it",
+    body: "Set method, URL, status, headers, and body in the app, then turn the mock on.",
+  },
+  {
+    title: "Point your frontend at the API",
+    body: "Send requests to http://127.0.0.1:3000/... — only the pathname is matched against your saved URL.",
+    code: "# Example: saved URL http://example.com/api/users\n# matches GET http://127.0.0.1:3000/api/users",
+    codeLabel: "Example",
+  },
+];
+
+const extensionSteps = [
+  {
+    title: "Install dependencies",
+    body: "Same as the local workflow — one npm install at the repo root.",
+    code: "git clone https://github.com/MaxiGarcia13/mockingbird.git\ncd mockingbird\nnpm install",
+  },
+  {
+    title: "Build the extension",
+    body: "Build once, or watch for changes while developing.",
+    code: "npm run build",
+  },
+  {
+    title: "Load it in Chrome",
+    body: "Open chrome://extensions, enable Developer mode, click Load unpacked, and select packages/chromium-extension/dist.",
+  },
+  {
+    title: "Add a mock on any site",
+    body: "Open an http or https page, click the Mockingbird icon, define a mock (method, URL pattern, response), and turn interception on.",
+  },
+  {
+    title: "Trigger a matching fetch",
+    body: "When your page calls fetch with a matching method and URL pattern, the extension returns your mock response. Reload the extension in Chrome after code changes.",
+    code: "# Wildcard example\n# Pattern: http://localhost*/api/*\n# Matches: http://localhost:5173/api/users",
+    codeLabel: "Example",
+  },
+];
+
+const extensionUrlExamples = [
+  {
+    pattern: "https://api.example.com/users",
+    request: "https://api.example.com/users",
+    matches: true,
+    notes: "Exact URL",
+  },
+  {
+    pattern: "https://api.example.com/users",
+    request: "https://api.example.com/users/1",
+    matches: false,
+    notes: "Path must match exactly",
+  },
+  {
+    pattern: "http://localhost*/api/*",
+    request: "http://localhost:5173/api/users",
+    matches: true,
+    notes: "Wildcard port and path",
+  },
+  {
+    pattern: "http://localhost:5173/api",
+    request: "http://localhost:3000/api",
+    matches: false,
+    notes: "Port must match when specified",
+  },
+  {
+    pattern: "https://example.*.com/*",
+    request: "https://example.test.com/foo",
+    matches: true,
+    notes: "Wildcard subdomain",
+  },
+  {
+    pattern: "https://example.com/*",
+    request: "https://example.com",
+    matches: true,
+    notes: "Trailing /* includes base URL",
+  },
+  {
+    pattern: "https://example.com?q=*&test=hola",
+    request: "https://example.com?q=foo&test=hola",
+    matches: true,
+    notes: "Wildcard query params",
+  },
+];
+---
+
+<Layout>
+  <main>
+    <section class="relative overflow-hidden px-4 py-16 pb-20 sm:px-6">
+      <div
+        class="pointer-events-none absolute inset-x-1/2 top-[-40%] size-144 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,var(--palette-glow),transparent_70%)]"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="relative mx-auto max-w-6xl text-center">
+        <img
+          class="mx-auto mb-6"
+          src="/mockingbird.png"
+          alt="Mockingbird logo"
+          width="96"
+          height="96"
+        />
+        <p
+          class="mb-3 text-[0.8125rem] font-semibold tracking-widest text-accent uppercase"
+        >
+          HTTP mocking for frontend development
+        </p>
+        <h1 class="mb-4 text-4xl leading-tight tracking-tight sm:text-5xl">
+          Mock APIs without waiting on backends
+        </h1>
+        <p class="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
+          Mockingbird lets you define HTTP responses — status, headers, body —
+          and test how your frontend behaves. Pick the workflow that fits your
+          setup: a browser extension that intercepts <code>fetch</code> on any page,
+          or a local API with a web app.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a
+            class="inline-flex items-center justify-center rounded-md bg-accent px-4.5 py-2.5 text-[0.9375rem] font-medium text-accent-foreground no-underline transition-colors hover:bg-accent-hover"
+            href="#workflows"
+          >
+            Choose a workflow
+          </a>
+          <a
+            class="inline-flex items-center justify-center rounded-md border border-surface-border bg-surface px-4.5 py-2.5 text-[0.9375rem] font-medium no-underline transition-colors hover:border-accent"
+            href={githubUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View source
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-16 sm:px-6" id="workflows">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 max-w-2xl">
+          <h2 class="mb-3 text-3xl tracking-tight">
+            Two ways to use Mockingbird
+          </h2>
+          <p class="text-muted-foreground">
+            Both workflows share the same idea — saved mocks that return fake
+            HTTP responses — but differ in where they run and how URLs are
+            matched.
+          </p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          {
+            workflows.map((workflow) => (
+              <article
+                class="flex flex-col gap-3 rounded-md border border-surface-border bg-surface p-6"
+                id={workflow.id}
+              >
+                <span class="self-start rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold tracking-wide text-accent uppercase">
+                  {workflow.badge}
+                </span>
+                <h3 class="text-xl">{workflow.title}</h3>
+                <p class="text-muted-foreground">{workflow.summary}</p>
+                <ul class="list-disc pl-4.5 text-[0.9375rem] text-muted-foreground">
+                  {workflow.bestFor.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                <p class="mt-auto flex flex-col gap-1 pt-2 text-[0.8125rem]">
+                  <span class="text-muted-foreground">Storage</span>
+                  <code class="break-all text-sm">{workflow.storage}</code>
+                </p>
+                <a
+                  class="text-sm font-medium text-accent no-underline hover:underline"
+                  href={`#${workflow.id}-steps`}
+                >
+                  See setup steps →
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="scroll-mt-16 border-y border-surface-border bg-muted/55 px-4 py-16 sm:px-6"
+      id="extension-steps"
+    >
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 max-w-2xl">
+          <p
+            class="mb-3 text-[0.8125rem] font-semibold tracking-widest text-accent uppercase"
+          >
+            Workflow 1
+          </p>
+          <h2 class="mb-3 text-3xl tracking-tight">Chromium extension</h2>
+          <p class="text-muted-foreground">
+            Best when you already have a site open in the browser and want to
+            mock fetch calls without running a local API.
+          </p>
+        </div>
+
+        <ol class="flex flex-col gap-6">
+          {
+            extensionSteps.map((step, index) => (
+              <li class="grid grid-cols-[auto_1fr] items-start gap-4 sm:gap-5">
+                <div class="grid size-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-foreground">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 class="mb-1.5 text-[1.0625rem]">{step.title}</h3>
+                  <p class="mb-3 text-muted-foreground">{step.body}</p>
+                  {step.code && (
+                    <CodeBlock code={step.code} label={step.codeLabel} />
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div
+          class="mt-8 rounded-md border border-surface-border border-l-3 border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
+        >
+          <strong class="text-foreground">URL matching:</strong> patterns support
+          <code>*</code> wildcards, query params, and trailing <code>/*</code> to
+          include the base path. Only <code>fetch</code> is intercepted.
+        </div>
+
+        <div class="mt-10">
+          <h3 class="mb-4 text-xl tracking-tight">URL pattern examples</h3>
+          <div
+            class="overflow-x-auto rounded-md border border-surface-border bg-surface"
+          >
+            <table class="w-full border-collapse text-[0.9375rem]">
+              <thead>
+                <tr class="border-b border-surface-border bg-muted/40">
+                  <th class="p-3.5 text-left font-semibold">Pattern</th>
+                  <th class="p-3.5 text-left font-semibold">Example request</th>
+                  <th class="p-3.5 text-left font-semibold">Matches</th>
+                  <th class="p-3.5 text-left font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  extensionUrlExamples.map((example) => (
+                    <tr class="border-b border-surface-border last:border-b-0">
+                      <td class="p-3.5 align-top">
+                        <code class="break-all text-sm">{example.pattern}</code>
+                      </td>
+                      <td class="p-3.5 align-top">
+                        <code class="break-all text-sm">{example.request}</code>
+                      </td>
+                      <td class="p-3.5 align-top">
+                        {example.matches ? (
+                          <span class="text-foreground">Yes</span>
+                        ) : (
+                          <span class="text-muted-foreground">No</span>
+                        )}
+                      </td>
+                      <td class="p-3.5 align-top text-muted-foreground">
+                        {example.notes}
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-mt-16 px-4 py-16 sm:px-6" id="local-app-steps">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 max-w-2xl">
+          <p
+            class="mb-3 text-[0.8125rem] font-semibold tracking-widest text-accent uppercase"
+          >
+            Workflow 2
+          </p>
+          <h2 class="mb-3 text-3xl tracking-tight">Local server + web app</h2>
+          <p class="text-muted-foreground">
+            Best when you want mocks on disk, a dedicated UI, and your frontend
+            talking to a local mock server.
+          </p>
+        </div>
+
+        <ol class="flex flex-col gap-6">
+          {
+            localSteps.map((step, index) => (
+              <li class="grid grid-cols-[auto_1fr] items-start gap-4 sm:gap-5">
+                <div class="grid size-9 place-items-center rounded-full bg-accent text-sm font-bold text-accent-foreground">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 class="mb-1.5 text-[1.0625rem]">{step.title}</h3>
+                  <p class="mb-3 text-muted-foreground">{step.body}</p>
+                  {step.code && (
+                    <CodeBlock code={step.code} label={step.codeLabel} />
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div
+          class="mt-8 rounded-md border border-surface-border border-l-3 border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
+        >
+          <strong class="text-foreground">URL matching:</strong> use full URLs when
+          saving mocks, but only the
+          <em>pathname</em> is compared — no wildcards. Trailing slashes are normalized.
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 pt-16 pb-20 sm:px-6">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 max-w-2xl">
+          <h2 class="text-3xl tracking-tight">Quick comparison</h2>
+        </div>
+
+        <div
+          class="overflow-x-auto rounded-md border border-surface-border bg-surface"
+        >
+          <table class="w-full border-collapse text-[0.9375rem]">
+            <thead>
+              <tr class="border-b border-surface-border bg-muted/40">
+                <th class="p-3.5 text-left font-semibold"></th>
+                <th class="p-3.5 text-left font-semibold">Extension</th>
+                <th class="p-3.5 text-left font-semibold">Local app + API</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-surface-border">
+                <th
+                  scope="row"
+                  class="p-3.5 text-left font-medium text-muted-foreground"
+                  >Requires local server</th
+                >
+                <td class="p-3.5">No</td>
+                <td class="p-3.5">Yes</td>
+              </tr>
+              <tr class="border-b border-surface-border">
+                <th
+                  scope="row"
+                  class="p-3.5 text-left font-medium text-muted-foreground"
+                  >Works on any website</th
+                >
+                <td class="p-3.5">Yes — http/https tabs</td>
+                <td class="p-3.5">No — point app at API host</td>
+              </tr>
+              <tr class="border-b border-surface-border">
+                <th
+                  scope="row"
+                  class="p-3.5 text-left font-medium text-muted-foreground"
+                  >URL wildcards</th
+                >
+                <td class="p-3.5">Yes</td>
+                <td class="p-3.5">No</td>
+              </tr>
+              <tr class="border-b border-surface-border">
+                <th
+                  scope="row"
+                  class="p-3.5 text-left font-medium text-muted-foreground"
+                  >Mock persistence</th
+                >
+                <td class="p-3.5">Browser profile</td>
+                <td class="p-3.5">File on disk</td>
+              </tr>
+              <tr>
+                <th
+                  scope="row"
+                  class="p-3.5 text-left font-medium text-muted-foreground"
+                  >Intercepted API</th
+                >
+                <td class="p-3.5"><code>window.fetch</code></td>
+                <td class="p-3.5">HTTP server routes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,23 @@
+{
+  "name": "@maxigarcia/mockingbird-landing",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "A landing page for Mockingbird.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist node_modules .astro"
+  },
+  "dependencies": {
+    "@maxigarcia/mockingbird-shared": "*",
+    "astro": "^6.4.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  }
+}

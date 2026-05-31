@@ -20,7 +20,8 @@
       "packages/shared",
       "packages/app",
       "packages/chromium-extension",
-      "packages/api"
+      "packages/api",
+      "packages/landing"
     ],
     "projectsRelationship": "independent",
     "releaseTag": {

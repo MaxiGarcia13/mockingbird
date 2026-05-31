@@ -12,3 +12,5 @@ dist
 tsconfig.tsbuildinfo
 
 .DS_Store
+
+.astro
