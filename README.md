@@ -44,7 +44,7 @@ See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README
 1. Build and watch the extension:
 
    ```bash
-   npm run dev:chromium-extension
+   npm run build
    ```
 
 2. In Chrome, open `chrome://extensions`, enable **Developer mode**, choose **Load unpacked**, and select `packages/chromium-extension/dist`.
