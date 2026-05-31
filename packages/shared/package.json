@@ -85,7 +85,8 @@
   },
   "dependencies": {
     "@maxigarcia/js-utils": "^1.12.0",
-    "@maxigarcia/mockingbird-types": "*"
+    "@maxigarcia/mockingbird-types": "*",
+    "@maxigarcia/view-transitions": "^0.9.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
