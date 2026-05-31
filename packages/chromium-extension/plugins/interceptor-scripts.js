@@ -4,7 +4,7 @@ import process from 'node:process';
 import { build } from 'esbuild';
 
 export function interceptorScriptsPlugin() {
-  const scriptsDir = resolve(process.cwd(), 'src/scripts');
+  const scriptsDir = resolve(process.cwd(), 'src/scripts/interceptor');
   let outDir = resolve(process.cwd(), 'dist');
 
   const collectTsFiles = (dir) => {
@@ -43,17 +43,18 @@ export function interceptorScriptsPlugin() {
   };
 
   return {
-    name: 'preview-scripts',
+    name: 'interceptor-scripts',
     configResolved(config) {
       outDir = resolve(process.cwd(), config.build.outDir);
     },
     configureServer(server) {
-      server.middlewares.use('/src/scripts', async (req, _res, next) => {
+      server.middlewares.use('/src/scripts/interceptor', async (req, _res, next) => {
         const res = _res;
         const requestPath = req.url?.split('?')[0] ?? '';
         const requestedFilePath = join(scriptsDir, requestPath);
 
-        if (extname(requestedFilePath) !== '.js') {
+        const isTestFile = requestedFilePath.includes('.test.') || requestedFilePath.includes('.spec.');
+        if (extname(requestedFilePath) !== '.js' || isTestFile) {
           next();
           return;
         }
@@ -79,7 +80,7 @@ export function interceptorScriptsPlugin() {
       if (!existsSync(scriptsDir))
         return;
 
-      const outputDir = join(outDir, 'scripts');
+      const outputDir = join(outDir, 'scripts/interceptor');
       const scriptFiles = collectTsFiles(scriptsDir);
 
       mkdirSync(outputDir, { recursive: true });
