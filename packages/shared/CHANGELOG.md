@@ -1,3 +1,13 @@
+## 0.5.0 (2026-05-31)
+
+### 🚀 Features
+
+- Add Saved Requests components and update package.json ([c59af3c](https://github.com/MaxiGarcia13/mockingbird/commit/c59af3c))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.4.0 (2026-05-31)
 
 ### 🚀 Features

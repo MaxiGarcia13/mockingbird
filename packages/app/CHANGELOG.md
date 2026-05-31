@@ -1,3 +1,17 @@
+## 0.6.0 (2026-05-31)
+
+### 🔄 Refactors
+
+- Simplify Saved Requests components by integrating shared components ([06ef338](https://github.com/MaxiGarcia13/mockingbird/commit/06ef338))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-shared to 0.5.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.5.0 (2026-05-31)
 
 ### 🚀 Features
