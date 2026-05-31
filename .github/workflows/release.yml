@@ -8,12 +8,12 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  lint:
+  build-lint-test:
     if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'chore(release):')
-    uses: ./.github/workflows/lint.yml
+    uses: ./.github/workflows/build-lint-test.yml
 
   release:
-    needs: lint
+    needs: build-lint-test
     name: Release
     runs-on: ubuntu-latest
     permissions:
@@ -30,7 +30,7 @@ jobs:
         with:
           cache: npm
           node-version: 24
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - run: npm ci
 

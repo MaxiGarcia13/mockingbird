@@ -8,6 +8,5 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint
-    uses: ./.github/workflows/lint.yml
+  build-lint-test:
+    uses: ./.github/workflows/build-lint-test.yml
