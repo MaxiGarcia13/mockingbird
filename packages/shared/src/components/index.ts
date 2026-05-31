@@ -8,4 +8,5 @@ export * from './select';
 export * from './skeleton';
 export * from './switch';
 export * from './tabs';
+export * from './theme-toggle-button';
 export * from './tooltip';

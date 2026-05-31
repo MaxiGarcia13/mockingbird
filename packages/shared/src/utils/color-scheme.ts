@@ -1,9 +1,36 @@
 export type ColorScheme = 'light' | 'dark';
 
 const DARK_MODE_QUERY = '(prefers-color-scheme: dark)';
+const STORAGE_KEY = 'mockingbird-color-scheme';
 
 function resolveSystemColorScheme(): ColorScheme {
   return window.matchMedia(DARK_MODE_QUERY).matches ? 'dark' : 'light';
+}
+
+function getStoredColorScheme(): ColorScheme | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'light' || stored === 'dark') {
+      return stored;
+    }
+  } catch {
+    // localStorage may be unavailable (e.g. private browsing)
+  }
+
+  return null;
+}
+
+function storeColorScheme(scheme: ColorScheme): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, scheme);
+  } catch {
+    // ignore write failures
+  }
+}
+
+function applyColorSchemeClass(scheme: ColorScheme): void {
+  document.documentElement.classList.toggle('dark', scheme === 'dark');
+  document.documentElement.classList.toggle('light', scheme === 'light');
 }
 
 export function getColorScheme(): ColorScheme {
@@ -18,20 +45,37 @@ export function getColorScheme(): ColorScheme {
   return resolveSystemColorScheme();
 }
 
-export function initColorScheme(): () => void {
-  const syncColorSchemeClass = () => {
-    const scheme = resolveSystemColorScheme();
-    document.documentElement.classList.toggle('dark', scheme === 'dark');
-    document.documentElement.classList.remove('light');
-  };
+export function setColorScheme(scheme: ColorScheme): void {
+  storeColorScheme(scheme);
+  applyColorSchemeClass(scheme);
+}
 
-  syncColorSchemeClass();
+export function toggleColorScheme(): void {
+  setColorScheme(getColorScheme() === 'dark' ? 'light' : 'dark');
+}
+
+export function initColorScheme(): () => void {
+  const stored = getStoredColorScheme();
+
+  if (stored) {
+    applyColorSchemeClass(stored);
+  } else {
+    applyColorSchemeClass(resolveSystemColorScheme());
+  }
 
   const mediaQuery = window.matchMedia(DARK_MODE_QUERY);
-  mediaQuery.addEventListener('change', syncColorSchemeClass);
+  const syncFromSystem = () => {
+    if (getStoredColorScheme()) {
+      return;
+    }
+
+    applyColorSchemeClass(resolveSystemColorScheme());
+  };
+
+  mediaQuery.addEventListener('change', syncFromSystem);
 
   return () => {
-    mediaQuery.removeEventListener('change', syncColorSchemeClass);
+    mediaQuery.removeEventListener('change', syncFromSystem);
   };
 }
 
