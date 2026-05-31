@@ -3,6 +3,7 @@ import { Brand } from '@maxigarcia/mockingbird-shared/components/brand';
 import { GithubLink } from '@maxigarcia/mockingbird-shared/components/github-link';
 import { useState } from 'react';
 import { version } from '../../package.json';
+import { InterceptToggle } from './intercept-toggle';
 import { RequestForm } from './request-form';
 import { SavedRequestsList } from './saved-requests/saved-requests-list';
 
@@ -14,6 +15,9 @@ export function App() {
         <div className="flex items-center gap-4">
           <Brand />
           <GithubLink version={version} />
+          <div className="ml-auto">
+            <InterceptToggle />
+          </div>
         </div>
         <AppDescription />
       </header>

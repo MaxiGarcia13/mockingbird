@@ -13,5 +13,18 @@
   },
   "permissions": [
     "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/fetch-interceptor.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/bridge.js"],
+      "run_at": "document_start"
+    }
   ]
 }
