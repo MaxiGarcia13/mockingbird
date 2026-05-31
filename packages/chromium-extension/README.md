@@ -26,10 +26,10 @@ Saved URL patterns support `*` wildcards, path-only patterns (e.g. `/api/*`), op
 
 ### Storage keys
 
-| Key | Purpose |
-| --- | --- |
-| `mockingbird:intercept-active` | Global on/off for interception |
-| `mockingbird:saved-requests` | Array of saved mock definitions |
+| Key                            | Purpose                         |
+| ------------------------------ | ------------------------------- |
+| `mockingbird:intercept-active` | Global on/off for interception  |
+| `mockingbird:saved-requests`   | Array of saved mock definitions |
 
 Types live in `@maxigarcia/mockingbird-types`.
 
@@ -72,12 +72,12 @@ npm run dev
 
 ## Scripts
 
-| Script | Description |
-| --- | --- |
-| `npm run dev` | Watch build into `dist/` |
-| `npm run build` | Typecheck (`tsc`) and production build |
-| `npm run test:unit` | Vitest (e.g. URL matching) |
-| `npm run clean` | Remove `dist/` and `node_modules/` |
+| Script              | Description                            |
+| ------------------- | -------------------------------------- |
+| `npm run dev`       | Watch build into `dist/`               |
+| `npm run build`     | Typecheck (`tsc`) and production build |
+| `npm run test:unit` | Vitest (e.g. URL matching)             |
+| `npm run clean`     | Remove `dist/` and `node_modules/`     |
 
 ## Limitations
 
