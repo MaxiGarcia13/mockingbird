@@ -35,8 +35,8 @@ export async function saveRequest({ method, url, statusCode, headers, body }: Re
     headers,
     body,
     id: crypto.randomUUID(),
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
     enabled: true,
   });
 
@@ -53,7 +53,7 @@ export async function updateRequest(id: StoredRequestData['id'], data: UpdateReq
     throw new Error('Request not found');
   }
 
-  requests[index] = { ...requests[index], ...data, updatedAt: new Date() };
+  requests[index] = { ...requests[index], ...data, updatedAt: Date.now() };
 
   await writeRequests(requests);
 }
