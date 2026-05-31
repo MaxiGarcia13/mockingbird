@@ -1,3 +1,28 @@
+## 0.5.0 (2026-05-31)
+
+### 🚀 Features
+
+- Add FetcherButton component and integrate it into SavedRequestItem ([331bdca](https://github.com/MaxiGarcia13/mockingbird/commit/331bdca))
+- Refactor SaveRequestButton to use SaveRequestFormButton component ([7113bb8](https://github.com/MaxiGarcia13/mockingbird/commit/7113bb8))
+- Introduce OverridesPanel and RequestEditor components in shared package ([5c8dd46](https://github.com/MaxiGarcia13/mockingbird/commit/5c8dd46))
+
+### 🐞 Fixes
+
+- Update import path for useFetch hook in saved-request-item component ([6143217](https://github.com/MaxiGarcia13/mockingbird/commit/6143217))
+
+### 🧹 Chores
+
+- Remove RequestMethodBadge component and update imports in saved-request-item ([b2bc30c](https://github.com/MaxiGarcia13/mockingbird/commit/b2bc30c))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.3.0
+- Updated @maxigarcia/mockingbird-shared to 0.4.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.4.0 (2026-05-29)
 
 ### 🚀 Features

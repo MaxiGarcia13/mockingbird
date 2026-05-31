@@ -1,3 +1,7 @@
+## 0.3.0 (2026-05-31)
+
+This was a version bump only for @maxigarcia/mockingbird-types to align it with other projects, there were no code changes.
+
 ## 0.2.2 (2026-05-29)
 
 ### 🧹 Chores

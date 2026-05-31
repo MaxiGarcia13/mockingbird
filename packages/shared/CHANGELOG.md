@@ -1,3 +1,29 @@
+## 0.4.0 (2026-05-31)
+
+### 🚀 Features
+
+- Add FetcherButton component and integrate it into SavedRequestItem ([331bdca](https://github.com/MaxiGarcia13/mockingbird/commit/331bdca))
+- Refactor SaveRequestButton to use SaveRequestFormButton component ([7113bb8](https://github.com/MaxiGarcia13/mockingbird/commit/7113bb8))
+- Enhance Select component with ChevronDownIcon and improve layout ([8617b57](https://github.com/MaxiGarcia13/mockingbird/commit/8617b57))
+- Introduce OverridesPanel and RequestEditor components in shared package ([5c8dd46](https://github.com/MaxiGarcia13/mockingbird/commit/5c8dd46))
+
+### 🧹 Chores
+
+- Remove path aliases from shared tsconfig.json ([c831f83](https://github.com/MaxiGarcia13/mockingbird/commit/c831f83))
+- Remove unused hooks and utility functions ([2e36aab](https://github.com/MaxiGarcia13/mockingbird/commit/2e36aab))
+
+### 🎨 Styles
+
+- Update CSS for chromium-extension and enhance package.json ([63d9fd6](https://github.com/MaxiGarcia13/mockingbird/commit/63d9fd6))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.3.0
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.3.0 (2026-05-29)
 
 ### 🚀 Features
