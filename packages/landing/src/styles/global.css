@@ -12,6 +12,7 @@
 
 .code-block-content pre {
   margin: 0;
+  min-width: 0;
   padding: 0.875rem 1rem;
   background: var(--palette-muted);
   font-size: 0.8125rem;
@@ -19,6 +20,9 @@
 }
 
 .code-block-content code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
   color: var(--palette-foreground);
   white-space: pre;
