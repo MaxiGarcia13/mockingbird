@@ -31,9 +31,19 @@ function systemScheme(): ColorScheme {
 }
 
 let preference: ColorScheme | null = readStored();
+let configuredDefault: ColorScheme | null = null;
+
+export type ColorSchemeInitOptions = {
+  /** Used when no value is stored in localStorage. Defaults to system preference. */
+  defaultScheme?: ColorScheme;
+};
+
+function fallbackScheme(): ColorScheme {
+  return configuredDefault ?? systemScheme();
+}
 
 function effectiveScheme(): ColorScheme {
-  return preference ?? systemScheme();
+  return preference ?? fallbackScheme();
 }
 
 function applyToDom(scheme: ColorScheme): void {
@@ -62,7 +72,7 @@ export function toggleColorScheme(): void {
 }
 
 function handleSystemSchemeChange(): void {
-  if (preference !== null) {
+  if (preference !== null || configuredDefault !== null) {
     return;
   }
 
@@ -70,7 +80,8 @@ function handleSystemSchemeChange(): void {
   notifySubscribers();
 }
 
-export function initColorScheme(): () => void {
+export function initColorScheme(options?: ColorSchemeInitOptions): () => void {
+  configuredDefault = options?.defaultScheme ?? null;
   preference = readStored();
   applyToDom(effectiveScheme());
 

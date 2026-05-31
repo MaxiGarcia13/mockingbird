@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@maxigarcia/mockingbird-shared": "*",
+    "@maxigarcia/view-transitions": "^0.9.0",
     "astro": "^6.4.2"
   },
   "devDependencies": {
