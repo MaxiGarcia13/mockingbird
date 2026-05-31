@@ -5,8 +5,10 @@ body {
   width: 800px;
   height: 480px;
   margin: 0;
+  overflow: hidden;
 }
 
 #root {
   height: inherit;
+  overflow: hidden;
 }
