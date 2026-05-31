@@ -21,15 +21,9 @@ npm install
    npm run dev
    ```
 
-2. In another terminal, start the web UI:
+2. Open the app, create a mock (method, URL, status, headers, body), and enable it.
 
-   ```bash
-   npm run dev:app
-   ```
-
-3. Open the app, create a mock (method, URL, status, headers, body), and enable it.
-
-4. Point your frontend at the API base URL (e.g. `http://127.0.0.1:3000`). Enabled mocks are served for matching routes.
+3. Point your frontend at the API base URL (e.g. `http://127.0.0.1:3000`). Enabled mocks are served for matching routes.
 
 Mocks are persisted in `packages/api/.mockingbird/requests.json`. Use port `3000` or set `PORT` in `.env`.
 
