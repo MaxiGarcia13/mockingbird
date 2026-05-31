@@ -7,12 +7,16 @@ interface Props {
   description?: string;
 }
 
+const siteName = "Mockingbird";
+const githubUrl = packageJson.homepage;
+
 const {
-  title = "Mockingbird — HTTP mocking for frontend development",
-  description = "Define mock HTTP responses and test frontend behavior without real backends. Use the local API + web app, or the Chromium extension.",
+  title = `${siteName} — HTTP mocking for API debugging`,
+  description = packageJson.description,
 } = Astro.props;
 
-const githubUrl = packageJson.homepage;
+const pageUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const imageUrl = new URL("/mockingbird.png", pageUrl).href;
 ---
 
 <!doctype html>
@@ -20,9 +24,22 @@ const githubUrl = packageJson.homepage;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:url" content={pageUrl} />
   </head>
   <body class="min-h-dvh antialiased">
     <div class="flex min-h-dvh flex-col">
@@ -102,7 +119,7 @@ const githubUrl = packageJson.homepage;
       </footer>
     </div>
     <script>
-      import '../scripts/code-block-copy.ts';
+      import "../scripts/code-block-copy.ts";
     </script>
   </body>
 </html>

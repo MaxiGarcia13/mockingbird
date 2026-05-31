@@ -45,6 +45,10 @@
     "bump-version": "nx release --skip-publish",
     "test:unit": "nx run-many -t test:unit"
   },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  },
   "devDependencies": {
     "@eslint-react/eslint-plugin": "^3.0.0",
     "@maxigarcia/eslint-config": "^1.8.0",
@@ -54,9 +58,5 @@
     "nx": "^22.7.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0"
   }
 }
