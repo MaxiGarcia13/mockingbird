@@ -4,8 +4,8 @@ on:
   workflow_call:
 
 jobs:
-  lint:
-    name: Lint
+  build-lint-test:
+    name: Build & Lint & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
