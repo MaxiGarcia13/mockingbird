@@ -1,10 +1,13 @@
 import { AppDescription } from '@maxigarcia/mockingbird-shared/components/app-description';
 import { Brand } from '@maxigarcia/mockingbird-shared/components/brand';
 import { GithubLink } from '@maxigarcia/mockingbird-shared/components/github-link';
+import { useState } from 'react';
 import { version } from '../../package.json';
 import { RequestForm } from './request-form';
+import { SavedRequestsList } from './saved-requests/saved-requests-list';
 
 export function App() {
+  const [displayList, setDisplayList] = useState(true);
   return (
     <>
       <header className="space-y-4 p-4">
@@ -14,9 +17,18 @@ export function App() {
         </div>
         <AppDescription />
       </header>
-      <section className="flex h-full flex-col gap-4 overflow-hidden p-4">
-        <RequestForm />
-      </section>
+      {
+        displayList
+          ? (
+              <SavedRequestsList
+                onNewRequest={() => setDisplayList(false)}
+                onRequestClick={() => setDisplayList(false)}
+              />
+            )
+          : (
+              <RequestForm onBackToList={() => setDisplayList(true)} />
+            )
+      }
     </>
   );
 }
