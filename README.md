@@ -31,11 +31,11 @@ Mocks are persisted in `packages/api/.mockingbird/requests.json`. Use port `3000
 
 Use full `http://127.0.0.1:<port>/...` URLs. Only the **pathname** is matched — no wildcards.
 
-| Saved URL                           | Matches                                                 |
-| ----------------------------------- | ------------------------------------------------------- |
-| `http://127.0.0.1:3000/api/users`   | `GET http://127.0.0.1:3000/api/users`                   |
-| `http://127.0.0.1:3000/api/users/1` | `GET http://127.0.0.1:3000/api/users/1`                 |
-| `http://127.0.0.1:3000/api/users`   | `GET http://127.0.0.1:3000/api/users/` (trailing slash) |
+| Saved URL                        | Matches                                                 |
+| -------------------------------- | ------------------------------------------------------- |
+| `http://example.com/api/users`   | `GET http://127.0.0.1:3000/api/users`                   |
+| `http://example.com/api/users/1` | `GET http://127.0.0.1:3000/api/users/1`                 |
+| `http://example.com/api/users`   | `GET http://127.0.0.1:3000/api/users/` (trailing slash) |
 
 See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README.md`](packages/app/README.md) for details.
 
