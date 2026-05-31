@@ -34,6 +34,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "nx run-many -t build",
+    "build:landing": "nx run mockingbird-landing:build",
     "dev": "nx run mockingbird-api:dev",
     "dev:app": "nx run mockingbird-app:dev",
     "dev:chromium-extension": "nx run mockingbird-chromium-extension:dev",
