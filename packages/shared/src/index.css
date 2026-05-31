@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@maxigarcia/view-transitions/circular-reveal.css';
 
 @source "./**/*.{ts,tsx}";
 
@@ -45,14 +46,18 @@
   --palette-glow: light-dark(rgb(183 159 255 / 0.35), rgb(183 159 255 / 0.42));
 }
 
-:root.dark {
-  color-scheme: dark;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
   }
+}
+
+:root.light {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
 }
 
 html {
