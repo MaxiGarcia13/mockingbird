@@ -33,6 +33,16 @@ npm install
 
 Mocks are persisted in `packages/api/.mockingbird/requests.json`. Use port `3000` or set `PORT` in `.env`.
 
+### URL examples (local API)
+
+Use full `http://127.0.0.1:<port>/...` URLs. Only the **pathname** is matched — no wildcards.
+
+| Saved URL                           | Matches                                                 |
+| ----------------------------------- | ------------------------------------------------------- |
+| `http://127.0.0.1:3000/api/users`   | `GET http://127.0.0.1:3000/api/users`                   |
+| `http://127.0.0.1:3000/api/users/1` | `GET http://127.0.0.1:3000/api/users/1`                 |
+| `http://127.0.0.1:3000/api/users`   | `GET http://127.0.0.1:3000/api/users/` (trailing slash) |
+
 See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README.md`](packages/app/README.md) for details.
 
 ## Chromium extension
@@ -50,6 +60,20 @@ See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README
 4. Trigger a matching `fetch` from the page — the extension returns your configured response.
 
 After code changes, reload the extension in Chrome. Mocks are stored in `chrome.storage.local` for your browser profile.
+
+### URL examples (extension)
+
+Patterns support `*` wildcards. A trailing `/*` also matches the base URL without a path segment.
+
+| Pattern                             | Example request                       | Matches                         |
+| ----------------------------------- | ------------------------------------- | ------------------------------- |
+| `https://api.example.com/users`     | `https://api.example.com/users`       | Exact URL                       |
+| `https://api.example.com/users`     | `https://api.example.com/users/1`     | No — path must match            |
+| `http://localhost*/api/*`           | `http://localhost:5173/api/users`     | Any localhost port              |
+| `http://localhost:5173/api`         | `http://localhost:3000/api`           | No — port is fixed              |
+| `https://example.*.com/*`           | `https://example.test.com/foo`        | Wildcard subdomain              |
+| `https://example.com/*`             | `https://example.com`                 | Trailing `/*` includes base URL |
+| `https://example.com?q=*&test=hola` | `https://example.com?q=foo&test=hola` | Query param wildcards           |
 
 See [`packages/chromium-extension/README.md`](packages/chromium-extension/README.md) for architecture, URL matching, and limitations.
 

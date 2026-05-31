@@ -22,7 +22,23 @@ Interceptor scripts are bundled separately from the popup (esbuild IIFE via the 
 
 ### URL matching
 
-Saved URL patterns support `*` wildcards, path-only patterns (e.g. `/api/*`), optional query matching, and trailing `/*` to include the base path. See `src/utils/url-match.ts` and its unit tests for behavior.
+Saved URL patterns support `*` wildcards, optional query matching, and trailing `/*` to include the base path. URL hashes are ignored when matching.
+
+| Pattern                             | Example request                       | Matches | Notes                                   |
+| ----------------------------------- | ------------------------------------- | ------- | --------------------------------------- |
+| `https://api.example.com/users`     | `https://api.example.com/users`       | Yes     | Exact URL                               |
+| `https://api.example.com/users`     | `https://api.example.com/users/`      | Yes     | Trailing slash ignored                  |
+| `https://api.example.com/users`     | `https://api.example.com/users/1`     | No      | Path must match exactly                 |
+| `http://localhost*/api/*`           | `http://localhost:5173/api/users`     | Yes     | `*` matches any localhost port and path |
+| `http://localhost:5173/api`         | `http://localhost:5173/api`           | Yes     | Explicit port required                  |
+| `http://localhost:5173/api`         | `http://localhost:3000/api`           | No      | Port must match when specified          |
+| `https://example.*.com/*`           | `https://example.test.com`            | Yes     | Wildcard subdomain                      |
+| `https://example.*.com/*`           | `https://example.test.com/foo`        | Yes     | Trailing `/*` matches nested paths      |
+| `https://example.com/*`             | `https://example.com`                 | Yes     | Trailing `/*` includes base URL         |
+| `https://example.com?q=*&test=hola` | `https://example.com?q=foo&test=hola` | Yes     | `*` in query values                     |
+| `https://example.com/api`           | `https://example.com/api#section`     | Yes     | Hash is ignored                         |
+
+See `src/utils/url-match.ts` and its unit tests for full behavior.
 
 ### Storage keys
 
