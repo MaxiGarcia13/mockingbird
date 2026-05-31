@@ -19,7 +19,7 @@
       "packages/types",
       "packages/shared",
       "packages/app",
-      "!packages/chromium-extension",
+      "packages/chromium-extension",
       "packages/api"
     ],
     "projectsRelationship": "independent",
