@@ -1,6 +1,6 @@
 import type { StoredRequestData } from '@maxigarcia/mockingbird-types';
 import { tryParseJson } from '@maxigarcia/js-utils';
-import { matchesUrlPattern } from '../utils/url-match';
+import { matchesUrlPattern } from '../../utils/url-match';
 import { INTERCEPT_ACTIVATION_EVENT, SAVED_REQUESTS_SYNC_EVENT } from './constants';
 
 const originalFetch = window.fetch.bind(window);

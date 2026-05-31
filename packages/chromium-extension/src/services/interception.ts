@@ -1,4 +1,4 @@
-import { INTERCEPT_ACTIVE_STORAGE_KEY } from '@/scripts/constants';
+import { INTERCEPT_ACTIVE_STORAGE_KEY } from '@/scripts/interceptor/constants';
 
 export async function isInterceptActive(): Promise<boolean> {
   const result = await chrome.storage.local.get(INTERCEPT_ACTIVE_STORAGE_KEY);
