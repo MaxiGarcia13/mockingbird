@@ -1,17 +1,57 @@
 # Mockingbird
 
-Mockingbird is an HTTP mocking tool for development. Define mock responses (status, headers, body) and test frontend behavior without relying on real backends.
+HTTP mocking tool for development. Define mock responses (status, headers, body) and test frontend behavior without real backends.
 
-You can use it in two ways:
+Two workflows:
 
-- **Local server + web app** — A Fastify API stores mocks and intercepts traffic pointed at localhost. The React app manages saved requests.
+- **Local server + web app** — Fastify API stores mocks and serves them on localhost. React app manages saved requests.
 - **Chromium extension** — Mocks live in the browser and patch `window.fetch` on any `http://` or `https://` tab. No API server required.
 
-## Purpose
+## Setup
 
-- Speed up local development and debugging.
-- Simulate endpoints with custom status codes, headers, and bodies.
-- Keep tests deterministic with predictable responses.
+```bash
+npm install
+```
+
+## Local server + web app
+
+1. Start the API (default `http://127.0.0.1:3000`):
+
+   ```bash
+   npm run dev
+   ```
+
+2. In another terminal, start the web UI:
+
+   ```bash
+   npm run dev:app
+   ```
+
+3. Open the app, create a mock (method, URL, status, headers, body), and enable it.
+
+4. Point your frontend at the API base URL (e.g. `http://127.0.0.1:3000`). Enabled mocks are served for matching routes.
+
+Mocks are persisted in `packages/api/.mockingbird/requests.json`. Use port `3000` or set `PORT` in `.env`.
+
+See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README.md`](packages/app/README.md) for details.
+
+## Chromium extension
+
+1. Build and watch the extension:
+
+   ```bash
+   npm run dev:chromium-extension
+   ```
+
+2. In Chrome, open `chrome://extensions`, enable **Developer mode**, choose **Load unpacked**, and select `packages/chromium-extension/dist`.
+
+3. Open any `http://` or `https://` page, click the Mockingbird icon, add a mock, and turn interception **on**.
+
+4. Trigger a matching `fetch` from the page — the extension returns your configured response.
+
+After code changes, reload the extension in Chrome. Mocks are stored in `chrome.storage.local` for your browser profile.
+
+See [`packages/chromium-extension/README.md`](packages/chromium-extension/README.md) for architecture, URL matching, and limitations.
 
 ## Monorepo structure
 
@@ -23,38 +63,14 @@ You can use it in two ways:
 | [`packages/shared`](packages/shared/)                         | Shared React components and utilities.                              |
 | [`packages/types`](packages/types/)                           | Shared TypeScript types.                                            |
 
-## Local setup
+## Scripts
 
-1. Install dependencies:
-   - `npm install`
-2. Choose a workflow:
-
-### API + web app
-
-1. Start the API:
-   - `npm run dev`
-2. (Optional) Start the app:
-   - `npm run dev:app`
-
-See [`packages/api/README.md`](packages/api/README.md) and [`packages/app/README.md`](packages/app/README.md) for details.
-
-### Chromium extension
-
-1. Build and watch the extension:
-   - `npm run dev:chromium-extension`
-2. Load `packages/chromium-extension/dist` as an unpacked extension in Chrome (`chrome://extensions` → Developer mode → Load unpacked).
-
-See [`packages/chromium-extension/README.md`](packages/chromium-extension/README.md) for architecture, URL matching, and limitations.
-
-## Other scripts
-
-| Script              | Description                                |
-| ------------------- | ------------------------------------------ |
-| `npm run build`     | Build all packages                         |
-| `npm run start`     | Build, then run the API in production mode |
-| `npm run test:unit` | Run unit tests across packages             |
-| `npm run lint`      | Lint the monorepo                          |
-
-## Local-only note
-
-The **API + web app** workflow is for local testing. Point traffic at loopback (for example `127.0.0.1` on port `3000`, or the port in `.env`). The extension runs entirely in the browser; mocks are stored in `chrome.storage.local` for your profile.
+| Script                           | Description                                |
+| -------------------------------- | ------------------------------------------ |
+| `npm run dev`                    | Start the local API in dev mode            |
+| `npm run dev:app`                | Start the web UI in dev mode               |
+| `npm run dev:chromium-extension` | Watch-build the Chromium extension         |
+| `npm run build`                  | Build all packages                         |
+| `npm run start`                  | Build, then run the API in production mode |
+| `npm run test:unit`              | Run unit tests across packages             |
+| `npm run lint`                   | Lint the monorepo                          |
