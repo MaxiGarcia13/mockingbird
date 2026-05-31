@@ -1,3 +1,17 @@
+## 0.2.0 (2026-05-31)
+
+### 🚀 Features
+
+- Add README for Chromium extension with detailed usage and project structure ([516953c](https://github.com/MaxiGarcia13/mockingbird/commit/516953c))
+
+### 📚 Documentation
+
+- Update README.md for Chromium extension to improve table formatting ([736d8d4](https://github.com/MaxiGarcia13/mockingbird/commit/736d8d4))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.1.0 (2026-05-31)
 
 ### 🚀 Features
