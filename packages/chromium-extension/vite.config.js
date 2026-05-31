@@ -19,6 +19,9 @@ export default defineConfig({
     },
     dedupe: ['monaco-editor', 'react', 'react-dom'],
   },
+  test: {
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+  },
   build: {
     rollupOptions: {
       input: {
