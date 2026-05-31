@@ -10,25 +10,23 @@ export function App() {
   const [displayList, setDisplayList] = useState(true);
   return (
     <>
-      <header className="space-y-4 p-4">
+      <header className="shrink-0 space-y-4 p-4">
         <div className="flex items-center gap-4">
           <Brand />
           <GithubLink version={version} />
         </div>
         <AppDescription />
       </header>
-      {
-        displayList
-          ? (
-              <SavedRequestsList
-                onNewRequest={() => setDisplayList(false)}
-                onRequestClick={() => setDisplayList(false)}
-              />
-            )
-          : (
-              <RequestForm onBackToList={() => setDisplayList(true)} />
-            )
-      }
+      {displayList
+        ? (
+            <SavedRequestsList
+              onNewRequest={() => setDisplayList(false)}
+              onRequestClick={() => setDisplayList(false)}
+            />
+          )
+        : (
+            <RequestForm onBackToList={() => setDisplayList(true)} />
+          )}
     </>
   );
 }

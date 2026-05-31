@@ -10,12 +10,19 @@ interface RequestFormProps {
 }
 
 export function RequestForm({ onBackToList }: RequestFormProps) {
+  const reset = useRequestFormStore((state) => state.reset);
+
+  const handleBackToList = () => {
+    reset();
+    onBackToList();
+  };
+
   return (
-    <section className="flex h-full flex-col gap-4 overflow-hidden p-4">
+    <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-4">
       <RequestEditor storeFn={useRequestFormStore} />
       <OverridesPanel storeFn={useRequestFormStore} className="flex-1 overflow-hidden" />
       <div className="flex justify-end gap-2">
-        <Button onClick={onBackToList}>Back to list</Button>
+        <Button onClick={handleBackToList}>Back to list</Button>
 
         <SaveRequestFormButton
           className="w-full max-w-32"

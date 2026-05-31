@@ -15,14 +15,15 @@ export function SavedRequestsList({ onNewRequest, onRequestClick }: SavedRequest
   const setRequest = useRequestFormStore((state) => state.setRequest);
 
   return (
-    <section className="space-y-4 overflow-hidden py-1">
-      <div className="flex justify-end px-4">
+    <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden py-1">
+      <div className="flex shrink-0 justify-end px-4">
         <Button onClick={onNewRequest} className="gap-2">
           <PlusIcon className="size-4" />
           New request
         </Button>
       </div>
       <SharedSavedRequestsList
+        className="min-h-0 flex-1"
         storeFn={useSavedRequestsStore}
         ItemComponent={(props) => (
           <SavedRequestItem
