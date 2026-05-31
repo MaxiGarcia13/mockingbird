@@ -36,6 +36,7 @@ function BaseSwitch({ className, id, disabled, onChange, onClick, ...props }: Sw
       onClick={(event) => {
         event.stopPropagation();
       }}
+
     >
       <input
         id={inputId}
@@ -44,16 +45,15 @@ function BaseSwitch({ className, id, disabled, onChange, onClick, ...props }: Sw
         disabled={disabled}
         className="peer sr-only"
         onChange={(event) => {
-          event.preventDefault();
           onChange?.(event.target.checked);
           event.stopPropagation();
         }}
         onClick={(event) => {
-          event.preventDefault();
           onClick?.(event);
           event.stopPropagation();
         }}
-        onKeyDown={onPressEnter(() => {
+        onKeyDown={onPressEnter((event) => {
+          event.preventDefault();
           onChange?.(!props.checked);
         })}
         {...props}
