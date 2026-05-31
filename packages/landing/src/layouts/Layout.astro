@@ -15,7 +15,7 @@ const {
   description = packageJson.description,
 } = Astro.props;
 
-const pageUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const pageUrl = "https://mockingbird-landing.vercel.app";
 const imageUrl = new URL("/mockingbird.png", pageUrl).href;
 ---
 
