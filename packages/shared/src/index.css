@@ -56,3 +56,25 @@ body {
   color: var(--palette-foreground);
   font-family: var(--font-sans);
 }
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track (the background) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle (the part you grab) */
+::-webkit-scrollbar-thumb {
+  background: var(--palette-glow);
+  border-radius: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--palette-accent);
+}
