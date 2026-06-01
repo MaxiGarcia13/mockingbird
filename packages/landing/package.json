@@ -1,7 +1,7 @@
 {
   "name": "@maxigarcia/mockingbird-landing",
   "type": "module",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A landing page for Mockingbird.",
   "scripts": {
     "dev": "astro dev",

@@ -1,3 +1,21 @@
+## 0.3.0 (2026-06-01)
+
+### 🚀 Features
+
+- Add extension steps, URL examples, and local steps data ([8fb9ebb](https://github.com/MaxiGarcia13/mockingbird/commit/8fb9ebb))
+
+### 🐞 Fixes
+
+- Correct pageUrl in Layout.astro for accurate site access ([23b9d8b](https://github.com/MaxiGarcia13/mockingbird/commit/23b9d8b))
+
+### 🎨 Styles
+
+- Standardize string quotes in data files ([f6f1e8b](https://github.com/MaxiGarcia13/mockingbird/commit/f6f1e8b))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.2.1 (2026-05-31)
 
 ### 🎨 Styles
