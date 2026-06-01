@@ -5,17 +5,19 @@ interface Props {
 }
 
 const { code, label = 'Terminal' } = Astro.props;
-const trimmedCode = code.trimEnd();
+const trimmedCode = code.trim();
 ---
 
 <figure
-  class="w-full min-w-0 max-w-full overflow-hidden rounded-md border border-surface-border bg-muted"
+  class="w-full max-w-full min-w-0 overflow-hidden rounded-md border border-surface-border bg-muted"
   data-code-block
 >
   <figcaption
     class="flex items-center justify-between gap-3 border-b border-surface-border bg-muted/40 px-3 py-2"
   >
-    <span class="text-xs font-medium tracking-wide text-muted-foreground uppercase">
+    <span
+      class="text-xs font-medium tracking-wide text-muted-foreground uppercase"
+    >
       {label}
     </span>
     <button
@@ -35,12 +37,14 @@ const trimmedCode = code.trimEnd();
         stroke-linejoin="round"
       >
         <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+        ></path>
       </svg>
       <span data-copy-label>Copy</span>
     </button>
   </figcaption>
-  <div class="code-block-content min-w-0 overflow-x-auto">
-    <pre><code>{trimmedCode}</code></pre>
+  <div class="min-w-0 overflow-x-auto">
+    <pre
+      class="m-0 min-w-0 bg-muted px-4 py-3.5 text-[0.8125rem] leading-relaxed"><code class="block w-max min-w-full font-mono whitespace-pre text-foreground">{trimmedCode}</code></pre>
   </div>
 </figure>

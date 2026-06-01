@@ -1,13 +1,13 @@
 ---
-import ThemeToggleButton from "../components/theme-toggle-button.astro";
+import ThemeToggleButton from '../components/theme-toggle-button.astro';
 import {
   defaultTitle,
   githubUrl,
   imageUrl,
   pageUrl,
   siteDescription,
-} from "../data";
-import "../styles/global.css";
+} from '../data';
+import '../styles/global.css';
 
 interface Props {
   title?: string;
@@ -39,22 +39,22 @@ const { title = defaultTitle, description = siteDescription } = Astro.props;
     <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:url" content={pageUrl} />
     <script is:inline>
-      (function () {
-        var key = "mockingbird-color-scheme";
-        try {
-          var stored = localStorage.getItem(key);
-          var scheme =
-            stored === "light" || stored === "dark" ? stored : "dark";
-          document.documentElement.classList.toggle("dark", scheme === "dark");
-          document.documentElement.classList.toggle(
-            "light",
-            scheme === "light",
-          );
-        } catch {
-          document.documentElement.classList.add("dark");
-        }
-      })();
-    </script>
+(function () {
+  const key = 'mockingbird-color-scheme';
+  try {
+    const stored = localStorage.getItem(key);
+    const scheme
+      = stored === 'light' || stored === 'dark' ? stored : 'dark';
+    document.documentElement.classList.toggle('dark', scheme === 'dark');
+    document.documentElement.classList.toggle(
+      'light',
+      scheme === 'light',
+    );
+  } catch {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
   </head>
   <body class="min-h-dvh antialiased">
     <div class="flex min-h-dvh flex-col">
@@ -135,8 +135,8 @@ const { title = defaultTitle, description = siteDescription } = Astro.props;
       </footer>
     </div>
     <script>
-      import "../scripts/code-block-copy.ts";
-      import "../scripts/theme-toggle.ts";
+      import '../scripts/code-block-copy.ts';
+      import '../scripts/theme-toggle.ts';
     </script>
   </body>
 </html>

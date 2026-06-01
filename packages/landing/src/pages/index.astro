@@ -1,13 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import CodeBlock from "../components/code-block.astro";
+import CodeBlock from '../components/code-block.astro';
 import {
   extensionSteps,
   extensionUrlExamples,
   githubUrl,
   localSteps,
   workflows,
-} from "../data";
+} from '../data';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
@@ -92,7 +92,7 @@ import {
                 </ul>
                 <p class="mt-auto flex flex-col gap-1 pt-2 text-[0.8125rem]">
                   <span class="text-muted-foreground">Storage</span>
-                  <code class="break-all text-sm">{workflow.storage}</code>
+                  <code class="text-sm break-all">{workflow.storage}</code>
                 </p>
                 <a
                   class="text-sm font-medium text-accent no-underline hover:underline"
@@ -145,7 +145,7 @@ import {
         </ol>
 
         <div
-          class="mt-8 rounded-md border border-surface-border border-l-3 border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
+          class="mt-8 rounded-md border border-l-3 border-surface-border border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
         >
           <strong class="text-foreground">URL matching:</strong> patterns support
           <code>*</code> wildcards, query params, and trailing <code>/*</code> to
@@ -171,10 +171,10 @@ import {
                   extensionUrlExamples.map((example) => (
                     <tr class="border-b border-surface-border last:border-b-0">
                       <td class="p-3.5 align-top">
-                        <code class="break-all text-sm">{example.pattern}</code>
+                        <code class="text-sm break-all">{example.pattern}</code>
                       </td>
                       <td class="p-3.5 align-top">
-                        <code class="break-all text-sm">{example.request}</code>
+                        <code class="text-sm break-all">{example.request}</code>
                       </td>
                       <td class="p-3.5 align-top">
                         {example.matches ? (
@@ -231,7 +231,7 @@ import {
         </ol>
 
         <div
-          class="mt-8 rounded-md border border-surface-border border-l-3 border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
+          class="mt-8 rounded-md border border-l-3 border-surface-border border-l-accent bg-surface p-4 text-[0.9375rem] text-muted-foreground"
         >
           <strong class="text-foreground">URL matching:</strong> use full URLs when
           saving mocks, but only the
