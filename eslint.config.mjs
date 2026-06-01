@@ -9,6 +9,7 @@ export default eslintConfig(
     typescript: true,
     tailwindcss: true,
     react: true,
+    astro: true,
   },
   {
     settings: {
