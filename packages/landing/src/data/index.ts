@@ -1,6 +1,6 @@
-export { extensionSteps } from "./extension-steps";
-export { extensionUrlExamples } from "./extension-url-examples";
-export { localSteps } from "./local-steps";
+export { extensionSteps } from './extension-steps';
+export { extensionUrlExamples } from './extension-url-examples';
+export { localSteps } from './local-steps';
 export {
   defaultTitle,
   githubUrl,
@@ -8,5 +8,5 @@ export {
   pageUrl,
   siteDescription,
   siteName,
-} from "./site";
-export { workflows } from "./workflows";
+} from './site';
+export { workflows } from './workflows';
