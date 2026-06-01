@@ -177,9 +177,11 @@ import Layout from '../layouts/Layout.astro';
                         <code class="text-sm break-all">{example.request}</code>
                       </td>
                       <td class="p-3.5 align-top">
-                        {example.matches ? (
+                        {example.matches
+? (
                           <span class="text-foreground">Yes</span>
-                        ) : (
+                        )
+: (
                           <span class="text-muted-foreground">No</span>
                         )}
                       </td>
@@ -262,7 +264,7 @@ import Layout from '../layouts/Layout.astro';
                 <th
                   scope="row"
                   class="p-3.5 text-left font-medium text-muted-foreground"
-                  >Requires local server</th
+                >Requires local server</th
                 >
                 <td class="p-3.5">No</td>
                 <td class="p-3.5">Yes</td>
@@ -271,7 +273,7 @@ import Layout from '../layouts/Layout.astro';
                 <th
                   scope="row"
                   class="p-3.5 text-left font-medium text-muted-foreground"
-                  >Works on any website</th
+                >Works on any website</th
                 >
                 <td class="p-3.5">Yes — http/https tabs</td>
                 <td class="p-3.5">No — point app at API host</td>
@@ -280,7 +282,7 @@ import Layout from '../layouts/Layout.astro';
                 <th
                   scope="row"
                   class="p-3.5 text-left font-medium text-muted-foreground"
-                  >URL wildcards</th
+                >URL wildcards</th
                 >
                 <td class="p-3.5">Yes</td>
                 <td class="p-3.5">No</td>
@@ -289,7 +291,7 @@ import Layout from '../layouts/Layout.astro';
                 <th
                   scope="row"
                   class="p-3.5 text-left font-medium text-muted-foreground"
-                  >Mock persistence</th
+                >Mock persistence</th
                 >
                 <td class="p-3.5">Browser profile</td>
                 <td class="p-3.5">File on disk</td>
@@ -298,7 +300,7 @@ import Layout from '../layouts/Layout.astro';
                 <th
                   scope="row"
                   class="p-3.5 text-left font-medium text-muted-foreground"
-                  >Intercepted API</th
+                >Intercepted API</th
                 >
                 <td class="p-3.5"><code>window.fetch</code></td>
                 <td class="p-3.5">HTTP server routes</td>
