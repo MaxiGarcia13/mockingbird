@@ -1,23 +1,20 @@
 ---
 import ThemeToggleButton from "../components/theme-toggle-button.astro";
+import {
+  defaultTitle,
+  githubUrl,
+  imageUrl,
+  pageUrl,
+  siteDescription,
+} from "../data";
 import "../styles/global.css";
-import packageJson from "../../../../package.json";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const siteName = "Mockingbird";
-const githubUrl = packageJson.homepage;
-
-const {
-  title = `${siteName} — HTTP mocking for API debugging`,
-  description = packageJson.description,
-} = Astro.props;
-
-const pageUrl = "https://mockiingbird.vercel.app";
-const imageUrl = new URL("/mockingbird.png", pageUrl).href;
+const { title = defaultTitle, description = siteDescription } = Astro.props;
 ---
 
 <!doctype html>
