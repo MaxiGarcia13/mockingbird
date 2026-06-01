@@ -1,3 +1,18 @@
+## 0.5.1 (2026-06-01)
+
+### 🧹 Chores
+
+- Update favicon images and site image URL ([f65f35c](https://github.com/MaxiGarcia13/mockingbird/commit/f65f35c))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-types to 0.7.1
+- Updated @maxigarcia/mockingbird-shared to 0.9.1
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.5.0 (2026-05-31)
 
 ### 🧱 Updated Dependencies

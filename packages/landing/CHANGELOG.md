@@ -1,3 +1,23 @@
+## 0.3.1 (2026-06-01)
+
+### 🧹 Chores
+
+- Update favicon images and site image URL ([f65f35c](https://github.com/MaxiGarcia13/mockingbird/commit/f65f35c))
+
+### 🎨 Styles
+
+- Improve code formatting and structure in landing components ([8967e92](https://github.com/MaxiGarcia13/mockingbird/commit/8967e92))
+- Standardize code formatting and improve component structure ([f393cf8](https://github.com/MaxiGarcia13/mockingbird/commit/f393cf8))
+- Remove unused code block styles from global CSS ([4aab4c8](https://github.com/MaxiGarcia13/mockingbird/commit/4aab4c8))
+
+### 🧱 Updated Dependencies
+
+- Updated @maxigarcia/mockingbird-shared to 0.9.1
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.3.0 (2026-06-01)
 
 ### 🚀 Features

@@ -1,3 +1,7 @@
+## 0.7.1 (2026-06-01)
+
+This was a version bump only for @maxigarcia/mockingbird-types to align it with other projects, there were no code changes.
+
 ## 0.7.0 (2026-05-31)
 
 This was a version bump only for @maxigarcia/mockingbird-types to align it with other projects, there were no code changes.
