@@ -1,3 +1,13 @@
+## 0.6.0 (2026-07-29)
+
+### 🚀 Features
+
+- Add logging for fetch interceptor activation ([3381667](https://github.com/MaxiGarcia13/mockingbird/commit/3381667))
+
+### ❤️ Thank You
+
+- Maximiliano Garcia Mortigliengo
+
 ## 0.5.1 (2026-06-01)
 
 ### 🧹 Chores
