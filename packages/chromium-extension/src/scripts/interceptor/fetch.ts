@@ -99,6 +99,8 @@ async function interceptFetch(...args: Parameters<typeof window.fetch>) {
 window.addEventListener(INTERCEPT_ACTIVATION_EVENT, (event) => {
   const { active } = (event as CustomEvent<{ active: boolean }>).detail;
 
+  console.log('[Mockingbird] fetch interceptor activated: ', active);
+
   if (active) {
     window.fetch = interceptFetch;
   } else {
